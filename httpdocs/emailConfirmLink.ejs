@@ -1,0 +1,166 @@
+<!doctype html>
+<html class="no-js layout__7" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Laaver</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+
+        <!-- CSS here -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/animate.min.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/all.min.css">
+        <link rel="stylesheet" href="css/futura-std-4.css">
+        <link rel="stylesheet" href="css/slick.css">
+        <link rel="stylesheet" href="css/style.css">
+
+		<script src="javascript/header_footer.js "></script>
+</head>
+
+
+<body>
+
+
+    <main class="main_wrapper body__overlay overflow__hidden">
+
+		<%- include('./header.ejs') %>   
+
+		<!-- Category Section Start -->
+		<div class="ltn__product-area ltn__product-gutter mb-100 pt-100">
+			<div class="container-fluid-lg" style="padding-left:10%;width:88%;height:200px;margin-top: 100px;">
+				<div class="title">
+					<h2>Deine E-Mail-Adresse wurde erfolgreich verifiziert!</h2>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<h4>Du hast dich erfolgreich registriert, vielen Dank für deine Unterstützung!</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Category Section End -->
+
+		<!-- Newsletter Section Start -->
+		<section class="newsletter-section section-b-space" style="display:none;">
+			<div class="container-fluid-lg">
+				<div class="newsletter-box newsletter-box-2">
+					<div class="newsletter-contain py-5">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-xxl-4 col-lg-5 col-md-7 col-sm-9 offset-xxl-2 offset-md-1">
+									<div class="newsletter-detail">
+										<h2>Abonnieren unseren Newsletter</h2>
+										<h5>Verpassen Sie nicht unsere monatlichen Sonderangebote und Rabattcodes!</h5>
+										<div class="input-box">
+											<input type="email" class="form-control" id="NewsletterAbonnierenInput"
+												placeholder="Geben sie ihre E-Mail Adresse ein">
+											<i class="fa-solid fa-envelope arrow"></i>
+											<button class="sub-btn btn" onclick="newsletterAbonnieren()">
+												<span class="d-sm-block d-none">Abonnieren</span>
+												<i class="fa-solid fa-arrow-right icon"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Newsletter Section End -->
+		
+		<!-- Hinweisen Modal Start -->
+		<div class="modal fade theme-modal deal-modal" id="HinweisenModalFade" tabindex="-1">
+			<div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div>
+							<h5 class="modal-title w-100" id="HinweisenModalTitle"></h5>
+						</div>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" id="HinweisenModalButton1">
+							<i class="fa-solid fa-xmark"></i>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div id="HinweisenModalInhalt" style="font-size:16px;margin:5px 5px 20px 5px;"></div>					
+						<div>
+							<button class="btn theme-bg-color btn-md text-white fw-bold mt-md-4 mt-2 mend-auto" id="HinweisenModalButton2" style="width:100%;" data-bs-dismiss="modal">
+								<span>Schließen</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Hinweisen Modal End -->
+
+
+
+	    <%- include('./footer.ejs') %>     
+
+	</main>
+
+
+    <!-- JS here -->
+    <script src="js/vendor/modernizr-3.5.0.min.js "></script>
+    <script src="js/vendor/jquery-3.6.0.min.js "></script>
+	
+	<script>
+		var EmailCode="";
+		if(String(GetQueryString("EmailCode"))!="" && String(GetQueryString("EmailCode"))!="null" && String(GetQueryString("EmailCode"))!="undefined") EmailCode = escape(GetQueryString("EmailCode"));
+		if(EmailCode!=""){
+			$.ajax({
+				type: "POST",
+				url: "/emailConfirmLink_1",
+				contentType: 'application/x-www-form-urlencoded',
+				data: {
+					EmailCode: EmailCode
+				},
+				cache: false,
+				success: function (response) {
+					setTimeout(function () {
+						window.location.href = "/";
+					}, 10000);
+				},
+				error: function (xhr, status, error) {
+					console.error("AJAX Fehler:", status, error);
+				}
+			});
+
+		}
+		
+		function GetQueryString(string){
+		   var reg = new RegExp('(^|&)'+ string +'=([^&]*)(&|$)');
+		   var r = window.location.search.substr(1).match(reg);
+		   if(r!=null)return unescape(r[2]); return null;
+		}
+	</script>
+	
+    <script src="js/popper.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/isotope.pkgd.min.js "></script>
+    <script src="js/one-page-nav-min.js "></script>
+    <script src="js/slick.min.js "></script>
+    <script src="js/jquery.meanmenu.min.js "></script>
+    <script src="js/ajax-form.js "></script>
+    <script src="js/wow.min.js "></script>
+    <script src="js/jquery.scrollUp.min.js "></script>
+    <script src="js/imagesloaded.pkgd.min.js "></script>
+    <script src="js/jquery.magnific-popup.min.js "></script>
+    <script src="js/waypoints.min.js "></script>
+    <script src="js/jquery.counterup.min.js "></script>
+    <script src="js/fontawesome.min.js "></script>
+    <script src="js/plugins.js "></script>
+    <script src="js/main.js "></script>
+	
+
+</body>
+
+</html>

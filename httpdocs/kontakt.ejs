@@ -1,0 +1,274 @@
+<!doctype html>
+<html class="no-js layout__7" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Laaver</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+
+        <!-- CSS here -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/animate.min.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/all.min.css">
+        <link rel="stylesheet" href="css/futura-std-4.css">
+        <link rel="stylesheet" href="css/slick.css">
+        <link rel="stylesheet" href="css/style.css">
+
+		<script src="javascript/header_footer.js "></script>
+</head>
+
+
+<body>
+
+
+    <main class="main_wrapper body__overlay overflow__hidden">
+
+		<%- include('./header.ejs') %>       
+		
+		<!-- contact__section__start -->
+            <div class="contactarea sp_top_80 sp_bottom_80">
+                <div class="container">
+                    <div class="row">
+					
+						<div class="col-xl-4 col-lg-4 col-md-6 col-12">
+						  <div class="contactarea__single" style="height:260px;">
+							<h3 id="contact_office_title">Office Address</h3>
+							<p>
+							  Tinbot Technology GmbH<br/>
+							  Edisonstraße 7<br/>
+							  63477 Maintal Deutschland
+							</p>
+						  </div>
+						</div>
+
+						<div class="col-xl-4 col-lg-4 col-md-6 col-12">
+						  <div class="contactarea__single" style="height:260px;">
+							<h3 id="contact_email_title">Email Address</h3>
+							<p><a href="mailto:info@laaver.com" id="contact_email_link">info@laaver.com</a></p>
+						  </div>
+						</div>
+
+						<div class="col-xl-4 col-lg-4 col-md-6 col-12">
+						  <div class="contactarea__single" style="height:260px;">
+							<h3 id="contact_phone_title">Phone Number</h3>
+							<p id="contact_phone_number">+49 6181 6688177</p>
+						  </div>
+						</div>
+
+
+                    </div>
+                </div>
+            </div>
+        <!-- contact__section__end -->
+
+        <!-- contactarea__form__area start -->
+            <div class="contactarea__form sp_bottom_80">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="contactarea__form__area">
+                                <h4 class="contactarea__form__title" id="contact_form_title">Send Message</h4>
+                                <form id="contact-form" class="contact-form" method="post">
+                                    <div class="row">
+									  <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+										<div class="contactarea__form__input">
+										  <input type="text" placeholder="Enter your name" class="" name="con_name" id="contact_input_name">                                          
+										</div>                                        
+									  </div>
+									  <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+										<div class="contactarea__form__input">
+										  <input type="text" placeholder="Enter email address" class="" name="con_email" id="contact_input_email">                                          
+										</div>                                      
+									  </div>
+									  <div class="col-xl-12">
+										<div class="contactarea__form__input">
+										  <textarea placeholder="Enter message" class="custom-textarea" name="con_message" id="contact_input_message"></textarea>                                           
+										</div>                                       
+									  </div>
+									  <div class="col-xl-12">
+										<div class="contactarea__form__button">                                                
+										  <button type="submit" value="submit" class="default__button" name="submit" id="contact_button_submit">Submit</button>
+										  <p class="form-messege"></p>                                            
+										</div>                                      
+									  </div>
+									</div>
+                                </form>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- contactarea__form__area end -->
+
+		<!-- contact__map__start -->
+			<div class="contact__map sp_bottom_80">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-12">
+							<div class="contact__map__inner">
+								<iframe
+									src="https://www.google.com/maps?q=Edisonstraße%207%2C%2063477%20Maintal%2C%20Deutschland&output=embed"
+									width="100%" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+								</iframe>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- contact__map__end -->
+		
+		
+		<script>
+			languageInnerHTMLArr.push(new languageObj("contact_office_title", "Office Address", "Büroanschrift", "Adresse du bureau", "办公地址"));
+			languageInnerHTMLArr.push(new languageObj("contact_email_title", "Email Address", "E-Mail-Adresse", "Adresse e-mail", "电子邮箱"));
+			languageInnerHTMLArr.push(new languageObj("contact_email_link", "info@laaver.com", "info@laaver.com", "info@laaver.com", "info@laaver.com"));
+			languageInnerHTMLArr.push(new languageObj("contact_phone_title", "Phone Number", "Telefonnummer", "Numéro de téléphone", "电话号码"));
+			languageInnerHTMLArr.push(new languageObj("contact_phone_number", "+49 6181 6688177", "+49 6181 6688177", "+49 6181 6688177", "+49 6181 6688177"));
+			
+			languagePlaceholderArr.push(new languageObj("contact_input_name", "Enter your name", "Geben Sie Ihren Namen ein", "Entrez votre nom", "请输入您的姓名"));
+			languagePlaceholderArr.push(new languageObj("contact_input_email", "Enter email address", "E-Mail-Adresse eingeben", "Entrez l'adresse e-mail", "请输入电子邮箱"));
+			languagePlaceholderArr.push(new languageObj("contact_input_message", "Enter message", "Nachricht eingeben", "Entrez le message", "请输入留言"));
+			languagePlaceholderArr.push(new languageObj("contact_button_submit", "Submit", "Absenden", "Envoyer", "提交"));
+
+			languageInnerHTMLArr.push(new languageObj("contact_form_title", "Send Message", "Nachricht senden", "Envoyer un message", "发送消息"));
+			
+		</script>
+
+
+	    <%- include('./footer.ejs') %>     
+
+	</main>
+
+    <!-- JS here -->
+    <script src="js/vendor/modernizr-3.5.0.min.js "></script>
+    <script src="js/vendor/jquery-3.6.0.min.js "></script>
+	
+    <script src="js/popper.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/isotope.pkgd.min.js "></script>
+    <script src="js/one-page-nav-min.js "></script>
+    <script src="js/slick.min.js "></script>
+    <script src="js/jquery.meanmenu.min.js "></script>
+    <script src="js/ajax-form.js "></script>
+    <script src="js/wow.min.js "></script>
+    <script src="js/jquery.scrollUp.min.js "></script>
+    <script src="js/imagesloaded.pkgd.min.js "></script>
+    <script src="js/jquery.magnific-popup.min.js "></script>
+    <script src="js/waypoints.min.js "></script>
+    <script src="js/jquery.counterup.min.js "></script>
+    <script src="js/fontawesome.min.js "></script>
+    <script src="js/plugins.js "></script>
+    <script src="js/main.js "></script>
+	
+	<script>
+	$("#contact-form").on("submit", function (e) {
+		e.preventDefault();   // 阻止默认提交
+		sendMail();
+	});
+
+	function sendMail() {
+
+		var con_name    = $.trim($("#contact_input_name").val());
+		var con_email   = $.trim($("#contact_input_email").val());
+		var con_message = $.trim($("#contact_input_message").val());
+
+		// ① 基础校验
+		if (con_name === "") {
+			switch (lang) {
+				case "en": alert("Please enter your name."); break;
+				case "de": alert("Bitte geben Sie Ihren Namen ein."); break;
+				case "fr": alert("Veuillez entrer votre nom."); break;
+				case "cn": alert("请输入您的姓名。"); break;
+			}
+			$("#contact_input_name").focus();
+			return false;
+		}
+
+		if (con_email === "") {
+			switch (lang) {
+				case "en": alert("Please enter your email address."); break;
+				case "de": alert("Bitte geben Sie Ihre E-Mail-Adresse ein."); break;
+				case "fr": alert("Veuillez entrer votre adresse e-mail."); break;
+				case "cn": alert("请输入您的电子邮箱。"); break;
+			}
+			$("#contact_input_email").focus();
+			return false;
+		}
+
+		// ② 邮箱格式校验
+		var emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailReg.test(con_email)) {
+			switch (lang) {
+				case "en": alert("Please enter a valid email address."); break;
+				case "de": alert("Bitte geben Sie eine gültige E-Mail-Adresse ein."); break;
+				case "fr": alert("Veuillez entrer une adresse e-mail valide."); break;
+				case "cn": alert("请输入有效的电子邮箱地址。"); break;
+			}
+			$("#contact_input_email").focus();
+			return false;
+		}
+
+		if (con_message === "") {
+			switch (lang) {
+				case "en": alert("Please enter your message."); break;
+				case "de": alert("Bitte geben Sie Ihre Nachricht ein."); break;
+				case "fr": alert("Veuillez entrer votre message."); break;
+				case "cn": alert("请输入您的留言。"); break;
+			}
+			$("#contact_input_message").focus();
+			return false;
+		}
+
+
+		// ③ 发送中状态
+		$("#contact_button_submit").prop("disabled", true).text("Sending...");
+
+		// ④ AJAX 发送给 Node
+		$.ajax({
+			type: "POST",
+			url: "/frontend_contact_send",
+			contentType: "application/x-www-form-urlencoded",
+			data: {
+				con_name: con_name,
+				con_email: con_email,
+				con_message: con_message
+			},
+			success: function (res) {
+				switch (lang) {
+					case "en": alert("Message sent successfully. Thank you!"); break;
+					case "de": alert("Nachricht erfolgreich gesendet. Danke!"); break;
+					case "fr": alert("Message envoyé avec succès. Merci !"); break;
+					case "cn": alert("消息发送成功，谢谢！"); break;
+				}			
+			},
+			error: function () {
+				switch (lang) {
+					case "en": alert("Server error. Please try again later."); break;
+					case "de": alert("Serverfehler. Bitte versuchen Sie es später erneut."); break;
+					case "fr": alert("Erreur du serveur. Veuillez réessayer plus tard."); break;
+					case "cn": alert("服务器错误，请稍后再试。"); break;
+				}
+			},
+			complete: function () {
+				$("#contact_button_submit").prop("disabled", false).text("Submit");
+				setTimeout(function(){
+					window.location.reload();
+				},3000);
+			}
+		});
+
+		return false;
+	}
+	</script>
+
+</body>
+
+</html>

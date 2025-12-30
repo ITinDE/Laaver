@@ -1,0 +1,430 @@
+<!--begin::Header-->
+<div id="kt_header" class="header header-fixed">
+	<!--begin::Container-->
+	<div class="container-fluid d-flex align-items-stretch justify-content-between">
+		<!--begin::Header Menu Wrapper-->
+		<div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+			<!--begin::Header Menu-->
+			<div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default"></div>
+			<!--end::Header Menu-->
+		</div>
+		<!--end::Header Menu Wrapper-->
+		<!--begin::Topbar-->
+		<div class="topbar">
+			<!--begin::Notifications-->
+			<div class="dropdown mr-1">
+				<!--begin::Toggle-->
+				<div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
+					<div class="btn btn-icon btn-clean btn-dropdown btn-lg pulse pulse-primary" onclick="checkMitarbeiterNachrichtUnread();	checkMitarbeiterNachrichtRead();">
+						<span class="svg-icon svg-icon-xl svg-icon-primary">
+							<!--begin::Svg Icon | path:assets/media/svg/icons/Code/Compiling.svg-->
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<rect x="0" y="0" width="24" height="24" />
+									<path d="M2.56066017,10.6819805 L4.68198052,8.56066017 C5.26776695,7.97487373 6.21751442,7.97487373 6.80330086,8.56066017 L8.9246212,10.6819805 C9.51040764,11.267767 9.51040764,12.2175144 8.9246212,12.8033009 L6.80330086,14.9246212 C6.21751442,15.5104076 5.26776695,15.5104076 4.68198052,14.9246212 L2.56066017,12.8033009 C1.97487373,12.2175144 1.97487373,11.267767 2.56066017,10.6819805 Z M14.5606602,10.6819805 L16.6819805,8.56066017 C17.267767,7.97487373 18.2175144,7.97487373 18.8033009,8.56066017 L20.9246212,10.6819805 C21.5104076,11.267767 21.5104076,12.2175144 20.9246212,12.8033009 L18.8033009,14.9246212 C18.2175144,15.5104076 17.267767,15.5104076 16.6819805,14.9246212 L14.5606602,12.8033009 C13.9748737,12.2175144 13.9748737,11.267767 14.5606602,10.6819805 Z" fill="#000000" opacity="0.3" />
+									<path d="M8.56066017,16.6819805 L10.6819805,14.5606602 C11.267767,13.9748737 12.2175144,13.9748737 12.8033009,14.5606602 L14.9246212,16.6819805 C15.5104076,17.267767 15.5104076,18.2175144 14.9246212,18.8033009 L12.8033009,20.9246212 C12.2175144,21.5104076 11.267767,21.5104076 10.6819805,20.9246212 L8.56066017,18.8033009 C7.97487373,18.2175144 7.97487373,17.267767 8.56066017,16.6819805 Z M8.56066017,4.68198052 L10.6819805,2.56066017 C11.267767,1.97487373 12.2175144,1.97487373 12.8033009,2.56066017 L14.9246212,4.68198052 C15.5104076,5.26776695 15.5104076,6.21751442 14.9246212,6.80330086 L12.8033009,8.9246212 C12.2175144,9.51040764 11.267767,9.51040764 10.6819805,8.9246212 L8.56066017,6.80330086 C7.97487373,6.21751442 7.97487373,5.26776695 8.56066017,4.68198052 Z" fill="#000000" />
+								</g>
+							</svg>
+							<!--end::Svg Icon-->
+						</span>
+						<span class="pulse-ring" id="pulse-ring-span" style="display:none;"></span>
+					</div>
+				</div>
+				<!--end::Toggle-->
+				<!--begin::Dropdown-->
+				<div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg">
+					<form>
+						<!--begin::Header-->
+						<div class="d-flex flex-column pt-12 bgi-size-cover bgi-no-repeat rounded-top" style="background-image: url(assets/media/misc/bg-3.jpg)">
+							<!--begin::Title-->
+							<h4 class="d-flex flex-center rounded-top">
+								<span class="text-white" id="message_title_center">Message Center</span>
+							</h4>
+							<!--end::Title-->
+							<!--begin::Tabs-->
+							<ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-line-transparent-white nav-tabs-line-active-border-success mt-3 px-8 font-size-lg" role="tablist">
+								<li class="nav-item">
+								  <a class="nav-link active show" data-toggle="tab" href="#topbar_notifications_notifications" id="topbar_tab_unread">Unread Messages</a>
+								</li>
+								<li class="nav-item">
+								  <a class="nav-link" data-toggle="tab" href="#topbar_notifications_events" id="topbar_tab_read">Read Messages</a>
+								</li>
+								<li class="nav-item">
+								  <a class="nav-link" data-toggle="tab" href="#topbar_notifications_logs" id="topbar_tab_send">Send Message</a>
+								</li>
+
+							</ul>
+							<!--end::Tabs-->
+						</div>
+						<!--end::Header-->
+						<!--begin::Content-->
+						<div class="tab-content">
+							<!--begin::Tabpane-->
+							<div class="tab-pane active show p-8" id="topbar_notifications_notifications" role="tabpanel">
+								<!--begin::Scroll-->
+								<div class="scroll pr-7 mr-n7" id="NachrichtUnreadDiv" data-scroll="true" data-height="300" data-mobile-height="200"></div>
+								<!--end::Scroll-->
+								<!--begin::Action-->
+								<div class="d-flex flex-center pt-7">
+									<a href="#" class="btn btn-light-warning font-weight-bold text-center" id="message_btn_markallread" style="width:100%;" onclick="setAllMessageRead();">Mark all as read</a>
+								</div>
+								<!--end::Action-->
+							</div>
+							<!--end::Tabpane-->
+							<!--begin::Tabpane-->
+							<div class="tab-pane p-8" id="topbar_notifications_events" role="tabpanel">
+								<!--begin::Scroll-->
+								<div class="scroll pr-7 mr-n7" id="NachrichtReadDiv" data-scroll="true" data-height="300" data-mobile-height="200"></div>
+								<!--end::Scroll-->
+							</div>
+							<!--end::Tabpane-->
+							<!--begin::Tabpane-->
+							<div class="tab-pane" id="topbar_notifications_logs" role="tabpanel">
+								<!--begin::Nav-->
+								<div class="d-flex flex-center font-weight-bold text-center text-muted min-h-250px">
+								<textarea class="form-control" id="mitarbeiterNachrichtTextarea" style="width:90%;height:200px;"></textarea>
+								</div>
+								<!--begin::Action-->
+								<div class="d-flex flex-center pb-4">
+									<a href="javascript:sendMitarbeiterNachrichtTextarea()" class="btn btn-light-primary font-weight-bold text-center" style="width:90%;" id="message_btn_send">Send message</a>
+								</div>
+								<!--end::Action-->
+							</div>
+							<!--end::Tabpane-->
+						</div>
+						<!--end::Content-->
+					</form>
+				</div>
+				<!--end::Dropdown-->
+				<script>
+					var NachrichtUnreadArr = new Array();
+					var NachrichtReadArr = new Array();
+
+					document.addEventListener("DOMContentLoaded", function () {
+						setTimeout(function(){
+							// 立即执行一次
+							checkMitarbeiterNachrichtUnread();	
+							checkMitarbeiterNachrichtRead();
+							checkMitarbeiterChat();
+							// 然后每5分钟执行一次
+							setInterval(checkMitarbeiterNachrichtUnread, 5 * 60 * 1000);
+							setInterval(checkMitarbeiterNachrichtRead, 5 * 60 * 1000);
+						},10000);
+
+						$('#kt_chat_modal').on('shown.bs.modal', function () {
+						  const chatDiv = document.getElementById('LiveChatScrollDiv');
+						  chatDiv.scrollTop = chatDiv.scrollHeight; 
+						});		
+
+						let chatIntervalId = null; // 用于保存定时器ID
+
+						// 监听 modal 打开事件
+						$('#kt_chat_modal').on('shown.bs.modal', function () {
+						  chatIntervalId = setInterval(() => {
+							updateMitarbeiterChat();
+						  }, 10000);
+						});
+
+						// 监听 modal 关闭事件
+						$('#kt_chat_modal').on('hidden.bs.modal', function () {
+						  if (chatIntervalId !== null) {
+							clearInterval(chatIntervalId);
+							chatIntervalId = null;
+						  }
+						});						
+					});
+				
+					function sendMitarbeiterNachrichtTextarea(){
+						var Nachricht = escape(document.getElementById("mitarbeiterNachrichtTextarea").value);
+						var sql = "INSERT INTO `laaver`.mitarbeiter_nachricht (MitarbeiterID, Vorname, Nachname, Nachricht, isRead) VALUES ("+MitarbeiterID+", '" + Vorname + "', '" + Nachname + "', '" + Nachricht + "', '" + String("#"+MitarbeiterID+"#") + "') ";	
+						$.ajax({
+							type: "POST",
+							url: "/General_Insert",
+							contentType: 'application/x-www-form-urlencoded',
+							async: true,
+							cache: false,
+							data: {
+								SQL_TXT: escape(sql),
+							},
+							success: function (response) {
+								window.location.reload();
+							},
+							error: function (xhr, status, error) {
+								console.error("Node AJAX 请求失败: ", status, error);
+							}
+						});  					
+					}
+					
+					function setAllMessageRead(){
+						if(NachrichtUnreadArr.length>0){
+							var sql = "";
+							for(var i=0; i<NachrichtUnreadArr.length; i++){
+								sql += "UPDATE `laaver`.mitarbeiter_nachricht SET isRead=CONCAT((SELECT isRead FROM `laaver`.mitarbeiter_nachricht WHERE prIDX="+NachrichtUnreadArr[i].prIDX+"),'"+String("#"+MitarbeiterID+"#")+"') WHERE prIDX="+NachrichtUnreadArr[i].prIDX+";";
+							}
+							$.ajax({
+								type: "POST",
+								url: "/General_Update",
+								contentType: 'application/x-www-form-urlencoded',
+								async: true,
+								cache: false,
+								data: {
+									SQL_TXT: escape(sql),
+								},
+								success: function (response) {
+									window.location.reload();
+								},
+								error: function (xhr, status, error) {
+									console.error("Node AJAX 请求失败: ", status, error);
+								}
+							});  
+						}
+					}
+					
+					function checkMitarbeiterNachrichtUnread(){
+						NachrichtUnreadArr = new Array();
+						var sql = "SELECT * FROM `laaver`.mitarbeiter_nachricht WHERE NOT isRead LIKE '%" + String("#"+MitarbeiterID+"#") + "%' ORDER BY prIDX DESC LIMIT 10 ";	
+						$.ajax({
+							type: "POST",
+							url: "/Mitarbeiter_Nachricht",
+							contentType: 'application/x-www-form-urlencoded',
+							async: true,
+							cache: false,
+							data: {
+								SQL_TXT: escape(sql),
+							},
+							success: function (response) {
+								response.results.forEach(function (item) {
+									NachrichtUnreadArr.push(item);
+								});
+								
+								if(NachrichtUnreadArr.length>0){
+									document.getElementById("pulse-ring-span").style.display = "block";
+								}else{
+									document.getElementById("pulse-ring-span").style.display = "none";
+								}	
+
+								var txt = "";
+								for(var i=0; i<NachrichtUnreadArr.length; i++){
+									txt +=  "<!--begin::Item-->"+
+											"<div class='d-flex align-items-center mb-6'>"+
+											"<!--begin::Content-->"+
+											"<div class='d-flex flex-wrap flex-row-fluid'>"+
+											"<!--begin::Text-->"+
+											"<div class='d-flex flex-column pr-5 flex-grow-1'>"+
+											"<a href='#' class='text-dark text-hover-primary mb-1 font-weight-bold font-size-lg'>"+unescape(NachrichtUnreadArr[i].Vorname+" "+NachrichtUnreadArr[i].Nachname)+
+											"<span style='color:#B5B5C3;font-size:12px;'>&nbsp;&nbsp;&nbsp;"+convertUTCToGermanTime(NachrichtUnreadArr[i].Datum)+"</span>"+
+											"</a>"+
+											"<span class='text-muted font-weight-bold'>"+unescape(NachrichtUnreadArr[i].Nachricht)+"</span>"+
+											"</div>"+
+											"<!--end::Text-->"+
+											"</div>"+
+											"<!--end::Content-->"+
+											"</div>"+
+											"<!--end::Item-->";									
+								}
+								document.getElementById("NachrichtUnreadDiv").innerHTML = txt;
+							},
+							error: function (xhr, status, error) {
+								console.error("Node AJAX 请求失败: ", status, error);
+							}
+						});  					
+					}
+					
+					function checkMitarbeiterNachrichtRead(){
+						NachrichtReadArr = new Array();
+						var sql = "SELECT * FROM `laaver`.mitarbeiter_nachricht WHERE isRead LIKE '%" + String("#"+MitarbeiterID+"#") + "%' ORDER BY prIDX DESC LIMIT 10 ";	
+						$.ajax({
+							type: "POST",
+							url: "/Mitarbeiter_Nachricht",
+							contentType: 'application/x-www-form-urlencoded',
+							async: true,
+							cache: false,
+							data: {
+								SQL_TXT: escape(sql),
+							},
+							success: function (response) {
+								response.results.forEach(function (item) {
+									NachrichtReadArr.push(item);
+								});
+								
+								var txt = "";
+								for(var i=0; i<NachrichtReadArr.length; i++){
+									txt +=  "<!--begin::Item-->"+
+											"<div class='d-flex align-items-center mb-6'>"+
+											"<!--begin::Content-->"+
+											"<div class='d-flex flex-wrap flex-row-fluid'>"+
+											"<!--begin::Text-->"+
+											"<div class='d-flex flex-column pr-5 flex-grow-1'>"+
+											"<a href='#' class='text-dark text-hover-primary mb-1 font-weight-bold font-size-lg'>"+unescape(NachrichtReadArr[i].Vorname+" "+NachrichtReadArr[i].Nachname)+
+											"<span style='color:#B5B5C3;font-size:12px;'>&nbsp;&nbsp;&nbsp;"+convertUTCToGermanTime(NachrichtReadArr[i].Datum)+"</span>"+
+											"</a>"+
+											"<span class='text-muted font-weight-bold'>"+unescape(NachrichtReadArr[i].Nachricht)+"</span>"+
+											"</div>"+
+											"<!--end::Text-->"+
+											"</div>"+
+											"<!--end::Content-->"+
+											"</div>"+
+											"<!--end::Item-->";									
+								}
+								document.getElementById("NachrichtReadDiv").innerHTML = txt;
+							},
+							error: function (xhr, status, error) {
+								console.error("Node AJAX 请求失败: ", status, error);
+							}
+						});  					
+					}
+					
+					function convertUTCToGermanTime(utcString) {
+						const date = new Date(utcString);
+
+						// 使用 Intl.DateTimeFormat 格式化为德国时间
+						const formatter = new Intl.DateTimeFormat('de-DE', {
+							timeZone: 'Europe/Berlin',
+							year: 'numeric',
+							month: '2-digit',
+							day: '2-digit',
+							hour: '2-digit',
+							minute: '2-digit',
+							hour12: false
+						});
+
+						const parts = formatter.formatToParts(date);
+						const getPart = (type) => parts.find(p => p.type === type)?.value;
+
+						const formatted = `${getPart('year')}-${getPart('month')}-${getPart('day')} ${getPart('hour')}:${getPart('minute')}`;
+						return formatted;
+					}
+				</script>
+			</div>
+			<!--end::Notifications-->					
+			<!--begin::Chat-->
+			<div class="topbar-item">
+				<div class="btn btn-icon btn-clean btn-lg mr-1" data-toggle="modal" data-target="#kt_chat_modal">
+					<span class="svg-icon svg-icon-xl svg-icon-primary">
+						<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Chat6.svg-->
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<rect x="0" y="0" width="24" height="24" />
+								<path opacity="0.3" fill-rule="evenodd" clip-rule="evenodd" d="M14.4862 18L12.7975 21.0566C12.5304 21.54 11.922 21.7153 11.4386 21.4483C11.2977 21.3704 11.1777 21.2597 11.0887 21.1255L9.01653 18H5C3.34315 18 2 16.6569 2 15V6C2 4.34315 3.34315 3 5 3H19C20.6569 3 22 4.34315 22 6V15C22 16.6569 20.6569 18 19 18H14.4862Z" fill="black" />
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M6 7H15C15.5523 7 16 7.44772 16 8C16 8.55228 15.5523 9 15 9H6C5.44772 9 5 8.55228 5 8C5 7.44772 5.44772 7 6 7ZM6 11H11C11.5523 11 12 11.4477 12 12C12 12.5523 11.5523 13 11 13H6C5.44772 13 5 12.5523 5 12C5 11.4477 5.44772 11 6 11Z" fill="black" />
+							</g>
+						</svg>
+						<!--end::Svg Icon-->
+					</span>
+					<span class="pulse-ring" id="pulse-ring-span-1" style="display:none;"></span>
+				</div>
+			</div>
+			<!--end::Chat-->
+			<!--begin::Languages-->
+			<div class="dropdown mr-1">
+				<%
+					langFlag = "226-united-states";
+					switch (lang){
+						case "en": langFlag = "226-united-states"; break;
+						case "de": langFlag = "162-germany"; break;
+						case "fr": langFlag = "195-france"; break;
+						case "cn": langFlag = "015-china"; break;
+					}
+				%>
+				<!--begin::Toggle-->
+				<div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
+					<div class="btn btn-icon btn-clean btn-dropdown btn-lg">
+						<img class="h-20px w-20px rounded-sm" src="assets/media/svg/flags/<%=langFlag%>.svg" alt="" />
+					</div>
+				</div>
+				<!--end::Toggle-->
+				<!--begin::Dropdown-->				
+				<div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right">
+					<!--begin::Nav-->
+					<ul class="navi navi-hover py-4">
+						<!--begin::Item-->
+						<li class="navi-item">
+							<a href="javascript:changeLangFunc('en')" class="navi-link">
+								<span class="symbol symbol-20 mr-3">
+									<img src="assets/media/svg/flags/226-united-states.svg" alt="" />
+								</span>
+								<span class="navi-text">English</span>
+							</a>
+						</li>
+						<!--end::Item-->						
+						<!--begin::Item-->
+						<li class="navi-item">
+							<a href="javascript:changeLangFunc('de')" class="navi-link">
+								<span class="symbol symbol-20 mr-3">
+									<img src="assets/media/svg/flags/162-germany.svg" alt="" />
+								</span>
+								<span class="navi-text">German</span>
+							</a>
+						</li>
+						<!--end::Item-->						
+						<!--begin::Item-->
+						<li class="navi-item">
+							<a href="javascript:changeLangFunc('fr')" class="navi-link">
+								<span class="symbol symbol-20 mr-3">
+									<img src="assets/media/svg/flags/195-france.svg" alt="" />
+								</span>
+								<span class="navi-text">French</span>
+							</a>
+						</li>
+						<!--end::Item-->
+						<!--begin::Item-->
+						<li class="navi-item active">
+							<a href="javascript:changeLangFunc('cn')" class="navi-link">
+								<span class="symbol symbol-20 mr-3">
+									<img src="assets/media/svg/flags/015-china.svg" alt="" />
+								</span>
+								<span class="navi-text">Chinese</span>
+							</a>
+						</li>
+						<!--end::Item-->
+					</ul>
+					<!--end::Nav-->
+				</div>
+				<!--end::Dropdown-->
+				<script>
+					function changeLangFunc(value){
+						var sql = "UPDATE `laaver`.Mitarbeiter SET MitarbeiterString7 = '" + value + "' WHERE prIDX="+MitarbeiterID+"";	
+						$.ajax({
+							type: "POST",
+							url: "/General_Update",
+							contentType: 'application/x-www-form-urlencoded',
+							async: true,
+							cache: false,
+							data: {
+								SQL_TXT: escape(sql),
+							},
+							success: function (response) {	
+								setCookie("lang", value, 30);
+								window.location.reload();
+							},
+							error: function (xhr, status, error) {
+								console.error("Node AJAX 请求失败: ", status, error);
+							}
+						});  
+					}					
+				</script>
+			</div>
+			<!--end::Languages-->
+			<!--begin::User-->
+			<div class="topbar-item">
+				<div class="btn btn-icon btn-clean btn-lg mr-1" id="kt_quick_user_toggle">
+					<span class="svg-icon svg-icon-xl svg-icon-primary">
+						<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Chat6.svg-->
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<polygon points="0 0 24 0 24 24 0 24"/>
+								<path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+								<path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero"/>
+							</g>
+						</svg>
+						<!--end::Svg Icon-->
+					</span>
+				</div>
+			</div>
+			<!--end::User-->
+		</div>
+		<!--end::Topbar-->
+	</div>
+	<!--end::Container-->
+</div>
+<!--end::Header-->

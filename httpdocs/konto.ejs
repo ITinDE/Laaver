@@ -1,0 +1,534 @@
+<!doctype html>
+<html class="no-js layout__7" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Laaver</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+
+        <!-- CSS here -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/animate.min.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/all.min.css">
+        <link rel="stylesheet" href="css/futura-std-4.css">
+        <link rel="stylesheet" href="css/slick.css">
+        <link rel="stylesheet" href="css/style.css">		
+
+		<link rel="stylesheet" href="design/css/system-core.css">
+		<script src="javascript/header_footer.js "></script>
+</head>
+
+
+<body>
+
+
+    <main class="main_wrapper body__overlay overflow__hidden">
+
+		<%- include('./header.ejs') %>   
+
+		<section class="section-b-space pt-0" id="system-app" style="margin-top:50px;"> 
+		  <div class="custom-container container user-dashboard-section"> 
+			<div class="row">
+			  <div class="col-xl-3 col-lg-4">
+				<div class="dashboard-left-sidebar sticky">
+				  <div class="profile-box"> 
+					<div class="profile-bg-img"></div>
+					<div class="dashboard-left-sidebar-close"><i class="fa-solid fa-xmark"></i></div>
+					<div class="profile-contain">
+					  <div class="profile-name"> 
+						<h4 id="UsernameDiv" style="font-size: 16px;"></h4>
+                        <h6 class="text-content" id="EmailDiv"></h6>
+					  </div>
+					</div>
+				  </div>
+				  
+					<ul class="nav flex-column nav-pills dashboard-tab" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+						<li>
+						  <button class="nav-link active" id="dashboard-tab" data-bs-toggle="pill" data-bs-target="#dashboard" role="tab" aria-controls="dashboard" aria-selected="true"><i class="iconsax" data-icon="home-1"></i> Dashboard</button>
+						</li>
+						<li>
+						  <button class="nav-link" id="order-tab" data-bs-toggle="pill" data-bs-target="#order" role="tab" aria-controls="order" aria-selected="false"><i class="iconsax" data-icon="receipt-square"></i>Bestellung</button>
+						</li>
+						<li style="display:none;">
+						  <button class="nav-link" id="wishlist-tab" data-bs-toggle="pill" data-bs-target="#wishlist" role="tab" aria-controls="wishlist" aria-selected="false"> <i class="iconsax" data-icon="heart"></i>Wunschliste</button>
+						</li>					
+						<li>
+						  <button class="nav-link" id="address-tab" data-bs-toggle="pill" data-bs-target="#address" role="tab" aria-controls="address" aria-selected="false"><i class="iconsax" data-icon="cue-cards"></i>Adresse</button>
+						</li>
+					</ul>
+
+					<div class="logout-button">
+					  <a class="btn btn_black sm" tabindex="0" href="javascript:logoutFunc()" id="account_button_logout"><i class="iconsax me-1" data-icon="logout-1"></i> Abmelden</a>
+					</div>
+
+				</div>
+			  </div>
+			  <div class="col-xl-9 col-lg-8">
+				<div class="tab-content" id="v-pills-tabContent">
+				  <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+					<div class="dashboard-right-box">
+					  <div class="my-dashboard-tab">
+						<div class="dashboard-items"> </div>
+						<div class="sidebar-title">
+						  <div class="loader-line"></div>
+						  <h4>Mein Dashboard</h4>
+						</div>
+						<div class="total-box"> 
+						  <div class="row gy-4"> 
+						    <div class="col-xl-4"> 
+							  <div class="totle-contain" onclick='showBestellungTab()'>
+								<div class="wallet-point"><img src="/design/images/svg-icon/order.svg" alt=""><img class="img-1" src="/design/images/svg-icon/order.svg" alt=""></div>
+								<div class="totle-detail"> 
+								  <h6>Bestellungen</h6>
+								  <h4 id="DashboardZiffer1"></h4>
+								</div>
+							  </div>
+							</div>
+							<div class="col-xl-4" onclick='showWarenkorb()'> 
+							  <div class="totle-contain">
+								<div class="wallet-point"><img src="/design/images/svg-icon/wallet.svg" alt=""><img class="img-1" src="/design/images/svg-icon/wallet.svg" alt=""></div>
+								<div class="totle-detail"> 
+								  <h6>Warenkorb</h6>
+								  <h4 id="DashboardZiffer2"></h4>
+								</div>
+							  </div>
+							</div>
+							<div class="col-xl-4"> 
+							  <div class="totle-contain">
+								<div class="wallet-point"><img src="/design/images/svg-icon/coin.svg" alt=""><img class="img-1" src="/design/images/svg-icon/coin.svg" alt=""></div>
+								<div class="totle-detail"> 
+								  <h6>Wunschliste</h6>
+								  <h4 id="DashboardZiffer3"></h4>
+								</div>
+							  </div>
+							</div>
+
+							<div class='col-12 logout-button'>
+							  <a class="btn btn_outline sm" style="border-radius:5px;" href="javascript:void(0)">
+								<span id='account_button_change_password' data-bs-toggle="modal" data-bs-target="#editPasswort" style="font-size:16px;">Passwort ändern</span>
+							  </a>
+							</div>
+
+							<div class='col-12 logout-button'>
+							  <a class="btn btn_outline sm" style="border-radius:5px;" href="javascript:void(0)">
+								<span id='account_button_change_profile' data-bs-toggle="modal" data-bs-target="#editProfile" style="font-size:16px;">Profile ändern</span>
+							  </a>
+							</div>
+							
+						  </div>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				  <div class="tab-pane fade" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
+					<div class="dashboard-right-box">
+					  <div class="wishlist-box ratio1_3"> 
+						<div class="sidebar-title">
+						  <div class="loader-line"></div>
+						  <h4>Meine Wunschliste</h4>
+						</div>
+						<div id="WunschlisteDiv"></div>
+					  </div>
+					</div>
+				  </div>
+				  <div class="tab-pane fade" id="order" role="tabpanel" aria-labelledby="order-tab">
+					<div class="dashboard-right-box">
+					  <div class="order">
+						<div class="sidebar-title">
+						  <div class="loader-line"></div>
+						  <h4 id="account_title_orders">Meine Bestellungen</h4>
+						</div>
+						<div class="row gy-4" id="BestellungMainDiv"> </div>
+					  </div>
+					</div>
+				  </div>
+				  <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab"> 
+					<div class="dashboard-right-box">
+					  <div class="address-tab">
+						<div class="sidebar-title">
+						  <div class="loader-line"></div>
+						  <h4>Meine Adressen</h4>
+						</div>
+						<div class="row gy-3">
+						
+						  <div class="col-xxl-4 col-md-6">
+							<div class="address-option">
+							    <label for="address-billing-0">
+								  <div class="delivery-address-box">
+									<span class="address-detail">
+									  <span class="address">
+										<span class="address-title" style="margin-bottom:6px;">Shipping Adresse</span>
+									  </span>
+									  <span class="address">
+										<span class="address-home">
+										  <span class="address-tag">Name:</span> <span id="ShippingName"></span>
+										</span>
+									  </span>
+									  <span class="address">
+										<span class="address-home">
+										  <span class="address-tag">Adresse1:</span> <span id="ShippingAdresse1"></span>
+										</span>
+									  </span>
+									  <span class="address">
+										<span class="address-home">
+										  <span class="address-tag">Adresse2:</span> <span id="ShippingAdresse2"></span>
+										</span>
+									  </span>
+									  <span class="address">
+										<span class="address-home">
+										  <span class="address-tag">PLZ:</span> <span id="ShippingPLZ"></span>
+										</span>
+									  </span>
+									  <span class="address">
+										<span class="address-home">
+										  <span class="address-tag">Stadt:</span> <span id="ShippingStadt"></span>
+										</span>
+									  </span>
+									  <span class="address">
+										<span class="address-home">
+										  <span class="address-tag">Staat:</span> <span id="ShippingStaat"></span>
+										</span>
+									  </span>
+									</span>									
+								  </div>
+								  <div class="buttons" style="padding:10px 0;">
+									  <a class="btn btn_black sm" href="javascript:setEditAdresseIDX(1)" style="width:100%;" tabindex="0">Bearbeiten</a>
+								  </div>
+								</label>
+							</div>
+						  </div>
+						  
+						  <div class="col-xxl-4 col-md-6">
+							<div class="address-option">
+							    <label for="address-billing-0">
+								  <div class="delivery-address-box">
+									<span class="address-detail">
+									  <span class="address">
+										<span class="address-title" style="margin-bottom:6px;">Billing Adresse</span>
+									  </span>
+									  <span class="address">
+										<span class="address-home">
+										  <span class="address-tag">Name:</span> <span id="BillingName"></span>
+										</span>
+									  </span>
+									  <span class="address">
+										<span class="address-home">
+										  <span class="address-tag">Adresse1:</span> <span id="BillingAdresse1"></span>
+										</span>
+									  </span>
+									  <span class="address">
+										<span class="address-home">
+										  <span class="address-tag">Adresse2:</span> <span id="BillingAdresse2"></span>
+										</span>
+									  </span>
+									  <span class="address">
+										<span class="address-home">
+										  <span class="address-tag">PLZ:</span> <span id="BillingPLZ"></span>
+										</span>
+									  </span>
+									  <span class="address">
+										<span class="address-home">
+										  <span class="address-tag">Stadt:</span> <span id="BillingStadt"></span>
+										</span>
+									  </span>
+									  <span class="address">
+										<span class="address-home">
+										  <span class="address-tag">Staat:</span> <span id="BillingStaat"></span>
+										</span>
+									  </span>
+									</span>									
+								  </div>
+								  <div class="buttons" style="padding:10px 0;">
+									  <a class="btn btn_black sm" href="javascript:setEditAdresseIDX(2)" style="width:100%;" tabindex="0">Bearbeiten</a>
+								  </div>
+								</label>
+							</div>
+						  </div>
+						
+						</div>						
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</section>
+		
+		<!-- Support Modal Start -->
+		<div aria-modal="true" class="modal theme-modal fade" id="SupportModalFade" role="dialog" tabindex="-1">
+			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div>
+							<h5 class="modal-title w-100" id="SupportModalTitle"></h5>
+						</div>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" id="SupportModalButton1"></button>
+					</div>
+					<div class="modal-body">
+						<div id="SupportModalInhalt" style="font-size:16px;margin:5px 5px 20px 5px;"></div>											
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Support Modal End -->
+		
+		<!-- Bild Hochladen Modal Start -->
+		<div aria-modal="true" class="modal theme-modal fade" id="BildHochladenModalFade" role="dialog" tabindex="-1">
+			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div>
+							<h5 class="modal-title w-100" id="BildHochladenModalTitle"></h5>
+						</div>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" id="BildHochladenModalButton1"></button>
+					</div>
+					<div class="modal-body">
+						<div id="BildHochladenModalInhalt" style="font-size:16px;margin:5px 5px 20px 5px;"></div>											
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Bild Hochladen Modal End -->
+		
+		<!-- Edit Adresse Start -->
+		<div aria-modal="true" class="modal theme-modal fade" id="editAdresse" role="dialog" tabindex="-1">
+			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				<div class="modal-content">		
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel2">Adresse Bearbeiten</h5>
+						<button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="row g-4">
+							<div class="col-xxl-12">
+								<div class="form-floating theme-form-floating">
+									<input type="text" class="form-control" id="AdresseNameInput" value="" autocomplete="off">
+									<label for="AdresseNameInput">Name</label>
+								</div>
+							</div>
+							<div class="col-xxl-12">
+								<div class="form-floating theme-form-floating">
+									<input type="text" class="form-control" id="AdressedAdresse1Input" value="" autocomplete="off">
+									<label for="AdressedAdresse1Input">Aresse1</label>
+								</div>
+							</div>
+							<div class="col-xxl-12">
+								<div class="form-floating theme-form-floating">
+									<input type="text" class="form-control" id="AdressedAdresse2Input" value="" autocomplete="off">
+									<label for="AdressedAdresse2Input">Aresse2</label>
+								</div>
+							</div>
+							
+							<div class="col-xxl-4">
+								<div class="form-floating theme-form-floating">
+									<input type="text" class="form-control" id="AdressePLZInput" value="" autocomplete="off">
+									<label for="AdressePLZInput">PLZ</label>
+								</div>
+							</div>
+							
+							<div class="col-xxl-4">
+								<div class="form-floating theme-form-floating">
+									<input type="text" class="form-control" id="AdresseStadtInput" value="" autocomplete="off">
+									<label for="AdresseStadtInput">Stadt</label>
+								</div>
+							</div>
+							
+							<div class="col-xxl-4">
+								<div class="form-floating theme-form-floating">
+									<input type="text" class="form-control" id="AdresseStaatInput" value="Germany" autocomplete="off" disabled="disabled">
+									<label for="AdresseStaatInput">Staat</label>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn_white" style="color:#0d6efd;border-color:#0d6efd;" id="editAdresseButton">Speichern</button>
+						<button type="button" class="btn btn_white" style="color:#303030;border-color:#303030;" data-bs-dismiss="modal">Schließen</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Edit Adresse End -->
+		
+		<!-- Edit Passwort Start -->
+		<div aria-modal="true" class="modal theme-modal fade" id="editPasswort" role="dialog" tabindex="-1">
+			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				<div class="modal-content">		
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel2">Passwort ändern</h5>
+						<button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="row g-4">
+							<div class="col-xxl-12">
+								<div class="form-floating theme-form-floating">
+									<input type="password" class="form-control" id="password1" value="" autocomplete="off">
+									<label for="password1">Altes Passwort</label>
+								</div>
+							</div>
+							<div class="col-xxl-12">
+								<div class="form-floating theme-form-floating">
+									<input type="password" class="form-control" id="password2" value="" autocomplete="off">
+									<label for="password2">Neues Passwort</label>
+								</div>
+							</div>
+							<div class="col-xxl-12">
+								<div class="form-floating theme-form-floating">
+									<input type="password" class="form-control" id="password3" value="" autocomplete="off">
+									<label for="password3">Passwort wiederholen</label>
+								</div>
+							</div>
+
+							
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn_white" style="color:#0d6efd;border-color:#0d6efd;" onclick="changePassword()">Passwort ändern</button>
+						<button type="button" data-bs-dismiss="modal" class="btn btn_white" style="color:#303030;border-color:#303030;">Schließen</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Edit Passwort End -->
+		
+		<!-- Edit Profile Start -->
+		<div aria-modal="true" class="modal theme-modal fade" id="editProfile" role="dialog" tabindex="-1">
+			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel2">Profile ändern</h5>
+						<button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="row g-4">
+							<div class="col-lg-6 col-md-12">
+								<div class="form-floating theme-form-floating">
+									<input type="text" class="form-control" id="KundenString12_Input" value="" autocomplete="off">
+									<label for="KundenString12_Input">Vorname</label>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-12">
+								<div class="form-floating theme-form-floating">
+									<input type="text" class="form-control" id="KundenString13_Input" value="" autocomplete="off">
+									<label for="KundenString13_Input">Nachname</label>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-12">
+								<div class="form-floating theme-form-floating">
+									<input type="text" class="form-control" id="KundenString11_Input" value="" autocomplete="off">
+									<label for="KundenString11_Input">Email</label>
+								</div>
+							</div>  
+							<div class="col-lg-6 col-md-12" style="display:none;">
+								<div class="form-floating theme-form-floating">
+								  <input type="text" class="form-control" id="KundenString21_Input" value="" autocomplete="off">
+								  <label for="KundenString21_Input" id="profile_label_firma">Firma Name</label>
+								</div>
+							 </div> 
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn_white" style="color:#0d6efd;border-color:#0d6efd;" onclick="changeProfile()">Profile ändern</button>
+						<button type="button" class="btn btn_white" data-bs-dismiss="modal" style="color:#303030;border-color:#303030;">Schließen</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Edit Profile End -->
+		
+		
+		<!-- Produktrezension Modal Start -->
+		<div aria-modal="true" class="modal theme-modal fade" id="ProduktrezensionModalFade" role="dialog" tabindex="-1">
+			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div>
+							<h5 class="modal-title w-100">Produktrezension</h5>
+						</div>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+					</div>
+					<div class="modal-body">
+						<div id="ProduktrezensionSelectInhalt" style="font-size:16px;margin:5px 5px 20px 5px;"></div>	
+						<div id="ProduktrezensionBildModalInhalt" style="font-size:16px;margin:5px 5px 20px 5px;"></div>						
+						<div id="ProduktrezensionModalInhalt" style="font-size:16px;margin:5px 5px 20px 5px;"></div>					
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Produktrezension Modal End -->
+	
+		<!-- Hinweisen Modal Start -->
+		<div aria-modal="true" class="modal theme-modal fade" id="HinweisenModalFade" role="dialog" tabindex="-1">
+			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div>
+							<h5 class="modal-title w-100" id="HinweisenModalTitle"></h5>
+						</div>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" id="HinweisenModalButton1"></button>
+					</div>
+					<div class="modal-body">
+						<div id="HinweisenModalInhalt" style="font-size:16px;margin:5px 5px 20px 5px;"></div>					
+						<div>
+							<button class="btn btn-md text-white fw-bold mt-md-4 mt-2 mend-auto" id="HinweisenModalButton2" style="width:100%;" data-bs-dismiss="modal">
+								<span style="color:#FFF;">Schließen</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Hinweisen Modal End -->
+		
+		<div style="height:5rem;">&nbsp;</div>
+		
+		<script>
+			languageInnerHTMLArr.push(new languageObj("account_title_orders", "My Orders", "Meine Bestellungen", "Mes commandes", "我的订单"));
+			languageInnerHTMLArr.push(new languageObj("dashboard_tab_button", "Dashboard", "Dashboard", "Tableau de bord", "仪表盘"));
+			languageInnerHTMLArr.push(new languageObj("order_tab_button", "Order", "Bestellung", "Commande", "订单"));
+			languageInnerHTMLArr.push(new languageObj("wishlist_tab_button", "Wishlist", "Wunschliste", "Liste de souhaits", "愿望清单"));
+			languageInnerHTMLArr.push(new languageObj("address_tab_button", "Address", "Adresse", "Adresse", "地址"));
+			languageInnerHTMLArr.push(new languageObj("account_button_logout", "Logout", "Abmelden", "Déconnexion", "退出登录"));
+			languageInnerHTMLArr.push(new languageObj("account_button_change_password", "Change Password", "Passwort ändern", "Changer le mot de passe", "修改密码"));
+			languageInnerHTMLArr.push(new languageObj("account_button_change_profile", "Edit Profile", "Profile ändern", "Modifier le profil", "编辑资料"));
+
+
+		</script>
+		
+		<%- include('./footer.ejs') %>
+	
+
+    <!-- JS here -->
+    <script src="js/vendor/modernizr-3.5.0.min.js "></script>
+    <script src="js/vendor/jquery-3.6.0.min.js "></script>
+	
+	<script src="javascript/konto.js "></script>
+	<script> initGUI(); </script>
+	
+    <script src="js/popper.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/isotope.pkgd.min.js "></script>
+    <script src="js/one-page-nav-min.js "></script>
+    <script src="js/slick.min.js "></script>
+    <script src="js/jquery.meanmenu.min.js "></script>
+    <script src="js/ajax-form.js "></script>
+    <script src="js/wow.min.js "></script>
+    <script src="js/jquery.scrollUp.min.js "></script>
+    <script src="js/imagesloaded.pkgd.min.js "></script>
+    <script src="js/jquery.magnific-popup.min.js "></script>
+    <script src="js/waypoints.min.js "></script>
+    <script src="js/jquery.counterup.min.js "></script>
+    <script src="js/fontawesome.min.js "></script>
+    <script src="js/plugins.js "></script>
+    <script src="js/main.js "></script>	
+	
+	</body>
+</html>

@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!--begin::Head-->
+	<head><base href="">
+		<meta charset="utf-8" />
+		<title>laaver</title>
+		<meta name="description" content="Updates and statistics" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<!--begin::Fonts-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<!--end::Fonts-->
+		<!--begin::Page Vendors Styles(used by this page)-->
+		<link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Page Vendors Styles-->
+		<!--begin::Global Theme Styles(used by all pages)-->
+		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Global Theme Styles-->
+		<!--begin::Layout Themes(used by all pages)-->
+		<link href="assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+		<!--end::Layout Themes-->
+		<link rel="shortcut icon" href="/favicon.ico" />
+ 
+		<link href="assets/css/main.css" rel="stylesheet" type="text/css" />
+		<script src="javascript/header_footer.js"></script>	
+		<%
+			var langNum = 0;
+			switch (lang) {
+			case "en":
+				langNum = 0;
+				break;
+			case "de":
+				langNum = 1;
+				break;
+			case "fr":
+				langNum = 2;
+				break;
+			case "cn":
+				langNum = 3;
+				break;
+			}
+
+			var ButtonTranslate = new Array();
+			ButtonTranslate.push(["Search","Suchen","Rechercher","搜索"]);
+			ButtonTranslate.push(["Add New","Hinzufügen","Ajouter","新增"]);
+			ButtonTranslate.push(["Save","Speichern","Enregistrer","保存"]);
+			ButtonTranslate.push(["Close","Schliessen","Fermer","关闭"]);
+			ButtonTranslate.push(["Result","Ergebnis","Résultat","结果"]);
+			ButtonTranslate.push(["","","",""]);
+			ButtonTranslate.push(["Excel","Excel","Exporter Excel","导出Excel"]);
+			ButtonTranslate.push(["PDF","PDF","Exporter PDF","导出PDF"]);
+			ButtonTranslate.push(["Synchronize","Synchronize","Synchroniser","开始同步"]);
+			
+			var BestellungTranslate = new Array();
+			BestellungTranslate.push(["Creation date","Erstellungsdatum","Date de création","创建日期"]);
+
+			var KundenTranslate = new Array();
+			KundenTranslate.push(["Serial number","Seriennummer","Numéro de série","序号"]);
+			KundenTranslate.push(["frIDX","frIDX","frIDX","frIDX"]);
+			KundenTranslate.push(["Creation date","Erstellungsdatum","Date de création","创建日期"]);
+			KundenTranslate.push(["Datum2","Datum2","Datum2","Datum2"]);
+			KundenTranslate.push(["Datum3","Datum3","Datum3","Datum3"]);
+			KundenTranslate.push(["Datum4","Datum4","Datum4","Datum4"]);
+			KundenTranslate.push(["Username","用户名","Nom d'utilisateur","用户名"]);
+			KundenTranslate.push(["Email","邮箱","E-mail","邮箱"]);
+			KundenTranslate.push(["First name","名字","Prénom","名字"]);
+			KundenTranslate.push(["Last name","姓氏","Nom de famille","姓氏"]);
+			KundenTranslate.push(["Customer ID","客户ID","ID client","客户ID"]);
+			KundenTranslate.push(["KundenInt2","KundenInt2","KundenInt2","KundenInt2"]);
+			KundenTranslate.push(["KundenInt3","KundenInt3","KundenInt3","KundenInt3"]);
+			KundenTranslate.push(["KundenInt4","KundenInt4","KundenInt4","KundenInt4"]);
+			KundenTranslate.push(["KundenFloat1","KundenFloat1","KundenFloat1","KundenFloat1"]);
+			KundenTranslate.push(["KundenFloat2","KundenFloat2","KundenFloat2","KundenFloat2"]);
+			KundenTranslate.push(["KundenFloat3","KundenFloat3","KundenFloat3","KundenFloat3"]);
+			KundenTranslate.push(["KundenFloat4","KundenFloat4","KundenFloat4","KundenFloat4"]);
+			KundenTranslate.push(["KundenBIT1","KundenBIT1","KundenBIT1","KundenBIT1"]);
+			KundenTranslate.push(["KundenBIT2","KundenBIT2","KundenBIT2","KundenBIT2"]);
+			KundenTranslate.push(["Display name","显示名","Nom affiché","显示名"]);
+			KundenTranslate.push(["KundenString15","KundenString15","KundenString15","KundenString15"]);
+			KundenTranslate.push(["KundenString16","KundenString16","KundenString16","KundenString16"]);
+			KundenTranslate.push(["KundenString17","KundenString17","KundenString17","KundenString17"]);
+			KundenTranslate.push(["KundenString18","KundenString18","KundenString18","KundenString18"]);
+			KundenTranslate.push(["KundenString19","KundenString19","KundenString19","KundenString19"]);
+			KundenTranslate.push(["KundenString20","KundenString20","KundenString20","KundenString20"]);
+			KundenTranslate.push(["KundenString21","KundenString21","KundenString21","KundenString21"]);
+			KundenTranslate.push(["KundenString22","KundenString22","KundenString22","KundenString22"]);
+			KundenTranslate.push(["KundenString23","KundenString23","KundenString23","KundenString23"]);
+			KundenTranslate.push(["KundenString24","KundenString24","KundenString24","KundenString24"]);
+			KundenTranslate.push(["KundenString25","KundenString25","KundenString25","KundenString25"]);
+			KundenTranslate.push(["KundenString26","KundenString26","KundenString26","KundenString26"]);
+			KundenTranslate.push(["KundenString27","KundenString27","KundenString27","KundenString27"]);
+			KundenTranslate.push(["KundenString28","KundenString28","KundenString28","KundenString28"]);
+			KundenTranslate.push(["KundenString29","KundenString29","KundenString29","KundenString29"]);
+			KundenTranslate.push(["KundenInt5","KundenInt5","KundenInt5","KundenInt5"]);
+			KundenTranslate.push(["Status","Status","Statut","状态"]);
+			KundenTranslate.push(["KundenFloat5","KundenFloat5","KundenFloat5","KundenFloat5"]);
+			KundenTranslate.push(["KundenFloat6","KundenFloat6","KundenFloat6","KundenFloat6"]);
+			KundenTranslate.push(["Agent", "Händler", "Agents", "代理商"]);
+
+
+			var BestellungShippingTranslate = new Array();
+			BestellungShippingTranslate.push(["Serial number","Seriennummer","Numéro de série","序号"]);
+			BestellungShippingTranslate.push(["frIDX","frIDX","frIDX","frIDX"]);
+			BestellungShippingTranslate.push(["Datum1","Datum1","Datum1","Datum1"]);
+			BestellungShippingTranslate.push(["Datum2","Datum2","Datum2","Datum2"]);
+			BestellungShippingTranslate.push(["Datum3","Datum3","Datum3","Datum3"]);
+			BestellungShippingTranslate.push(["Datum4","Datum4","Datum4","Datum4"]);
+			BestellungShippingTranslate.push(["First name","Vorname","Prénom","名字"]);
+			BestellungShippingTranslate.push(["Last name","Nachname","Nom de famille","姓氏"]);
+			BestellungShippingTranslate.push(["BestellungShippingString12","BestellungShippingString12","BestellungShippingString12","BestellungShippingString12"]);
+			BestellungShippingTranslate.push(["Street address","Adresse","Adresse","地址"]);
+			BestellungShippingTranslate.push(["BestellungShippingInt1","BestellungShippingInt1","BestellungShippingInt1","BestellungShippingInt1"]);
+			BestellungShippingTranslate.push(["BestellungShippingInt2","BestellungShippingInt2","BestellungShippingInt2","BestellungShippingInt2"]);
+			BestellungShippingTranslate.push(["BestellungShippingInt3","BestellungShippingInt3","BestellungShippingInt3","BestellungShippingInt3"]);
+			BestellungShippingTranslate.push(["BestellungShippingInt4","BestellungShippingInt4","BestellungShippingInt4","BestellungShippingInt4"]);
+			BestellungShippingTranslate.push(["BestellungShippingFloat1","BestellungShippingFloat1","BestellungShippingFloat1","BestellungShippingFloat1"]);
+			BestellungShippingTranslate.push(["BestellungShippingFloat2","BestellungShippingFloat2","BestellungShippingFloat2","BestellungShippingFloat2"]);
+			BestellungShippingTranslate.push(["BestellungShippingFloat3","BestellungShippingFloat3","BestellungShippingFloat3","BestellungShippingFloat3"]);
+			BestellungShippingTranslate.push(["BestellungShippingFloat4","BestellungShippingFloat4","BestellungShippingFloat4","BestellungShippingFloat4"]);
+			BestellungShippingTranslate.push(["BestellungShippingBIT1","BestellungShippingBIT1","BestellungShippingBIT1","BestellungShippingBIT1"]);
+			BestellungShippingTranslate.push(["BestellungShippingBIT2","BestellungShippingBIT2","BestellungShippingBIT2","BestellungShippingBIT2"]);
+			BestellungShippingTranslate.push(["Address line 2","Adresszusatz","Complément d'adresse","地址备注"]);
+			BestellungShippingTranslate.push(["City","Stadt","Ville","城市"]);
+			BestellungShippingTranslate.push(["BestellungShippingString16","BestellungShippingString16","BestellungShippingString16","BestellungShippingString16"]);
+			BestellungShippingTranslate.push(["Postal code","Postleitzahl","Code postal","邮编"]);
+			BestellungShippingTranslate.push(["Country","Land","Pays","国家"]);
+			BestellungShippingTranslate.push(["Phone","Telefon","Téléphone","电话"]);
+			BestellungShippingTranslate.push(["Email","E-Mail","E-mail","邮箱"]);
+			BestellungShippingTranslate.push(["BestellungShippingString21","BestellungShippingString21","BestellungShippingString21","BestellungShippingString21"]);
+			BestellungShippingTranslate.push(["BestellungShippingString22","BestellungShippingString22","BestellungShippingString22","BestellungShippingString22"]);
+			BestellungShippingTranslate.push(["BestellungShippingString23","BestellungShippingString23","BestellungShippingString23","BestellungShippingString23"]);
+			BestellungShippingTranslate.push(["BestellungShippingString24","BestellungShippingString24","BestellungShippingString24","BestellungShippingString24"]);
+			BestellungShippingTranslate.push(["BestellungShippingString25","BestellungShippingString25","BestellungShippingString25","BestellungShippingString25"]);
+			BestellungShippingTranslate.push(["BestellungShippingString26","BestellungShippingString26","BestellungShippingString26","BestellungShippingString26"]);
+			BestellungShippingTranslate.push(["BestellungShippingString27","BestellungShippingString27","BestellungShippingString27","BestellungShippingString27"]);
+			BestellungShippingTranslate.push(["BestellungShippingString28","BestellungShippingString28","BestellungShippingString28","BestellungShippingString28"]);
+			BestellungShippingTranslate.push(["BestellungShippingString29","BestellungShippingString29","BestellungShippingString29","BestellungShippingString29"]);
+			BestellungShippingTranslate.push(["BestellungShippingInt5","BestellungShippingInt5","BestellungShippingInt5","BestellungShippingInt5"]);
+			BestellungShippingTranslate.push(["BestellungShippingInt6","BestellungShippingInt6","BestellungShippingInt6","BestellungShippingInt6"]);
+			BestellungShippingTranslate.push(["BestellungShippingFloat5","BestellungShippingFloat5","BestellungShippingFloat5","BestellungShippingFloat5"]);
+			BestellungShippingTranslate.push(["BestellungShippingFloat6","BestellungShippingFloat6","BestellungShippingFloat6","BestellungShippingFloat6"]);			
+			
+			var BestellungBillingTranslate = new Array();
+			BestellungBillingTranslate.push(["Serial number","Seriennummer","Numéro de série","序号"]);
+			BestellungBillingTranslate.push(["frIDX","frIDX","frIDX","frIDX"]);
+			BestellungBillingTranslate.push(["Datum1","Datum1","Datum1","Datum1"]);
+			BestellungBillingTranslate.push(["Datum2","Datum2","Datum2","Datum2"]);
+			BestellungBillingTranslate.push(["Datum3","Datum3","Datum3","Datum3"]);
+			BestellungBillingTranslate.push(["Datum4","Datum4","Datum4","Datum4"]);
+			BestellungBillingTranslate.push(["First name","Vorname","Prénom","名字"]);
+			BestellungBillingTranslate.push(["Last name","Nachname","Nom de famille","姓氏"]);
+			BestellungBillingTranslate.push(["BestellungBillingString12","BestellungBillingString12","BestellungBillingString12","BestellungBillingString12"]);
+			BestellungBillingTranslate.push(["Street address","Adresse","Adresse","地址"]);
+			BestellungBillingTranslate.push(["BestellungBillingInt1","BestellungBillingInt1","BestellungBillingInt1","BestellungBillingInt1"]);
+			BestellungBillingTranslate.push(["BestellungBillingInt2","BestellungBillingInt2","BestellungBillingInt2","BestellungBillingInt2"]);
+			BestellungBillingTranslate.push(["BestellungBillingInt3","BestellungBillingInt3","BestellungBillingInt3","BestellungBillingInt3"]);
+			BestellungBillingTranslate.push(["BestellungBillingInt4","BestellungBillingInt4","BestellungBillingInt4","BestellungBillingInt4"]);
+			BestellungBillingTranslate.push(["BestellungBillingFloat1","BestellungBillingFloat1","BestellungBillingFloat1","BestellungBillingFloat1"]);
+			BestellungBillingTranslate.push(["BestellungBillingFloat2","BestellungBillingFloat2","BestellungBillingFloat2","BestellungBillingFloat2"]);
+			BestellungBillingTranslate.push(["BestellungBillingFloat3","BestellungBillingFloat3","BestellungBillingFloat3","BestellungBillingFloat3"]);
+			BestellungBillingTranslate.push(["BestellungBillingFloat4","BestellungBillingFloat4","BestellungBillingFloat4","BestellungBillingFloat4"]);
+			BestellungBillingTranslate.push(["BestellungBillingBIT1","BestellungBillingBIT1","BestellungBillingBIT1","BestellungBillingBIT1"]);
+			BestellungBillingTranslate.push(["BestellungBillingBIT2","BestellungBillingBIT2","BestellungBillingBIT2","BestellungBillingBIT2"]);
+			BestellungBillingTranslate.push(["Address line 2","Adresszusatz","Complément d'adresse","地址备注"]);
+			BestellungBillingTranslate.push(["City","Stadt","Ville","城市"]);
+			BestellungBillingTranslate.push(["BestellungBillingString16","BestellungBillingString16","BestellungBillingString16","BestellungBillingString16"]);
+			BestellungBillingTranslate.push(["Postal code","Postleitzahl","Code postal","邮编"]);
+			BestellungBillingTranslate.push(["Country","Land","Pays","国家"]);
+			BestellungBillingTranslate.push(["Phone","Telefon","Téléphone","电话"]);
+			BestellungBillingTranslate.push(["Email","E-Mail","E-mail","邮箱"]);
+			BestellungBillingTranslate.push(["BestellungBillingString21","BestellungBillingString21","BestellungBillingString21","BestellungBillingString21"]);
+			BestellungBillingTranslate.push(["BestellungBillingString22","BestellungBillingString22","BestellungBillingString22","BestellungBillingString22"]);
+			BestellungBillingTranslate.push(["BestellungBillingString23","BestellungBillingString23","BestellungBillingString23","BestellungBillingString23"]);
+			BestellungBillingTranslate.push(["BestellungBillingString24","BestellungBillingString24","BestellungBillingString24","BestellungBillingString24"]);
+			BestellungBillingTranslate.push(["BestellungBillingString25","BestellungBillingString25","BestellungBillingString25","BestellungBillingString25"]);
+			BestellungBillingTranslate.push(["BestellungBillingString26","BestellungBillingString26","BestellungBillingString26","BestellungBillingString26"]);
+			BestellungBillingTranslate.push(["BestellungBillingString27","BestellungBillingString27","BestellungBillingString27","BestellungBillingString27"]);
+			BestellungBillingTranslate.push(["BestellungBillingString28","BestellungBillingString28","BestellungBillingString28","BestellungBillingString28"]);
+			BestellungBillingTranslate.push(["BestellungBillingString29","BestellungBillingString29","BestellungBillingString29","BestellungBillingString29"]);
+			BestellungBillingTranslate.push(["BestellungBillingInt5","BestellungBillingInt5","BestellungBillingInt5","BestellungBillingInt5"]);
+			BestellungBillingTranslate.push(["BestellungBillingInt6","BestellungBillingInt6","BestellungBillingInt6","BestellungBillingInt6"]);
+			BestellungBillingTranslate.push(["BestellungBillingFloat5","BestellungBillingFloat5","BestellungBillingFloat5","BestellungBillingFloat5"]);
+			BestellungBillingTranslate.push(["BestellungBillingFloat6","BestellungBillingFloat6","BestellungBillingFloat6","BestellungBillingFloat6"]);
+
+			var File_UploadTranslate = new Array();
+			File_UploadTranslate.push(["File size up to 5MB","Dateigröße bis zu 5 MB","Taille de fichier jusqu'à 5 Mo","文件大小最大5MB"]);
+			File_UploadTranslate.push(["Upload","Hochladen","Téléverser","上传"]);
+
+			var blockRecordTranslate = new Array();
+			blockRecordTranslate.push(["Intern message","Intern Message","Message interne","内部留言"]);
+			blockRecordTranslate.push(["Extern message","Extern Message","Message client","客户留言"]);
+
+			
+		%>		
+	</head>
+	<!--end::Head-->
+	<!--begin::Body-->
+	<body id="kt_body" class="quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+	<div id="loadingDiv"><div class="spinner-border" id="loadingDivSym" role="status">
+	  <span class="sr-only">Loading...</span>
+	</div></div>
+		<!--begin::Main-->
+		<!--begin::Header Mobile-->
+		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
+			<!--begin::Logo-->
+			<a href="/">
+				<img alt="Logo" src="images/banner.png" style="height:30px;" />
+			</a>
+			<!--end::Logo-->
+			<!--begin::Toolbar-->
+			<div class="d-flex align-items-center">
+				<!--begin::Aside Mobile Toggle-->
+				<button class="btn p-0 burger-icon burger-icon-left" id="kt_aside_mobile_toggle">
+					<span></span>
+				</button>
+				<!--end::Aside Mobile Toggle-->
+				<!--begin::Topbar Mobile Toggle-->
+				<button class="btn btn-hover-text-primary p-0 ml-3" id="kt_header_mobile_topbar_toggle">
+					<span class="svg-icon svg-icon-xl">
+						<!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<rect x="0" y="0" width="24" height="24"/>
+								<path d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,5 L19,5 L19,9.51471863 L21.4852814,12 L19,14.4852814 L19,19 L14.4852814,19 L11.5857864,21.8994949 L8.6862915,19 L5,19 L5,15.3137085 L1.6862915,12 L5,8.6862915 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,13.6568542 10.3431458,15 12,15 Z" fill="#000000"/>
+							</g>
+						</svg>
+						<!--end::Svg Icon-->
+					</span>
+				</button>
+				<!--end::Topbar Mobile Toggle-->
+			</div>
+			<!--end::Toolbar-->
+		</div>
+		<!--end::Header Mobile-->
+ 
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Page-->
+			<div class="d-flex flex-row flex-column-fluid page">
+ 
+				<%- include('./header_left.ejs') %>  				
+ 
+				<!--begin::Wrapper-->
+				<div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+ 
+					<%- include('./header_top.ejs') %>  
+ 
+					<!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Subheader-->
+						<div class="subheader py-6 py-lg-8 subheader-transparent" id="kt_subheader">
+							<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+								<!--begin::Info-->
+								<div class="d-flex align-items-center flex-wrap mr-1">
+									<!--begin::Page Heading-->
+									<div class="d-flex align-items-baseline flex-wrap mr-5">
+										<!--begin::Page Title-->
+										<h5 id="header_title_order" class="text-dark font-weight-bold my-1 mr-5">Order Management</h5>
+										<!--end::Page Title-->
+									</div>
+									<!--end::Page Heading-->
+								</div>
+								<!--end::Info-->
+							</div>
+						</div>
+						<!--end::Subheader-->
+						<!--begin::Entry-->
+						<div class="d-flex flex-column-fluid">
+						<div class="container" style="min-height:1000px;">
+ 
+							<div class="card card-custom mt-4">
+								<div class="card-header flex-wrap border-0 pt-6 pb-0"></div>
+								<div class="card-body row">	
+
+									<div class='col-xl-3 col-md-12' id='prIDXSearchDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='prIDXSearch' id='prIDXSearchLabel'></label>
+									   <input class='form-control' type='number' id='prIDXSearch' autocomplete='off'>
+									</div></div>
+ 
+									<div class='col-xl-3 col-md-12' id='frIDXSearchDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='frIDXSearch' id='frIDXSearchLabel'></label>
+									   <input class='form-control' type='number' id='frIDXSearch' autocomplete='off'>
+									</div></div>
+ 
+									<div class='col-xl-3 col-md-12'>
+									   <div class='form-group'>
+									   <label for='Datum1_1Search' id='Datum1_1SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum1_1Search' autocomplete='off'>
+									</div></div>
+ 
+									<div class='col-xl-3 col-md-12'>
+									   <div class='form-group'>
+									   <label for='Datum1_2Search' id='Datum1_2SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum1_2Search' autocomplete='off'>
+									</div></div>
+ 
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum2_1Search' id='Datum2_1SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum2_1Search' autocomplete='off'>
+									</div></div>
+ 
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum2_2Search' id='Datum2_2SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum2_2Search' autocomplete='off'>
+									</div></div>
+ 
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum3_1Search' id='Datum3_1SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum3_1Search' autocomplete='off'>
+									</div></div>
+ 
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum3_2Search' id='Datum3_2SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum3_2Search' autocomplete='off'>
+									</div></div>
+ 
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum4_1Search' id='Datum4_1SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum4_1Search' autocomplete='off'>
+									</div></div>
+ 
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum4_2Search' id='Datum4_2SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum4_2Search' autocomplete='off'>
+									</div></div>
+ 
+									<div class='col-xl-3 col-md-12'>
+									   <div class='form-group'>
+									   <label for='StatusSearch' id='StatusSearchLabel'></label>
+									   <select class='form-control' id='StatusSearch'>
+										<option value='-1' id='order_option_active'>Active Orders</option>
+										<option value='-2' id='order_option_all'>All Orders</option>
+									   </select>
+									</div></div>
+ 
+ 
+									<%
+									function generateSearchRow(param) {
+										let colClass = "3";
+										if (param == "BestellungFloat10" || param == "BestellungFloat11") {
+											colClass = "2";
+										}
+										return colClass;
+									}
+									function generateSearchType(param) {
+										let txt = "text";
+										if (param.indexOf("Int")>0 || param.indexOf("Float")>0) {
+											txt = "number";
+										}else if (param.indexOf("Datum")>=0) {
+											txt = "date";
+										}
+										return txt;
+									}
+									%>
+									<%  [
+										  "BestellungString1", "BestellungString2", "BestellungString3", "BestellungString4", "BestellungString5",
+										  "BestellungString6", "BestellungString7", "BestellungString8", "BestellungString9", "BestellungString10",
+										  "BestellungString11", "BestellungString12", "BestellungString13", "BestellungString14", "BestellungString15",
+										  "BestellungString16", "BestellungString17", "BestellungString18", "BestellungString19", "BestellungString20",
+										  "BestellungString21", "BestellungString22", "BestellungString23", "BestellungString24", "BestellungString25",
+										  "BestellungString26", "BestellungString27", "BestellungString28", "BestellungString29", "BestellungString30",
+										  "BestellungString31", "BestellungString32", "BestellungString33", "BestellungString34", "BestellungString35",
+										  "BestellungString36", "BestellungString37", "BestellungString38", "BestellungString39", "BestellungString40",
+										  "BestellungString41", "BestellungString42", "BestellungString43", "BestellungString44", "BestellungString45",
+										  "BestellungString46", "BestellungString47", "BestellungString48", "BestellungString49", "BestellungString50",
+ 
+										  "BestellungInt3", "BestellungInt4", "BestellungInt5",
+										  "BestellungInt6", "BestellungInt7", "BestellungInt8", "BestellungInt9", "BestellungInt10",
+										  "BestellungInt11", "BestellungInt12", "BestellungInt13", "BestellungInt14", "BestellungInt15",
+										  "BestellungInt16", "BestellungInt17", "BestellungInt18", "BestellungInt19", "BestellungInt20",
+										  "BestellungInt21", "BestellungInt22", "BestellungInt23", "BestellungInt24", "BestellungInt25",
+										  "BestellungInt26", "BestellungInt27", "BestellungInt28", "BestellungInt29", "BestellungInt30",
+										  "BestellungInt31", "BestellungInt32", "BestellungInt33", "BestellungInt34", "BestellungInt35",
+										  "BestellungInt36", "BestellungInt37", "BestellungInt38", "BestellungInt39", "BestellungInt40",
+ 
+										  "BestellungFloat1", "BestellungFloat2", "BestellungFloat3", "BestellungFloat4", "BestellungFloat5",
+										  "BestellungFloat6", "BestellungFloat7", "BestellungFloat8", "BestellungFloat9", "BestellungFloat10",
+										  "BestellungFloat11", "BestellungFloat12", "BestellungFloat13", "BestellungFloat14", "BestellungFloat15",
+										  "BestellungFloat16", "BestellungFloat17", "BestellungFloat18", "BestellungFloat19", "BestellungFloat20",
+										  "BestellungFloat21", "BestellungFloat22", "BestellungFloat23", "BestellungFloat24", "BestellungFloat25",
+										  "BestellungFloat26", "BestellungFloat27", "BestellungFloat28", "BestellungFloat29", "BestellungFloat30",
+										  "BestellungFloat31", "BestellungFloat32", "BestellungFloat33", "BestellungFloat34", "BestellungFloat35",
+										  "BestellungFloat36", "BestellungFloat37", "BestellungFloat38", "BestellungFloat39", "BestellungFloat40"
+										]
+									.forEach(function(param) { %>
+									<div class='col-xl-<%= generateSearchRow(param) %> col-md-12' id='<%= param %>SearchDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label id='<%= param %>SearchLabel' for='<%= param %>Search'><%= param %></label>
+									   <input class='form-control' type='<%= generateSearchType(param) %>' id='<%= param %>Search' autocomplete='off'>						   
+									</div></div>
+									<% }) %>
+									<%  [								  
+										  "BestellungBIT3", "BestellungBIT4", "BestellungBIT5",
+										  "BestellungBIT6", "BestellungBIT7", "BestellungBIT8", "BestellungBIT9", "BestellungBIT10"
+										]
+									.forEach(function(param) { %>
+									<div class='col-xl-<%= generateSearchRow(param) %> col-md-12' id='<%= param %>SearchDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label id='<%= param %>SearchLabel' for='<%= param %>Search'><%= param %></label>
+									   <span class='switch'><label><input type='checkbox' id='<%= param %>Search' /><span></span></label></span>
+									</div></div>
+									<% }) %>
+									
+									<div class='col-xl-3 col-md-12' id='BestellungBIT1SearchDiv' style='display:none;'>
+									  <div class='form-group'>
+										<label for='BestellungBIT1Search' id='BestellungBIT1SearchLabel'>BestellungBIT1</label>
+										<select class='form-control' id='BestellungBIT1Search'>
+										  <option value='-1' selected='selected' id='bit1_option_none'> ---- </option>
+										  <option value='0' id='bit1_option_new'>新增订单</option>
+										  <option value='1' id='bit1_option_old'>旧订单</option>
+										</select>
+									  </div>
+									</div>
+
+									<div class='col-xl-3 col-md-12' id='BestellungBIT2SearchDiv' style='display:none;'>
+									  <div class='form-group'> 
+										<label for='BestellungBIT2Search' id='BestellungBIT2SearchLabel'>BestellungBIT2</label>
+										<select class='form-control' id='BestellungBIT2Search'>
+										  <option value='-1' selected='selected' id='bit2_option_none'> ---- </option>
+										  <option value='0' id='bit2_option_yes'>Yes</option>
+										  <option value='1' id='bit2_option_no'>No</option>
+										</select>							  
+									  </div>
+									</div>
+									
+									<div class='col-xl-3 col-md-12'>
+									  <div class='form-group'>
+										<label for='EmailReplySearch' id='label_email_reply'>邮件回复</label>
+										<select class='form-control' id='EmailReplySearch'>
+										  <option value='-1' selected='selected' id='email_reply_option_none'> ---- </option>
+										  <option value='0' id='email_reply_option_pending'>未处理</option>
+										  <option value='1' id='email_reply_option_done'>已处理</option>
+										</select>
+									  </div>
+									</div>
+ 
+									<div class='col-xl-3 col-md-12' id='BestellungInt1SearchDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label id='BestellungInt1SearchLabel' for='BestellungInt1Search'>BestellungInt1</label>
+									   <select class='form-control' id='BestellungInt1Search' ><option value = '0'> ---- </option></select>
+									</div></div>
+									
+									<div class='col-xl-3 col-md-12' id='BestellungInt2SearchDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label id='BestellungInt2SearchLabel' for='BestellungInt2Search'>BestellungInt2</label>
+									   <select class='form-control' id='BestellungInt2Search' ><option value = '0'> ---- </option></select>
+									</div></div>
+									
+									<div class='col-xl-3 col-md-12'>
+									  <div class='form-group'>
+										<label for='BestellungBillingString11Search' id='label_billing_lastname'>姓氏</label> 
+										<input class='form-control' type='text' id='BestellungBillingString11Search' autocomplete='off'>
+									  </div>
+									</div>
+									<div class='col-xl-3 col-md-12'>
+									  <div class='form-group'>
+										<label for='BestellungBillingString20Search' id='label_billing_email'>邮箱</label> 
+										<input class='form-control' type='text' id='BestellungBillingString20Search' autocomplete='off'>
+									  </div>
+									</div>
+
+ 
+ 
+									<div class='col-xl-12 col-md-12'>
+									   <div class='form-group'>
+									   <label> </label>
+									   <button id="button_search_vat" type='button' class='btn btn-outline-primary' style='width:100%;' onclick='searchBestellung()'>Search</button>
+									</div></div>
+ 
+									</div>
+							</div>
+ 
+							<!--begin::Card-->
+							<div class="card card-custom">
+								<div class='card-header flex-wrap border-0 pt-6 pb-0'>
+								<div class='card-title'>
+								<h3 class='card-label' style="width:250px;"><span id="card_label_result" >Result:</span> <span id='ErgebnisSpan'>0</span></h3>
+								</div>
+								<div class="card-toolbar" id="card-toolbar">			
+									<button id="button_add_vat" type='button' class='btn btn-outline-danger' style='width:150px;margin-bottom:5px;display:none;' onclick='showNewBestellungModal()'>Add</button>
+									&nbsp;&nbsp;
+									<button id="button_export_excel" type='button' class='btn btn-outline-success' style='width:150px;margin-bottom:5px;display:none;' onclick='exportExcel()'>Export Excel</button>
+									&nbsp;&nbsp;		
+									<button id="button_export_pdf" type='button' class='btn btn-outline-warning' style='width:120px;margin-bottom:5px;display:none;' onclick='exportPDF()'>Export PDF</button>
+									&nbsp;&nbsp;
+								</div>
+ 
+								</div>
+								<div class="card-body" id="tableDiv"></div>
+							</div>
+							<!--end::Card-->
+ 
+						</div>
+						<!--end::Container-->
+						</div>
+						<!--end::Entry-->
+					</div>
+					<!--end::Content-->
+ 
+				</div>
+				<!--end::Wrapper-->
+			</div>
+			<!--end::Page-->
+		</div>
+		<!--end::Main-->
+ 
+ 
+		<!-- Modal-->								
+		<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+		<div class='modal-dialog modal-xl' style='width:95%;max-width: none;'>
+		<div class='modal-content'>
+		<div class='modal-header'>
+		<h5 id="modal_title_detail" class='modal-title'>Detail</h5>
+		<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+		<span aria-hidden='true'>×</span>
+		</button>
+		</div>
+		<div class='modal-body'>
+		<div class='form-group'>
+		<div class='checkbox-inline'>
+ 
+		<div class='col-xl-3 col-md-12' id='prIDXModalDiv' style='display:none;'>
+		   <div class='form-group'>
+		   <label for='prIDXModal' id='prIDXModalLabel'></label>
+		   <input class='form-control' type='text' id='prIDXModal' autocomplete='off'>
+		</div></div>
+ 
+		<%
+			function generateModalRow(param) {
+				let colClass = "3";
+				if (param == "BestellungFloat10" || param == "BestellungFloat11") {
+					colClass = "2";
+				}else if (param == "BestellungString23") {
+					colClass = "12";
+				}
+				return colClass;
+			}
+			function generateModalType(param) {
+				let txt = "text";
+				if (param.indexOf("Int")>0 || param.indexOf("Float")>0) {
+					txt = "number";
+				}else if (param.indexOf("Datum")>=0) {
+					txt = "date";
+				}
+				return txt;
+			}
+			%>
+			<%  [
+				  "BestellungString1", "frIDX", "Datum1", "Datum2", "Datum3", "Datum4",
+				  "BestellungString2", "BestellungString3", "BestellungString4", "BestellungString5",
+				  "BestellungString6", "BestellungString7", "BestellungString8", "BestellungString9", "BestellungString10",
+				  "BestellungString11", "BestellungString12", "BestellungString13", "BestellungString14", "BestellungString15",
+				  "BestellungString16", "BestellungString17", "BestellungString18", "BestellungString19", "BestellungString20",
+				  "BestellungString21", "BestellungString22", "BestellungString24", "BestellungString25",
+				  "BestellungString26", "BestellungString27", "BestellungString28", "BestellungString29", "BestellungString30",
+				  "BestellungString31", "BestellungString32", "BestellungString33", "BestellungString34", "BestellungString35",
+				  "BestellungString36", "BestellungString37", "BestellungString38", "BestellungString39", "BestellungString40",
+				  "BestellungString41", "BestellungString42", "BestellungString43", "BestellungString44", "BestellungString45",
+				  "BestellungString46", "BestellungString47", "BestellungString48", "BestellungString49", "BestellungString50",
+ 
+				  "BestellungInt3", "BestellungInt4", "BestellungInt5",
+				  "BestellungInt6", "BestellungInt7", "BestellungInt8", "BestellungInt9", "BestellungInt10",
+				  "BestellungInt11", "BestellungInt12", "BestellungInt13", "BestellungInt14", "BestellungInt15",
+				  "BestellungInt16", "BestellungInt17", "BestellungInt18", "BestellungInt19", "BestellungInt20",
+				  "BestellungInt21", "BestellungInt22", "BestellungInt23", "BestellungInt24", "BestellungInt25",
+				  "BestellungInt26", "BestellungInt27", "BestellungInt28", "BestellungInt29", "BestellungInt30",
+				  "BestellungInt31", "BestellungInt32", "BestellungInt33", "BestellungInt34", "BestellungInt35",
+				  "BestellungInt36", "BestellungInt37", "BestellungInt38", "BestellungInt39", "BestellungInt40",
+ 
+				  "BestellungFloat1", "BestellungFloat2", "BestellungFloat3", "BestellungFloat4", "BestellungFloat5",
+				  "BestellungFloat6", "BestellungFloat7", "BestellungFloat8", "BestellungFloat9", "BestellungFloat10",
+				  "BestellungFloat11", "BestellungFloat12", "BestellungFloat13", "BestellungFloat14", "BestellungFloat15",
+				  "BestellungFloat16", "BestellungFloat17", "BestellungFloat18", "BestellungFloat19", "BestellungFloat20",
+				  "BestellungFloat21", "BestellungFloat22", "BestellungFloat23", "BestellungFloat24", "BestellungFloat25",
+				  "BestellungFloat26", "BestellungFloat27", "BestellungFloat28", "BestellungFloat29", "BestellungFloat30",
+				  "BestellungFloat31", "BestellungFloat32", "BestellungFloat33", "BestellungFloat34", "BestellungFloat35",
+				  "BestellungFloat36", "BestellungFloat37", "BestellungFloat38", "BestellungFloat39", "BestellungFloat40"
+				]
+			.forEach(function(param) { %>
+			<div class='col-xl-<%= generateModalRow(param) %> col-md-12' id='<%= param %>ModalDiv' style='display:none;'>
+			   <div class='form-group'>
+			   <label id='<%= param %>ModalLabel' for='<%= param %>Modal'><%= param %></label>
+			   <input class='form-control' type='<%= generateModalType(param)%>' id='<%= param %>Modal' autocomplete='off'>						   
+			</div></div>
+			<% }) %>
+			<%  [								  
+				  "BestellungBIT1", "BestellungBIT2", "BestellungBIT3", "BestellungBIT4", "BestellungBIT5",
+				  "BestellungBIT6", "BestellungBIT7", "BestellungBIT8", "BestellungBIT9", "BestellungBIT10"
+				]
+			.forEach(function(param) { %>
+			<div class='col-xl-<%= generateModalRow(param) %> col-md-12' id='<%= param %>ModalDiv' style='display:none;'>
+			   <div class='form-group'>
+			   <label id='<%= param %>ModalLabel' for='<%= param %>Modal'><%= param %></label>
+			   <span class='switch'><label><input type='checkbox' id='<%= param %>Modal' /><span></span></label></span>
+			</div></div>
+			<% }) %>
+ 
+			<div class='col-xl-3 col-md-12' id='BestellungInt1ModalDiv'>
+			   <div class='form-group'>
+			   <label id='BestellungInt1ModalLabel' for='BestellungInt1Modal'>BestellungInt1</label>
+			   <select class='form-control' id='BestellungInt1Modal' ><option value = '0' selected="selected"> ---- </option></select>
+			</div></div>
+			
+			<div class='col-xl-3 col-md-12' id='BestellungInt2ModalDiv'>
+			   <div class='form-group'>
+			   <label id='BestellungInt2ModalLabel' for='BestellungInt2Modal'>BestellungInt2</label>
+			   <select class='form-control' id='BestellungInt2Modal' ><option value = '0' selected="selected"> ---- </option></select>
+			</div></div>
+ 
+			<div class='col-xl-3 col-md-12'>
+			   <div class='form-group'>
+			   <label for='StatusModal' id='StatusModalLabel'></label>
+			   <select class='form-control' id='StatusModal' onchange="setStatusChange(this.value)"><option value='0'> ---- </option></select>
+			</div></div>
+			
+			<div class='col-xl-3 col-md-12'>
+			   <div class='form-group'>
+			   <label for='VertreterInput'><%=KundenTranslate[40][langNum]%></label>
+			   <input class='form-control' type='text' id='VertreterInput' autocomplete='off' disabled='disabled'>
+			</div></div>
+			
+			<div class="col-xl-12 col-md-12" id="BestellungString23ModalDiv" style="display: block;">
+			   <div class="form-group">
+			   <label id="BestellungString23ModalLabel" for="BestellungString23Modal">BestellungString23</label>
+			   <input class="form-control" type="text" id="BestellungString23Modal" autocomplete="off">						   
+			</div></div>				
+			
+			<div class='col-12' id='BestellungArtikelDiv'></div>
+			<div class='col-xl-2 col-md-12'>
+			   <div class='form-group'>
+			   <button type='button' class='btn btn-outline-primary' style='width:100%;' onclick='showRechnungPDF()'>Rechnung</button>
+			</div></div>
+			<div class='col-xl-8 col-md-12' style="display:none;">
+				<input class='form-control' type='text' id='trackingInput' autocomplete='off' disabled='disabled'>
+			</div>
+			<div class='col-xl-2 col-md-12'  style="display:none;">
+			   <div class='form-group'>
+			   <button type='button' class='btn btn-outline-success' style='width:100%;' id='saveBestellungArtikelButton' onclick='saveBestellungArtikel()'>Upload Tracking</button>
+			</div></div>
+			
+			<div class='col-12'><hr/></div>
+			<div class='col-12' id='BildhochladenDiv'></div>
+ 
+ 
+			<div class='col-12'>
+			<ul class="nav nav-tabs nav-tabs-line" style='width: 100%;font-size: 18px;margin-top:0px;'>
+				<li class="nav-item">
+					<a class="nav-link active" data-toggle="tab" href="#kt_tab_pane_3">留言及附件</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#kt_tab_pane_1">邮件信息</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#kt_tab_pane_2">客人资料</a>
+				</li>			
+				<li class="nav-item" id="ktPanel4Li" style="display:none;">
+					<a class="nav-link" data-toggle="tab" href="#kt_tab_pane_4">售后详情</a>
+				</li>
+			</ul>
+			<div class="tab-content mt-5" id="myTabContent" style='width:100%;'>
+				<div class="tab-pane fade" id="kt_tab_pane_1" role="tabpanel" aria-labelledby="kt_tab_pane_1">
+				<div class='row'>
+					<div class='col-6'>
+					   <div class='form-group row'>
+					   <label class="col-2 col-form-label" style="text-align: right;font-size: 16px;">标题</label>			   
+					   <div class="col-10"><input class='form-control' type='text' id='EmailTitleInput' style='width:100%;' autocomplete='off'></div>
+					</div></div>
+					<div class='col-4'>
+					   <div class='form-group row'>
+					   <label class="col-2 col-form-label" style="text-align: right;font-size: 16px;">邮箱</label>			   
+					   <div class="col-10"><input class='form-control' type='text' id='EmailKundenInput' style='width:100%;' autocomplete='off'></div>
+					</div></div>
+					<div class='col-2'>
+					   <div class='form-group'>		   
+					   <button type='button' class='btn btn-outline-warning' id='sendEmailKundenButton' onclick='sendEmailKunden()' style="width:100%;">给客人发邮件</button>
+					</div></div>
+					<div class='col-xl-12 col-md-12'>
+					   <div class='form-group'>
+					   <textarea class='form-control' style='height:87px;' id='KundenTextarea'></textarea>
+					</div></div>
+					
+					<div class='col-12'><hr/></div>
+					<div class='col-12'><div id='EmailGeschichtDiv' style='padding:10px;'></div></div>
+
+				</div></div>
+				
+				<div class="tab-pane fade" id="kt_tab_pane_2" role="tabpanel" aria-labelledby="kt_tab_pane_2">
+				<div class='row'>
+					<div class='col-12'><h4 style='color:#3699FF;margin-bottom:20px;'>客人信息</h4></div>
+					<div class='col-xl-3 col-md-12' id='KundenString10ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString10Input'><%=KundenTranslate[6][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString10Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString11ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString11Input'><%=KundenTranslate[7][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString11Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString12ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString12Input'><%=KundenTranslate[8][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString12Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString13ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString13Input'><%=KundenTranslate[9][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString13Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenInt1ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenInt1Input'><%=KundenTranslate[10][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenInt1Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenInt2ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenInt2Input'><%=KundenTranslate[11][langNum]%></label>
+					   <input class='form-control' type='number' id='KundenInt2Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenInt3ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenInt3Input'><%=KundenTranslate[12][langNum]%></label>
+					   <input class='form-control' type='number' id='KundenInt3Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenInt4ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenInt4Input'><%=KundenTranslate[13][langNum]%></label>
+					   <input class='form-control' type='number' id='KundenInt4Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenFloat1ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenFloat1Input'><%=KundenTranslate[14][langNum]%></label>
+					   <input class='form-control' type='number' id='KundenFloat1Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenFloat2ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenFloat2Input'><%=KundenTranslate[15][langNum]%></label>
+					   <input class='form-control' type='number' id='KundenFloat2Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenFloat3ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenFloat3Input'><%=KundenTranslate[16][langNum]%></label>
+					   <input class='form-control' type='number' id='KundenFloat3Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenFloat4ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenFloat4Input'><%=KundenTranslate[17][langNum]%></label>
+					   <input class='form-control' type='number' id='KundenFloat4Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenBIT1ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenBIT1Input'><%=KundenTranslate[18][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenBIT1Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenBIT2ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenBIT2Input'><%=KundenTranslate[19][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenBIT2Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString14ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString14Input'><%=KundenTranslate[20][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString14Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString15ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString15Input'><%=KundenTranslate[21][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString15Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString16ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString16Input'><%=KundenTranslate[22][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString16Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString17ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString17Input'><%=KundenTranslate[23][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString17Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString18ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString18Input'><%=KundenTranslate[24][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString18Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString19ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString19Input'><%=KundenTranslate[25][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString19Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString20ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString20Input'><%=KundenTranslate[26][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString20Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString21ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString21Input'><%=KundenTranslate[27][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString21Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString22ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString22Input'><%=KundenTranslate[28][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString22Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString23ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString23Input'><%=KundenTranslate[29][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString23Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString24ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString24Input'><%=KundenTranslate[30][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString24Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString25ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString25Input'><%=KundenTranslate[31][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString25Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString26ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString26Input'><%=KundenTranslate[32][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString26Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString27ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString27Input'><%=KundenTranslate[33][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString27Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString28ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString28Input'><%=KundenTranslate[34][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString28Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenString29ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenString29Input'><%=KundenTranslate[35][langNum]%></label>
+					   <input class='form-control' type='text' id='KundenString29Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenInt5ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenInt5Input'><%=KundenTranslate[36][langNum]%></label>
+					   <input class='form-control' type='number' id='KundenInt5Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenFloat5ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenFloat5Input'><%=KundenTranslate[38][langNum]%></label>
+					   <input class='form-control' type='number' id='KundenFloat5Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='KundenFloat6ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='KundenFloat6Input'><%=KundenTranslate[39][langNum]%></label>
+					   <input class='form-control' type='number' id='KundenFloat6Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					
+					
+					<div class='col-12'><hr/><h4 style='color:#3699FF;margin-bottom:20px;'>金额明细</h4></div>
+					<div class='col-12 row' id='BestellungBetragDiv'></div>
+				
+					
+					<div class='col-12'><hr/><h4 style='color:#3699FF;margin-bottom:20px;'>运输地址</h4></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString10ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString10Input'><%=BestellungShippingTranslate[6][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString10Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString11ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString11Input'><%=BestellungShippingTranslate[7][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString11Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString12ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString12Input'><%=BestellungShippingTranslate[8][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString12Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-6 col-md-12' id='BestellungShippingString13ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString13Input'><%=BestellungShippingTranslate[9][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString13Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-6 col-md-12' id='BestellungShippingInt1ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingInt1Input'><%=BestellungShippingTranslate[10][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungShippingInt1Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingInt2ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingInt2Input'><%=BestellungShippingTranslate[11][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungShippingInt2Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingInt3ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingInt3Input'><%=BestellungShippingTranslate[12][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungShippingInt3Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingInt4ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingInt4Input'><%=BestellungShippingTranslate[13][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungShippingInt4Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingFloat1ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingFloat1Input'><%=BestellungShippingTranslate[14][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungShippingFloat1Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingFloat2ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingFloat2Input'><%=BestellungShippingTranslate[15][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungShippingFloat2Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingFloat3ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingFloat3Input'><%=BestellungShippingTranslate[16][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungShippingFloat3Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingFloat4ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingFloat4Input'><%=BestellungShippingTranslate[17][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungShippingFloat4Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingBIT1ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingBIT1Input'><%=BestellungShippingTranslate[18][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingBIT1Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingBIT2ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingBIT2Input'><%=BestellungShippingTranslate[19][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingBIT2Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString14ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString14Input'><%=BestellungShippingTranslate[20][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString14Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString15ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString15Input'><%=BestellungShippingTranslate[21][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString15Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString16ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString16Input'><%=BestellungShippingTranslate[22][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString16Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString17ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString17Input'><%=BestellungShippingTranslate[23][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString17Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString18ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString18Input'><%=BestellungShippingTranslate[24][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString18Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString19ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString19Input'><%=BestellungShippingTranslate[25][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString19Input' autocomplete='off' disabled='disabled'>
+					</div></div>		
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString20ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString20Input'><%=BestellungShippingTranslate[26][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString20Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString21ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString21Input'><%=BestellungShippingTranslate[27][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString21Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString22ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString22Input'><%=BestellungShippingTranslate[28][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString22Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString23ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString23Input'><%=BestellungShippingTranslate[29][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString23Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString24ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString24Input'><%=BestellungShippingTranslate[30][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString24Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString25ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString25Input'><%=BestellungShippingTranslate[31][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString25Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString26ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString26Input'><%=BestellungShippingTranslate[32][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString26Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString27ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString27Input'><%=BestellungShippingTranslate[33][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString27Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString28ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString28Input'><%=BestellungShippingTranslate[34][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString28Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingString29ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingString29Input'><%=BestellungShippingTranslate[35][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungShippingString29Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingInt5ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingInt5Input'><%=BestellungShippingTranslate[36][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungShippingInt5Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingFloat5ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingFloat5Input'><%=BestellungShippingTranslate[38][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungShippingFloat5Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungShippingFloat6ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungShippingFloat6Input'><%=BestellungShippingTranslate[39][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungShippingFloat6Input' autocomplete='off' disabled='disabled'>
+					</div></div>	
+					
+					<div class='col-12'><hr/><h4 style='color:#3699FF;margin-bottom:20px;'>账单地址</h4></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString10ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString10Input'><%=BestellungBillingTranslate[6][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString10Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString11ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString11Input'><%=BestellungBillingTranslate[7][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString11Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString12ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString12Input'><%=BestellungBillingTranslate[8][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString12Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-6 col-md-12' id='BestellungBillingString13ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString13Input'><%=BestellungBillingTranslate[9][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString13Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-6 col-md-12' id='BestellungBillingInt1ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingInt1Input'><%=BestellungBillingTranslate[10][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungBillingInt1Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingInt2ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingInt2Input'><%=BestellungBillingTranslate[11][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungBillingInt2Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingInt3ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingInt3Input'><%=BestellungBillingTranslate[12][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungBillingInt3Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingInt4ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingInt4Input'><%=BestellungBillingTranslate[13][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungBillingInt4Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingFloat1ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingFloat1Input'><%=BestellungBillingTranslate[14][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungBillingFloat1Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingFloat2ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingFloat2Input'><%=BestellungBillingTranslate[15][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungBillingFloat2Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingFloat3ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingFloat3Input'><%=BestellungBillingTranslate[16][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungBillingFloat3Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingFloat4ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingFloat4Input'><%=BestellungBillingTranslate[17][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungBillingFloat4Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingBIT1ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingBIT1Input'><%=BestellungBillingTranslate[18][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingBIT1Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingBIT2ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingBIT2Input'><%=BestellungBillingTranslate[19][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingBIT2Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString14ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString14Input'><%=BestellungBillingTranslate[20][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString14Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString15ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString15Input'><%=BestellungBillingTranslate[21][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString15Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString16ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString16Input'><%=BestellungBillingTranslate[22][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString16Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString17ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString17Input'><%=BestellungBillingTranslate[23][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString17Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString18ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString18Input'><%=BestellungBillingTranslate[24][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString18Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString19ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString19Input'><%=BestellungBillingTranslate[25][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString19Input' autocomplete='off' disabled='disabled'>
+					</div></div>		
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString20ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString20Input'><%=BestellungBillingTranslate[26][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString20Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString21ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString21Input'><%=BestellungBillingTranslate[27][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString21Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString22ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString22Input'><%=BestellungBillingTranslate[28][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString22Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString23ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString23Input'><%=BestellungBillingTranslate[29][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString23Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString24ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString24Input'><%=BestellungBillingTranslate[30][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString24Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString25ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString25Input'><%=BestellungBillingTranslate[31][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString25Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString26ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString26Input'><%=BestellungBillingTranslate[32][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString26Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString27ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString27Input'><%=BestellungBillingTranslate[33][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString27Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString28ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString28Input'><%=BestellungBillingTranslate[34][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString28Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingString29ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingString29Input'><%=BestellungBillingTranslate[35][langNum]%></label>
+					   <input class='form-control' type='text' id='BestellungBillingString29Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingInt5ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingInt5Input'><%=BestellungBillingTranslate[36][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungBillingInt5Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingFloat5ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingFloat5Input'><%=BestellungBillingTranslate[38][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungBillingFloat5Input' autocomplete='off' disabled='disabled'>
+					</div></div>
+					<div class='col-xl-3 col-md-12' id='BestellungBillingFloat6ModalDiv' style='display:none;'>
+					   <div class='form-group'>
+					   <label for='BestellungBillingFloat6Input'><%=BestellungBillingTranslate[39][langNum]%></label>
+					   <input class='form-control' type='number' id='BestellungBillingFloat6Input' autocomplete='off' disabled='disabled'>
+					</div></div>	
+				</div></div>
+				
+				<div class="tab-pane fade show active" id="kt_tab_pane_3" role="tabpanel" aria-labelledby="kt_tab_pane_3">
+				<div class='row'>
+					<div class='col-xl-3 col-md-12' id="block1MainDiv">
+						<div class='pt-2 pb-8 card card-custom bg-light-info'>
+							<div class="card-body pt-0 pb-0">	
+								<form id='uploadForm'  action='/file-upload' method='post' encType="multipart/form-data">
+										<input type="text" name="ordnername" value="bestellung" style="display:none;" />
+										<input type="text" name="filename" id="filename" value="" style="display:none;" />
+										<input type="text" name="prIDX" id="FilePrIDX" value="" style="display:none;" />
+
+									<input class="mt-2 mb-2" type="file" name="sampleFile" id="sampleFile"/>
+								</form>
+								&nbsp;<small><%=File_UploadTranslate[0][langNum]%></small><br/>
+								<button type="button" class="btn btn-outline-primary mt-1 pl-6 pr-6" id='uploadBildButton' onclick='saveBestellung(1)'><%=File_UploadTranslate[1][langNum]%></button>
+							</div>
+						</div>
+						<hr/><div id="fileListeDiv"></div>
+					</div>
+					
+					<div class='col-xl-3 col-md-12' id="block2MainDiv">						
+						<div><textarea class="form-control mb-2" id="InternTextarea" style="height:87px;"></textarea>
+							<button type='button' class='btn btn-outline-warning' onclick='saveInternText()' style='width:100%;'><%=blockRecordTranslate[0][langNum]%></button>	
+						</div>
+						<hr/><div id="blockInternKommentarDiv" class="mb-4"></div>
+					</div>
+					
+					<div class='col-xl-6 col-md-12' id="block3MainDiv">					
+						<div><textarea class="form-control mb-2" id="ExternTextarea" style="height:87px;"></textarea>
+							<button type='button' class='btn btn-outline-danger' onclick='saveExternText()' style='width:100%;'><%=blockRecordTranslate[1][langNum]%></button>
+						</div>
+						<hr/><div id="blockExternKommentarDiv" class="mb-4"></div>	
+					</div>
+					
+				</div>	
+				</div>
+
+				<div class="tab-pane fade" id="kt_tab_pane_4" role="tabpanel" aria-labelledby="kt_tab_pane_4">
+				<div class='row'>								
+					<div class='col-xl-2 col-md-12'>
+						<div class='form-group'>
+						<label for='ReklamationDatum1Input'><%=BestellungTranslate[0][langNum]%></label>
+						<input class='form-control' type='date' id='ReklamationDatum1Input' autocomplete='off' disabled='disabled'>
+					</div></div>				
+					<div class='col-xl-2 col-md-12'>
+						<div class='form-group'>
+						<label for='ReklamationDatum2Input'>退款日期</label>
+						<input class='form-control' type='date' id='ReklamationDatum2Input' autocomplete='off'>
+					</div></div>
+					<div class='col-xl-4 col-md-12'>
+						<div class='form-group'>
+						<label for='ReklamationProduktSel'>退货产品</label>
+						<select class='form-control' id='ReklamationProduktSel' onchange='setReklamationEinzelpreis()'><option value="0"> ---- </option></select>
+					</div></div>
+					<div class='col-xl-1 col-md-12'>
+						<div class='form-group'>
+						<label for='ReklamationMengeInput'>数量</label>
+						<input class='form-control' type='number' id='ReklamationMengeInput' autocomplete='off' onchange='setReklamationEinzelpreis()'>
+					</div></div>
+					<div class='col-xl-1 col-md-12'>
+						<div class='form-group'>
+						<label for='ReklamationSummeInput'>金额</label>
+						<input class='form-control' type='number' id='ReklamationSummeInput' autocomplete='off'>
+					</div></div>
+					<div class='col-xl-2 col-md-12'>
+						<div class='form-group'>
+						<label>&nbsp;</label>
+						<button type='button' class='btn btn-outline-success' id="ReklamationButton" onclick='saveReklamation()' style='width:100%;'><%=ButtonTranslate[2][langNum]%></button>
+					</div></div>
+
+					<div class='col-xl-10 col-md-12'>
+						<div class='row' style="padding: 0 15px;" id="ReklamationListeDiv"></div>
+					</div>
+					<div class='col-xl-2 col-md-12'>
+						<label>&nbsp;</label>
+						<button type='button' class='btn btn-outline-primary' id="ReklamationRechnungButton" style="width:100%;display: none;" onclick='showReklamationRechnung()' style='width:100%;'>Gutschrift</button>
+					</div>
+					<div class='col-12'>&nbsp;</div>
+					<div class='col-xl-4 col-md-12'>
+						<label>内部留言</label>
+						<textarea class="form-control mb-2" id="ReklamationReklamationString10Textarea" style="height:150px;"></textarea>
+					</div>
+					<div class='col-xl-4 col-md-12'>
+						<label>卖家留言</label>
+						<textarea class="form-control mb-2" id="ReklamationReklamationString11Textarea" style="height:150px;"></textarea>
+					</div>
+					<div class='col-xl-4 col-md-12'>
+						<label>客户留言</label>
+						<textarea class="form-control mb-2" id="ReklamationReklamationString12Textarea" style="height:150px;"></textarea>
+					</div>
+					
+				</div>	
+				</div>
+				
+				
+			</div>
+			</div>
+ 
+ 
+		</div>
+		</div>
+		</div>
+		<div class='modal-footer'>
+		<button type='button' class='btn btn-outline-primary' style='width:120px;display:none;' onclick='saveMitarbeiterBestellung()' id='saveMitarbeiterButton'>领取订单</button>
+		<button id="button_modal_close" type='button' class='btn btn-outline-secondary' style='width:120px;' data-dismiss='modal'>Close</button>
+		<button id="button_modal_save" type='button' class='btn btn-outline-success' style='width:120px;' onclick='saveBestellung(0)'>Save</button>
+ 
+		</div>
+		</div>
+		</div>
+		</div>
+ 
+		<!-- Modal-->								
+		<div class='modal fade' id='exampleNewModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+		<div class='modal-dialog modal-md'>
+		<div class='modal-content'>
+		<div class='modal-header'>
+		<h5 id="modal_title_add_new" class='modal-title'>Add new</h5>
+		<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+		<span aria-hidden='true'>×</span>
+		</button>
+		</div>
+		<div class='modal-body'>
+		<div class='form-group'>
+		<div class='checkbox-inline'>
+ 
+		<%
+		function generateNewRow(param) {
+			let colClass = "12";
+			if (param == "BestellungFloat10" || param == "BestellungFloat11") {
+				colClass = "6";
+			}
+			return colClass;
+		}
+		function generateNewType(param) {
+			let txt = "text";
+			if (param.indexOf("Int")>0 || param.indexOf("Float")>0) {
+				txt = "number";
+			}else if (param.indexOf("Datum")>=0) {
+				txt = "date";
+			}
+			return txt;
+		}
+		%>
+		<%  ["BestellungString1", "BestellungString2", "BestellungString3"]
+		.forEach(function(param) { %>
+		<div class='col-xl-<%= generateNewRow(param) %> col-md-12' id='<%= param %>NewDiv'>
+		   <div class='form-group'>
+		   <label id='<%= param %>NewLabel' for='<%= param %>New'><%= param %></label>
+		   <input class='form-control' type='<%=generateNewType(param)%>' id='<%= param %>New' autocomplete='off'>							   
+		</div></div>
+		<% }) %>
+ 
+		</div>
+		</div>
+		</div>
+		<div class='modal-footer'>
+		<button id="button_add_close" type='button' class='btn btn-outline-secondary' data-dismiss='modal'>Close</button>
+		<button id="button_add_save" type='button' class='btn btn-outline-success' onclick='saveNewBestellung()'>Save</button>
+		</div>
+		</div>
+		</div>
+		</div>
+		
+		<div style='display:none;'>
+			<button type='button' class='btn btn-outline-success' id='success_button'>success</button>
+		</div>
+ 
+ 
+		<script>
+			languageInnerHTMLArr.push(new languageObj("header_title_order", "Order Management", "Bestellverwaltung", "Gestion des commandes", "订单管理"));
+			languageInnerHTMLArr.push(new languageObj("order_option_active", "Active Orders", "Aktive Bestellungen", "Commandes actives", "活跃订单"));
+			languageInnerHTMLArr.push(new languageObj("order_option_all", "All Orders", "Alle Bestellungen", "Toutes les commandes", "所有订单"));
+			languageInnerHTMLArr.push(new languageObj("bit1_option_new", "New Order", "Neue Bestellung", "Nouvelle commande", "新增订单"));
+			languageInnerHTMLArr.push(new languageObj("bit1_option_old", "Old Order", "Alte Bestellung", "Ancienne commande", "旧订单"));
+			languageInnerHTMLArr.push(new languageObj("bit2_option_yes", "Yes", "Ja", "Oui", "是"));
+			languageInnerHTMLArr.push(new languageObj("bit2_option_no", "No", "Nein", "Non", "否"));
+			languageInnerHTMLArr.push(new languageObj("label_email_reply", "Email Reply", "E-Mail-Antwort", "Réponse par e-mail", "邮件回复"));
+			languageInnerHTMLArr.push(new languageObj("email_reply_option_pending", "Pending", "Nicht bearbeitet", "Non traité", "未处理"));
+			languageInnerHTMLArr.push(new languageObj("email_reply_option_done", "Processed", "Bearbeitet", "Traité", "已处理"));
+			languageInnerHTMLArr.push(new languageObj("label_billing_lastname", "Last Name", "Nachname", "Nom de famille", "姓氏"));
+			languageInnerHTMLArr.push(new languageObj("label_billing_email", "Email", "E-Mail", "E-mail", "邮箱"));
+			languageInnerHTMLArr.push(new languageObj("button_search_vat", "Search", "Suchen", "Rechercher", "搜索"));
+			languageInnerHTMLArr.push(new languageObj("button_add_vat", "Add", "Hinzufügen", "Ajouter", "新增"));
+			languageInnerHTMLArr.push(new languageObj("button_export_excel", "Export Excel", "Excel exportieren", "Exporter Excel", "导出Excel"));
+			languageInnerHTMLArr.push(new languageObj("button_export_pdf", "Export PDF", "PDF exportieren", "Exporter PDF", "导出PDF"));
+			languageInnerHTMLArr.push(new languageObj("AddOrderNoteButton", "Send Tracking Info", "Sendungsverfolgung senden", "Envoyer le numéro de suivi", "给客人运单"));
+			languageInnerHTMLArr.push(new languageObj("label_rechnung_button", "Invoice", "Rechnung", "Facture", "Rechnung"));
+			languageInnerHTMLArr.push(new languageObj("saveMitarbeiterButton", "Claim Order", "Bestellung übernehmen", "Prendre la commande", "领取订单"));
+			languageInnerHTMLArr.push(new languageObj("saveBestellungArtikelButton", "Upload Tracking", "Sendungsverfolgung hochladen", "Téléverser le numéro de suivi", "上传运单"));
+
+		</script>	
+		<%- include('./footer.ejs') %>  	
+ 
+ 
+		<!--begin::Global Theme Bundle(used by all pages)-->
+		<script src="assets/plugins/global/plugins.bundle.js"></script>
+		<script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+		<script src="assets/js/scripts.bundle.js"></script>
+		<!--end::Global Theme Bundle-->
+		<!--begin::Page Vendors(used by this page)-->
+		<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+		<!--end::Page Vendors-->
+		<!--begin::Page Scripts(used by this page)-->
+		<script src="assets/js/pages/widgets.js"></script>
+		<!--end::Page Scripts-->
+ 
+		<script src="javascript/BestellungVerwalten.js"></script>
+		<script> initGUI(); </script>
+	</body>
+	<!--end::Body-->
+</html>

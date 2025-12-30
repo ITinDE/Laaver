@@ -1,0 +1,177 @@
+<!doctype html>
+<html class="no-js layout__7" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Laaver</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+
+        <!-- CSS here -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/animate.min.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/all.min.css">
+        <link rel="stylesheet" href="css/futura-std-4.css">
+        <link rel="stylesheet" href="css/slick.css">
+        <link rel="stylesheet" href="css/style.css">
+
+		<script src="javascript/header_footer.js "></script>
+</head>
+
+
+<body>
+
+
+    <main class="main_wrapper body__overlay overflow__hidden">
+
+		<%- include('./header.ejs') %>   
+
+		<!-- login__section__start -->
+		<div class="loginarea  sp_bottom_80 sp_top_80">
+		 <div class="container">
+			<div class="row">
+				<div class="tab-content tab__content__wrapper">
+
+					<div class="tab-pane fade  active show" id="projects__two" role="tabpanel" aria-labelledby="projects__two">
+						<div class="col-xl-8 offset-md-2 loginarea__col">
+							<div class="loginarea__wraper">
+								<div class="loginarea__heading">
+									<h5 class="login__title" id="signup_title">Sign Up</h5>
+									<p class="login__description" id="signup_text_existing">
+									  Already have an account?
+									  <a href="/login" data-bs-toggle="modal" data-bs-target="#registerModal" id="signup_link_login">Log In</a>
+									</p>
+								</div>
+
+								<form action="#">
+								  <div class="row">
+									<div class="col-xl-6">
+									  <div class="loginarea__form">
+										<label class="form__label" id="signup_label_username">Username</label>
+										<input class="common__login__input" type="text" placeholder="Username" id="username">
+									  </div>
+									</div>
+									<div class="col-xl-6" style="display:none;">
+									  <div class="loginarea__form">
+										<label class="form__label" id="signup_label_username">Firmenname</label>
+										<input class="common__login__input" type="text" placeholder="Firmenname (optional" id="firmaname">
+									  </div>
+									</div>
+									<div class="col-xl-6">
+									  <div class="loginarea__form">
+										<label class="form__label" id="signup_label_email">Email</label>
+										<input class="common__login__input" type="text" placeholder="Your Email" id="email">
+									  </div>
+									</div>
+									<div class="col-xl-6">
+									  <div class="loginarea__form">
+										<label class="form__label" id="signup_label_password">Password</label>
+										<input class="common__login__input" type="password" placeholder="Password" id="password">
+									  </div>
+									</div>
+									<div class="col-xl-6">
+									  <div class="loginarea__form">
+										<label class="form__label" id="signup_label_repassword">Re-Enter Password</label>
+										<input class="common__login__input" type="password" placeholder="Re-Enter Password" id="password_wiederholen">
+									  </div>
+									</div>
+								  </div>
+								  <div class="col-xl-6 login__button" style="margin-top:15px;">
+									<a class="default__button text-center" href="javascript:checkRegisterInfo()" id="signup_button_submit">Sign Up</a>
+								  </div>
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		
+		<!-- Hinweisen Modal Start -->
+		<div class="modal fade theme-modal deal-modal" id="HinweisenModalFade" tabindex="-1">
+			<div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div>
+							<h5 class="modal-title w-100" id="HinweisenModalTitle"></h5>
+						</div>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" id="HinweisenModalButton1"></button>
+					</div>
+					<div class="modal-body">
+						<div id="HinweisenModalInhalt" style="font-size:16px;margin:5px 5px 20px 5px;">
+							Du hast dich erfolgreich registriert! <br/>
+							Bitte bestätige deine E-Mail-Adresse.
+						</div>					
+						<div>
+							<button class="btn btn-md fw-bold mt-md-4 mt-2 mend-auto" id="HinweisenModalButton2" style="width:100%;" data-bs-dismiss="modal">
+								<span id="modal_button_close">Schließen</span>
+							</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- Hinweisen Modal End -->
+
+
+
+	    <%- include('./footer.ejs') %>     
+
+	</main>
+
+	<script>
+		languageInnerHTMLArr.push(new languageObj("signup_title", "Sign Up", "Registrieren", "S'inscrire", "注册"));
+		languageInnerHTMLArr.push(new languageObj("signup_text_existing", "Already have an account?", "Sie haben bereits ein Konto?", "Vous avez déjà un compte ?", "已经有账户？"));
+		languageInnerHTMLArr.push(new languageObj("signup_link_login", "Log In", "Anmelden", "Se connecter", "登录"));
+		languageInnerHTMLArr.push(new languageObj("signup_label_username", "Username", "Benutzername", "Nom d'utilisateur", "用户名"));
+		languageInnerHTMLArr.push(new languageObj("signup_label_email", "Email", "E-Mail", "E-mail", "电子邮件"));
+		languageInnerHTMLArr.push(new languageObj("signup_label_password", "Password", "Passwort", "Mot de passe", "密码"));
+		languageInnerHTMLArr.push(new languageObj("signup_label_repassword", "Re-Enter Password", "Passwort erneut eingeben", "Ressaisir le mot de passe", "再次输入密码"));
+		languageInnerHTMLArr.push(new languageObj("signup_button_submit", "Sign Up", "Registrieren", "S'inscrire", "注册"));
+
+		languagePlaceholderArr.push(new languageObj("username", "Username", "Benutzername", "Nom d'utilisateur", "用户名"));
+		languagePlaceholderArr.push(new languageObj("email", "Your Email", "Ihre E-Mail", "Votre e-mail", "您的电子邮件"));
+		languagePlaceholderArr.push(new languageObj("password", "Password", "Passwort", "Mot de passe", "密码"));
+		languagePlaceholderArr.push(new languageObj("password_wiederholen", "Re-Enter Password", "Passwort erneut eingeben", "Ressaisir le mot de passe", "再次输入密码"));
+		
+		languageInnerHTMLArr.push(new languageObj("HinweisenModalInhalt", "You have successfully registered!<br/>Please confirm your email address.", "Du hast dich erfolgreich registriert!<br/>Bitte bestätige deine E-Mail-Adresse.", "Vous vous êtes inscrit avec succès !<br/>Veuillez confirmer votre adresse e-mail.", "你已成功注册！<br/>请确认你的邮箱地址。"));
+		languageInnerHTMLArr.push(new languageObj("modal_button_close", "Close", "Schließen", "Fermer", "关闭"));
+
+	</script>
+
+    <!-- JS here -->
+    <script src="js/vendor/modernizr-3.5.0.min.js "></script>
+    <script src="js/vendor/jquery-3.6.0.min.js "></script>
+	
+	<script src="javascript/register.js "></script>
+	<script> initGUI(); </script>
+	
+    <script src="js/popper.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/isotope.pkgd.min.js "></script>
+    <script src="js/one-page-nav-min.js "></script>
+    <script src="js/slick.min.js "></script>
+    <script src="js/jquery.meanmenu.min.js "></script>
+    <script src="js/ajax-form.js "></script>
+    <script src="js/wow.min.js "></script>
+    <script src="js/jquery.scrollUp.min.js "></script>
+    <script src="js/imagesloaded.pkgd.min.js "></script>
+    <script src="js/jquery.magnific-popup.min.js "></script>
+    <script src="js/waypoints.min.js "></script>
+    <script src="js/jquery.counterup.min.js "></script>
+    <script src="js/fontawesome.min.js "></script>
+    <script src="js/plugins.js "></script>
+    <script src="js/main.js "></script>
+	
+
+</body>
+
+</html>

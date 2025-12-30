@@ -1,0 +1,320 @@
+<!doctype html>
+<html class="no-js layout__7" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Laaver</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+
+        <!-- CSS here -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/animate.min.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/all.min.css">
+        <link rel="stylesheet" href="css/futura-std-4.css">
+        <link rel="stylesheet" href="css/slick.css">
+        <link rel="stylesheet" href="css/style.css">		
+
+		<script src="javascript/header_footer.js "></script>
+</head>
+
+
+<body>
+
+
+    <main class="main_wrapper body__overlay overflow__hidden">
+
+		<%- include('./header.ejs') %>       
+		
+		<!-- checkout__section__start -->
+		<div class="checkoutarea sp_bottom_100 sp_top_100">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-6 col-lg-6 col-md-12">
+						<div class="checkoutarea__billing">
+							<div class="checkoutarea__billing__heading">
+								<h2 id="address_title">Adresse</h2>
+								<div style="display: flex;align-items: center;">
+								<input class="form-check-checkbox" type="checkbox" id="AdresseCheckbox" style="width:16px;height:16px;" onchange="showBillingAdresseDiv()" checked="checked">&nbsp;
+								<span id="address_same_label">Rechnungs- und Lieferadresse identisch</span>
+								</div>
+							</div>
+							<div class="checkoutarea__billing__form">
+								<form action="#">
+									<div class="row">
+										<div class="col-xl-12">
+											<div class="checkoutarea__inputbox">
+												<label for="ShippingName" id="shipping_label_name">Name</label>
+												<input type="text" id="ShippingName" class="info">
+											</div>
+										</div>
+										<div class="col-xl-12">
+											<div class="checkoutarea__inputbox">
+												<label for="ShippingAdresse1" id="shipping_label_address1">Adresse1</label>
+												<input type="text" id="ShippingAdresse1" class="info">
+											</div> 
+										</div>
+										<div class="col-xl-6 col-md-12">
+											<div class="checkoutarea__inputbox">
+												<label for="ShippingAdresse2" id="shipping_label_address2">Adresse2</label>
+												<input type="text" id="ShippingAdresse2" class="info">
+											</div>
+										</div>
+										<div class="col-xl-6 col-md-12">
+											<div class="checkoutarea__inputbox">
+												<label for="ShippingPLZ" id="shipping_label_zip">PLZ</label>
+												<input type="text" id="ShippingPLZ" class="info">
+											</div>
+										</div>
+
+										<div class="col-xl-6 col-md-12">
+											<div class="checkoutarea__inputbox">
+												<label for="ShippingStadt" id="shipping_label_city">Stadt</label>
+												<input type="text" id="ShippingStadt" class="info">
+											</div> 
+										</div>
+
+										<div class="col-xl-6 col-md-12">
+											<div class="checkoutarea__inputbox">
+												<label for="ShippingStaat" id="shipping_label_state">Staat</label>
+												<input type="text" id="ShippingStaat" class="info">
+											</div> 
+										</div>
+										<div class="col-xl-12" id="EmailInputDiv">
+											<div class="checkoutarea__inputbox">
+												<label for="EmailInput" id="shipping_label_email">Email</label>
+												<input type="text" id="EmailInput" class="info">
+											</div> 
+										</div>
+									</div>
+								</form>
+							</div>						
+							<div class="checkoutarea__billing__form" id="BillingDiv" style="display:none;padding-top:5px;">
+								<hr/><h4 id="address_title">Billing Adresse</h4>
+								<form action="#">
+									<div class="row">
+										<div class="col-xl-12">
+											<div class="checkoutarea__inputbox">
+												<label for="BillingName" id="billing_label_name">Name</label>
+												<input type="text" id="BillingName" class="info">
+											</div>
+										</div>
+										<div class="col-xl-12">
+											<div class="checkoutarea__inputbox">
+												<label for="BillingAdresse1" id="billing_label_address1">Adresse1</label>
+												<input type="text" id="BillingAdresse1" class="info">
+											</div> 
+										</div>
+										<div class="col-xl-6 col-md-12">
+											<div class="checkoutarea__inputbox">
+												<label for="BillingAdresse2" id="billing_label_address2">Adresse2</label>
+												<input type="text" id="BillingAdresse2" class="info">
+											</div>
+										</div>
+										<div class="col-xl-6 col-md-12">
+											<div class="checkoutarea__inputbox">
+												<label for="BillingPLZ" id="billing_label_zip">PLZ</label>
+												<input type="text" id="BillingPLZ" class="info">
+											</div>
+										</div>
+
+										<div class="col-xl-6 col-md-12">
+											<div class="checkoutarea__inputbox">
+												<label for="BillingStadt" id="billing_label_city">Stadt</label>
+												<input type="text" id="BillingStadt" class="info">
+											</div> 
+										</div>
+
+										<div class="col-xl-6 col-md-12">
+											<div class="checkoutarea__inputbox">
+												<label for="BillingStaat" id="billing_label_state">Staat</label>
+												<input type="text" id="BillingStaat" class="info">
+											</div> 
+										</div>
+										<div class="col-xl-12" id="EmailInputDiv">
+											<div class="checkoutarea__inputbox">
+												<label for="EmailInput" id="billing_label_email">Email</label>
+												<input type="text" id="EmailInput" class="info">
+											</div> 
+										</div>
+									</div>
+								</form>
+							</div>
+							
+						</div>
+					</div>
+
+
+					<div class="col-lg-6 col-md-12 col-12">
+						<div class="checkoutarea__payment__wraper">
+							<div class="checkoutarea__total">
+								<h3 id="order_summary_title">Your order</h3>
+									<div class="checkoutarea__table__wraper" style="overflow-x:auto;">
+										<ul class="summery-contain" id="KasseProduktListeUl"></ul>					
+										<div class="summary-total" style="margin-top:15px;"> 
+											<ul> 
+												<li style="display:none;"> 
+													<p id="order_summary_item_label">Artikel</p>
+													<span id="PreisDiv1">0,00€</span>
+												</li>
+												<li style="display:none;"> 
+													<p id="order_summary_shipping_label">Versandkost</p>
+													<span id="PreisDiv5">0,00€</span>
+												</li>
+												<li id="GutscheincodeInfoDiv2" style="display:none;color:#d3122a;"> 
+													<p id="order_summary_coupon_label" style="color:#d3122a;display:inline-block;margin-bottom:0;">Coupon/Code</p>&nbsp;&nbsp;
+													<span id="PreisDiv4">0,00€</span>
+												</li>
+												<li id="GutscheincodeInfoDiv3" style="display:none;color:#d3122a;"> 
+													<p id="order_summary_discount_label" style="color:#d3122a;display:inline-block;margin-bottom:0;">Agent discount</p>&nbsp;&nbsp;
+													<span id="PreisDiv2">0,00€</span>
+												</li>											
+											</ul>
+											<div class="coupon-code" style="margin-top:15px;"> 
+												<input type="text" id="GutscheincodeInput" style="height:38px;border-radius:5px;border:1px solid #DDD;padding:5px;" placeholder="Gutscheincode eingeben">&nbsp;&nbsp;
+												<button class="btn rounded" onclick="checkGutscheincode()" id="coupon_apply_button" style="color:#198754;border-color:#198754;">Anwenden</button>
+											</div>
+											<div style="margin-left:5px;color:#dc3545;font-size:16px;display:none;" id="GutscheincodeInfoDiv1"></div>
+										</div>
+										<div class="total" style="margin-top:15px;">
+											<h6 id="order_summary_total_label" style="margin:0;">Gesamtbetrag: 
+											<span id="PreisDiv3">0,00€</span></h6><hr/>
+										</div>					
+									</div>
+							</div>
+
+							<div class="checkoutarea__payment clearfix">
+								<div class="checkoutarea__payment__toggle">
+									<form action="#">
+									    <div class="checkoutarea__payment__total">
+											<div class="checkoutarea__payment__type" style="display:none;">
+												<input type="radio" id="flush-heading1-radio" name="flush-heading-radio">
+												<label for="flush-heading1-radio" id="payment_method_paypal">Paypal</label>
+											</div>
+											<div class="checkoutarea__payment__type" style="display:none;">
+												<input type="radio" id="flush-heading2-radio" name="flush-heading-radio">
+												<label for="flush-heading2-radio" id="payment_method_stripe">Stripe (Kreditkarte)</label>
+											</div>
+											<div class="checkoutarea__payment__type">
+												<input type="radio" id="flush-heading3-radio" name="flush-heading-radio" checked="checked">
+												<label for="flush-heading3-radio" id="payment_method_invoice">Rechnung</label>
+											</div>
+											<div class="checkoutarea__payment__input__box">
+												<ul style='margin-top: 20px;'>
+													<li>
+														<p id="terms_agreement_text">
+															<input type='checkbox' style='width:15px;height:15px;' id='Bedingungscheckbox' onclick='checkBedingungscheckbox()' />&nbsp;
+															Ich habe <a target='_blank' style="padding:0;color:#0d6efd;" href="/AGB">AGB</a>, <a target='_blank' style="padding:0;color:#0d6efd;" href="/datenschutz">Datenschutzerklärung</a> und <a target='_blank' style="padding:0;color:#0d6efd;" href="/widerrufsrecht">Widerrufsbelehrung</a> gelesen und bin mit den entsprechenden Bedingungen einverstanden
+														</p>
+													</li>
+													<li id="PaypmentLi1" style="width:100%;padding-top:15px;">
+														<button type="button" id="goToCheckoutButton" class="btn btn_submit w-100 rounded" style="color:#0d6efd;border-color:#0d6efd;" onclick="saveBestellung()" disabled="disabled">
+															<span id="button_buy_now">Jetzt kaufen</span>
+														</button>
+													</li>
+													<li id="PaypmentLi2" style="display:none;padding-top:15px;">
+														<div id="paypal-button-container" style="width:100%;padding-top:20px;"></div>
+													</li>
+													<li id="PaypmentLi3" style="display:none;padding-top:15px;">
+														<form id="payment-form" style="display:none;padding-top:20px;">
+															<div id="card-element">
+																<!-- Stripe的Card Element将被嵌入到这里 -->
+															</div>
+															<button type="submit" id="submit-button" class="btn btn_submit w-100 rounded">
+																<span id="button_pay_now">Bezahlen</span>
+															</button>
+														</form>
+													</li>
+												</ul>				   
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <!-- checkout__section__end-->
+
+	    <%- include('./footer.ejs') %>
+
+	</main>
+
+	<script>
+		languageInnerHTMLArr.push(new languageObj("address_title", "Address", "Adresse", "Adresse", "地址"));
+		languageInnerHTMLArr.push(new languageObj("address_same_label", "Billing and shipping address are the same", "Rechnungs- und Lieferadresse identisch", "Adresse de facturation et de livraison identiques", "账单地址与收货地址相同"));
+		languageInnerHTMLArr.push(new languageObj("shipping_label_name", "Name", "Name", "Nom", "姓名"));
+		languageInnerHTMLArr.push(new languageObj("shipping_label_address1", "Address 1", "Adresse1", "Adresse 1", "地址一"));
+		languageInnerHTMLArr.push(new languageObj("shipping_label_address2", "Address 2", "Adresse2", "Adresse 2", "地址二"));
+		languageInnerHTMLArr.push(new languageObj("shipping_label_zip", "ZIP Code", "PLZ", "Code postal", "邮编"));
+		languageInnerHTMLArr.push(new languageObj("shipping_label_city", "City", "Stadt", "Ville", "城市"));
+		languageInnerHTMLArr.push(new languageObj("shipping_label_state", "State", "Staat", "État", "省/州"));
+		languageInnerHTMLArr.push(new languageObj("shipping_label_email", "Email", "Email", "E-mail", "电子邮件"));
+		languageInnerHTMLArr.push(new languageObj("billing_label_name", "Name", "Name", "Nom", "姓名"));
+		languageInnerHTMLArr.push(new languageObj("billing_label_address1", "Address 1", "Adresse1", "Adresse 1", "地址一"));
+		languageInnerHTMLArr.push(new languageObj("billing_label_address2", "Address 2", "Adresse2", "Adresse 2", "地址二"));
+		languageInnerHTMLArr.push(new languageObj("billing_label_zip", "ZIP Code", "PLZ", "Code postal", "邮编"));
+		languageInnerHTMLArr.push(new languageObj("billing_label_city", "City", "Stadt", "Ville", "城市"));
+		languageInnerHTMLArr.push(new languageObj("billing_label_state", "State", "Staat", "État", "省/州"));
+		languageInnerHTMLArr.push(new languageObj("billing_label_email", "Email", "Email", "E-mail", "电子邮件"));
+		languageInnerHTMLArr.push(new languageObj("order_summary_title", "Your order", "Ihre Bestellung", "Votre commande", "您的订单"));
+		languageInnerHTMLArr.push(new languageObj("order_summary_item_label", "Items", "Artikel", "Articles", "商品"));
+		languageInnerHTMLArr.push(new languageObj("order_summary_shipping_label", "Shipping", "Versandkost", "Frais de livraison", "运费"));
+		languageInnerHTMLArr.push(new languageObj("order_summary_discount_label", "Agent discount", "Händlerrabatt", "Remise pour les agents", "代理商折扣"));
+		languageInnerHTMLArr.push(new languageObj("order_summary_coupon_label", "Coupon/Code", "Coupon/Code", "Code promo", "优惠码"));
+		languageInnerHTMLArr.push(new languageObj("coupon_apply_button", "Apply", "Anwenden", "Appliquer", "使用"));
+		languageInnerHTMLArr.push(new languageObj("order_summary_total_label", "Total Amount", "Gesamtbetrag", "Montant total", "总金额"));
+		languageInnerHTMLArr.push(new languageObj("payment_method_paypal", "Paypal", "Paypal", "Paypal", "贝宝"));
+		languageInnerHTMLArr.push(new languageObj("payment_method_stripe", "Stripe (Credit Card)", "Stripe (Kreditkarte)", "Stripe (Carte de crédit)", "Stripe（信用卡）"));
+		languageInnerHTMLArr.push(new languageObj("payment_method_invoice", "Invoice", "Rechnung", "Facture", "发票"));
+		languagePlaceholderArr.push(new languageObj("GutscheincodeInput", "Enter coupon code", "Gutscheincode eingeben", "Entrez le code promo", "输入优惠码"));
+
+
+		languageInnerHTMLArr.push(new languageObj("terms_agreement_text", 
+		  "I have read and agree to the Terms & Conditions, Privacy Policy, and Right of Withdrawal",
+		  "Ich habe AGB, Datenschutzerklärung und Widerrufsbelehrung gelesen und bin mit den entsprechenden Bedingungen einverstanden",
+		  "J'ai lu et j'accepte les CGV, la politique de confidentialité et les informations sur le droit de rétractation",
+		  "我已阅读并同意《条款与条件》、《隐私政策》和《撤销权须知》"));
+
+		languageInnerHTMLArr.push(new languageObj("button_buy_now", "Buy Now", "Jetzt kaufen", "Acheter maintenant", "立即购买"));
+		languageInnerHTMLArr.push(new languageObj("button_pay_now", "Pay", "Bezahlen", "Payer", "支付"));
+
+
+	</script>
+
+    <!-- JS here -->
+    <script src="js/vendor/modernizr-3.5.0.min.js "></script>
+    <script src="js/vendor/jquery-3.6.0.min.js "></script>
+	
+	<script src="javascript/kasse.js "></script>
+	<script> initGUI(); </script>
+	
+    <script src="js/popper.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/isotope.pkgd.min.js "></script>
+    <script src="js/one-page-nav-min.js "></script>
+    <script src="js/slick.min.js "></script>
+    <script src="js/jquery.meanmenu.min.js "></script>
+    <script src="js/ajax-form.js "></script>
+    <script src="js/wow.min.js "></script>
+    <script src="js/jquery.scrollUp.min.js "></script>
+    <script src="js/imagesloaded.pkgd.min.js "></script>
+    <script src="js/jquery.magnific-popup.min.js "></script>
+    <script src="js/waypoints.min.js "></script>
+    <script src="js/jquery.counterup.min.js "></script>
+    <script src="js/fontawesome.min.js "></script>
+    <script src="js/plugins.js "></script>
+    <script src="js/main.js "></script>
+	
+	
+
+</body>
+
+</html>

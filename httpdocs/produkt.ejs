@@ -1,0 +1,188 @@
+<!doctype html>
+<html class="no-js layout__7" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Laaver</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+
+        <!-- CSS here -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/animate.min.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/all.min.css">
+        <link rel="stylesheet" href="css/futura-std-4.css">
+        <link rel="stylesheet" href="css/slick.css">
+        <link rel="stylesheet" href="css/style.css">		
+
+		<script src="javascript/header_footer.js "></script>
+</head>
+
+
+<body>
+
+
+    <main class="main_wrapper body__overlay overflow__hidden">
+
+		<%- include('./header.ejs') %>       
+
+
+        <!-- single__product__start -->
+		<div class="single__product sp_top_50 sp_bottom_80">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-6 col-lg-6 col-md-12">
+					<div class="featurearea__details__img">
+
+						<div class="featurearea__big__img" id="BildBannerDiv1"></div>
+						<div class=" featurearea__thumb__img featurearea__thumb__img__slider__active slider__default__arrow" id="BildBannerDiv2"></div>
+
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-12">
+					<div class="single__product__wrap">
+						<div class="single__product__heding">
+							<h2 id="ProduktnameDiv"></h2>
+						</div>
+						<div class="single__product__price">
+							<span id="ProduktFloat1Div"></span>
+							<del id="ProduktFloat2Div"></del>
+							<label id="ProduktInt1Div"></label>
+						</div>
+
+						<hr>
+
+
+						<div class="single__product__description">
+							<p id="ProduktInfoDiv"></p>
+						</div>
+						 
+							
+						<div id="ProduktAttributeDiv">	</div>
+						
+						<div id="VerfuegbarDiv" style="color:#d3122a;margin-top:15px;display:none;">Sold Out</div>
+							
+							
+						<div class="single__product__quantity">
+							<div class="qty-container">
+								<button class="qty-btn-minus btn-qty" type="button">-</button>
+								<input type="text" name="qty" value="1" id="WarenkorbProduktMengeInput" class="input-qty">
+								<button class="qty-btn-plus btn-qty" type="button">+</button>
+							</div>
+							<button class="default__button" id="saveToCartButton" onclick="saveToCart()"><i class="fas fa-shopping-cart"></i>&nbsp;<span id="shop_button_addToCart">Add to cart</span></button>							
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<!-- single__product__end -->
+		
+		<!-- discription__section__start -->
+		<div class="descriptionarea sp_bottom_80 ">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 descriptionarea__tab__wrapper">
+						<div id="ProduktDescriptionDiv"></div>
+						<div id="DownloadDiv"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+		<!-- discription__section__end -->
+
+	    <%- include('./footer.ejs') %>     
+		
+		<!-- MODAL AREA START (Add To Cart Modal) -->
+		<div aria-modal="true" class="modal theme-modal fade" id="WarenkorbModal" role="dialog" tabindex="-1">
+			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						 <div class="ltn__quick-view-modal-inner">
+							 <div class="modal-product-item">
+								<div class="row">
+									<div class="col-12">
+										<div class="modal-product-img" id="WarenkorbModalEinzelBildDiv"></div>
+										 <div class="modal-product-info">
+											<h5 id="WarenkorbProduktnameDiv"></h5>
+											<p class="added-cart"><i class="fa fa-check-circle"></i>&nbsp;<span id="inquirylist_message_success">成功加入了问询单</span></p>
+											<div><span id="cart_label_quantity">数量：</span> <span id="WarenkorbProduktMengeDiv"></span></div>
+											<div><span id="cart_label_price">价格：</span> <span id="WarenkorbProduktPreisDiv"></span></div>
+											<br/>
+											<div class="btn-wrapper">
+											  <a href="/kasse" class="theme-btn-1 btn btn-effect-1" id="inquirylist_button_view">查看问询单</a>
+											</div>
+										 </div>
+									</div>
+								</div>
+							 </div>
+						 </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- MODAL AREA END -->
+
+	</main>
+
+	<script>
+		languageInnerHTMLArr.push(new languageObj("product_tab_description", "Product Description", "Produktbeschreibung", "Description du produit", "产品描述"));
+		languageInnerHTMLArr.push(new languageObj("download_tab_description", "File Download", "Datei herunterladen", "Téléchargement de fichier", "文件下载"));
+		languageInnerHTMLArr.push(new languageObj("inquirylist_button_add", "Add to Inquiry List", "Zur Anfrageliste hinzufügen", "Ajouter à la liste de demande", "加入问询单"));
+		languageInnerHTMLArr.push(new languageObj("inquirylist_message_success", "Successfully added to the inquiry list", "Erfolgreich zur Anfrageliste hinzugefügt", "Ajouté avec succès à la liste de demande", "成功加入了问询单"));
+		languageInnerHTMLArr.push(new languageObj("inquirylist_button_view", "View Inquiry List", "Anfrageliste ansehen", "Voir la liste de demande", "查看问询单"));
+		languageInnerHTMLArr.push(new languageObj("cart_label_quantity", "Quantity:", "Menge:", "Quantité:", "数量："));
+		languageInnerHTMLArr.push(new languageObj("cart_label_price", "Price:", "Preis:", "Prix:", "价格："));
+		languageInnerHTMLArr.push(new languageObj("shop_button_addToCart", "Add to cart", "In den Warenkorb", "Ajouter au panier", "加入购物车"));
+		
+		languageInnerHTMLArr.push(new languageObj("inquirylist_message_success", "Successfully added to the inquiry list", "Erfolgreich zur Anfrageliste hinzugefügt", "Ajouté avec succès à la liste de demande", "成功加入了问询单"));
+		languageInnerHTMLArr.push(new languageObj("inquirylist_button_view", "View Inquiry List", "Anfrageliste ansehen", "Voir la liste de demande", "查看问询单"));
+		languageInnerHTMLArr.push(new languageObj("cart_label_quantity", "Quantity:", "Menge:", "Quantité:", "数量："));
+		languageInnerHTMLArr.push(new languageObj("cart_label_price", "Price:", "Preis:", "Prix:", "价格："));
+		languageInnerHTMLArr.push(new languageObj("VerfuegbarDiv", "Sold Out", "Ausverkauft", "Épuisé", "产品已售罄"));
+
+
+
+	</script>
+
+    <!-- JS here -->
+    <script src="js/vendor/modernizr-3.5.0.min.js "></script>
+    <script src="js/vendor/jquery-3.6.0.min.js "></script>
+	
+	<script src="javascript/produkt.js "></script>
+	<script> initGUI(); </script>
+	
+    <script src="js/popper.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/isotope.pkgd.min.js "></script>
+    <script src="js/one-page-nav-min.js "></script>
+    <script src="js/slick.min.js "></script>
+    <script src="js/jquery.meanmenu.min.js "></script>
+    <script src="js/ajax-form.js "></script>
+    <script src="js/wow.min.js "></script>
+    <script src="js/jquery.scrollUp.min.js "></script>
+    <script src="js/imagesloaded.pkgd.min.js "></script>
+    <script src="js/jquery.magnific-popup.min.js "></script>
+    <script src="js/waypoints.min.js "></script>
+    <script src="js/jquery.counterup.min.js "></script>
+    <script src="js/fontawesome.min.js "></script>
+    <script src="js/plugins.js "></script>
+    <script src="js/main.js "></script>
+	
+	
+
+</body>
+
+</html>

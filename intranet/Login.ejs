@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!--begin::Head-->
+	<head>
+		<meta charset="utf-8" />
+		<title>laaver | Login</title>
+		<meta name="description" content="Login page example" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<!--begin::Fonts-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<!--end::Fonts-->
+		<!--begin::Page Custom Styles(used by this page)-->
+		<link href="assets/css/pages/login/login-2.css" rel="stylesheet" type="text/css" />
+		<!--end::Page Custom Styles-->
+		<!--begin::Global Theme Styles(used by all pages)-->
+		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Global Theme Styles-->
+		<!--begin::Layout Themes(used by all pages)-->
+		<!--end::Layout Themes-->
+		<link rel="shortcut icon" href="favicon.ico" />
+		<script src="javascript/header_footer.js"></script>		
+		<script>	
+			var languageInnerHTMLArr = new Array();	
+			var languagePlaceholderArr = new Array();	
+			var languageValueArr = new Array();							
+			
+			languageInnerHTMLArr.push(new languageObj("signin_title", "Sign In", "Anmelden", "Connexion", "登录"));
+			languageInnerHTMLArr.push(new languageObj("signin_btn_submit", "Sign In", "Anmelden", "Connexion", "登录"));
+			languagePlaceholderArr.push(new languageObj("signin_input_username", "Username", "Benutzername", "Nom d'utilisateur", "用户名"));
+			languagePlaceholderArr.push(new languageObj("signin_input_password", "Password", "Passwort", "Mot de passe", "密码"));	
+		</script>
+	</head>
+	<!--end::Head-->
+	<!--begin::Body-->
+	<body id="kt_body" class="header-mobile-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+		<!--begin::Main-->
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Login-->
+			<div class="login login-2 login-signin-on d-flex flex-column flex-column-fluid bg-white position-relative overflow-hidden" id="kt_login">
+				<!--begin::Header-->
+				<div class="login-header py-10 flex-column-auto">
+					<div class="container d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
+						<!--begin::Logo-->
+						<a href="#" class="flex-column-auto py-5 py-md-0">
+							<img src="images/banner.png" alt="logo" class="h-50px" />
+						</a>
+						<!--end::Logo-->
+					</div>
+				</div>
+				<!--end::Header-->
+				<!--begin::Body-->
+				<div class="login-body d-flex flex-column-fluid align-items-stretch justify-content-center">
+					<div class="container row">
+						<div class="col-lg-6 d-flex align-items-center">
+							<!--begin::Signin-->
+							<div class="login-form login-signin">
+								<!--begin::Form-->
+								<form class="form w-xxl-550px rounded-lg p-20" novalidate="novalidate" action="javascript:checkSignIn();">
+									<!--begin::Title-->
+									<div class="pb-13 pt-lg-0 pt-5">
+										<h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg" id="signin_title" >Sign In</h3>
+									</div>
+									<!--begin::Title-->
+									<!--begin::Form group-->
+									<div class="form-group">
+										<input class="form-control form-control-solid h-auto p-6 rounded-lg" type="text" name="username" id="signin_input_username" autocomplete="off" />
+									</div>
+									<!--end::Form group-->
+									<!--begin::Form group-->
+									<div class="form-group">
+										<input class="form-control form-control-solid h-auto p-6 rounded-lg" type="password" name="password" id="signin_input_password" autocomplete="off" />
+									</div>
+									<!--end::Form group-->
+									<!--begin::Action-->
+									<div class="pb-lg-0 pb-5">
+										<button type="submit" id="signin_btn_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Sign In</button>										
+									</div>
+									<!--end::Action-->
+								</form>
+								<!--end::Form-->
+							</div>
+							<!--end::Signin-->							
+						</div>
+						<div class="col-lg-6 bgi-size-contain bgi-no-repeat bgi-position-y-center bgi-position-x-center min-h-150px mt-10 m-md-0" style="background-image: url(assets/media/svg/illustrations/accomplishment.svg)"></div>
+					</div>
+				</div>
+				<!--end::Body-->
+				<!--begin::Footer-->
+				<div class="login-footer py-10 flex-column-auto">
+					<div class="container d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
+						<div class="font-size-h6 font-weight-bolder order-2 order-md-1 py-2 py-md-0">
+							<span class="text-muted font-weight-bold mr-2">2025©</span>
+							<a href="https://www.ITinDE.com" target="_blank" class="text-dark-50 text-hover-primary">ITinDE.com</a>
+						</div>
+						<div class="font-size-h5 font-weight-bolder order-1 order-md-2 py-2 py-md-0">&nbsp;</div>
+					</div>
+				</div>
+				<!--end::Footer-->
+			</div>
+			<!--end::Login-->
+		</div>
+		<!--end::Main-->
+		
+		<script>
+			applyLanguageInnerHTML();
+			applyLanguagePlaceholder();
+			applyLanguageValue();
+			
+			var MitarbeiterArr = new Array();
+			
+			function checkSignIn() {
+				MitarbeiterArr = new Array();
+				const Mitarbeitername = document.getElementById('signin_input_username').value.trim();
+				const password = document.getElementById('signin_input_password').value;
+
+				if (!Mitarbeitername || !password) {
+					switch (lang) {
+					  case "en": alert("Please enter both Mitarbeitername and password."); break;
+					  case "de": alert("Bitte geben Sie sowohl Benutzernamen als auch Passwort ein."); break;
+					  case "fr": alert("Veuillez entrer le nom d'utilisateur et le mot de passe."); break;
+					  case "cn": alert("请输入用户名和密码。"); break;
+					}
+					return;
+				}else{
+					var sql = "SELECT * FROM laaver.Mitarbeiter WHERE MitarbeiterString3='"+String(Mitarbeitername)+"' AND MitarbeiterString4='"+String(password)+"'";
+					$.ajax({
+						type: "POST",
+						url: "/General_Select",
+						contentType: 'application/x-www-form-urlencoded',
+						async: true,
+						cache: false,
+						data: {
+							SQL_TXT: escape(sql),
+						},
+						success: function (response) {	
+							const result = response.results;
+
+							if (!result || result.length === 0) {
+								// 用户名或密码错误
+								switch (lang) {
+									case "en": alert("Incorrect Mitarbeitername or password."); break;
+									case "de": alert("Falscher Benutzername oder Passwort."); break;
+									case "fr": alert("Nom d'utilisateur ou mot de passe incorrect."); break;
+									case "cn": alert("用户名或密码错误。"); break;
+								}
+							} else {				
+								response.results.forEach(function (item) {
+									let obj = {};
+									showMitarbeiterAttributArr.forEach(attr => {
+										let val = item[attr.Attribut];
+										if (val && typeof val === 'object' && val.type === 'Buffer' && Array.isArray(val.data)) {
+											obj[attr.Attribut] = val.data[0] ? 1 : 0;
+										}else if (attr.Attribut.includes("Datum")) {
+											if (val === null || val === undefined) {
+												obj[attr.Attribut] = "";
+											} else {
+												try {
+													obj[attr.Attribut] = val.toString().substring(0, 10);
+												} catch (e) {
+													obj[attr.Attribut] = "";
+												}
+											}
+										}else {
+											obj[attr.Attribut] = val;
+										}
+									});
+									
+									MitarbeiterArr.push(obj);
+								});
+								
+								deleteCookies();
+								//设置 cookies（有效期 30 天）
+								setCookie("Username", MitarbeiterArr[0].MitarbeiterString3, 30);
+								setCookie("Vorname", MitarbeiterArr[0].MitarbeiterString1, 30);
+								setCookie("Nachname", MitarbeiterArr[0].MitarbeiterString2, 30);
+								setCookie("Email", MitarbeiterArr[0].MitarbeiterString6, 30);
+								setCookie("lang", MitarbeiterArr[0].MitarbeiterString7, 30);
+								setCookie("MitarbeiterID", MitarbeiterArr[0].prIDX, 30);
+								setCookie("Rolle", MitarbeiterArr[0].MitarbeiterInt1, 30);
+								
+								window.location.href = "/Dashboard";
+							}
+						},
+						error: function (xhr, status, error) {
+							console.error("Node AJAX 请求失败: ", status, error);
+						}
+					});  
+				}		
+			}
+			
+			var showMitarbeiterAttributArr = new Array();
+
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("prIDX","parseInt",1,1,1,1,1,1,new Array("Serial Number", "Seriennummer", "Numéro de série", "序列号")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("frIDX","parseInt",0,0,0,0,0,0,new Array("frIDX","frIDX","frIDX","frIDX"))); 
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("Datum1","String",3,3,3,3,3,3,new Array("Creation Date", "Erstellungsdatum", "Date de création", "创建日期"))); //搜索项为区间，这里不可用
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("Datum2","String",0,0,0,0,0,0,new Array("Datum2","Datum2","Datum2","Datum2"))); //搜索项为区间，这里不可用
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("Datum3","String",0,0,0,0,0,0,new Array("Datum3","Datum3","Datum3","Datum3"))); //搜索项为区间，这里不可用
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("Datum4","String",0,0,0,0,0,0,new Array("Datum4","Datum4","Datum4","Datum4"))); //搜索项为区间，这里不可用
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("Status","parseInt",9,9,9,9,9,9,new Array("Status", "Status", "Statut", "状态")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString1","String",0,10,10,10,10,10,new Array("First Name", "Vorname", "Prénom", "名字")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString2","String",0,11,11,11,11,11,new Array("Last Name", "Nachname", "Nom de famille", "姓氏")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString3","String",12,12,12,12,12,12,new Array("Username", "Benutzername", "Nom d'utilisateur", "用户名")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString4","String",0,0,0,0,0,0,new Array("Password", "Passwort", "Mot de passe", "密码")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString5","String",0,0,14,14,14,14,new Array("Phone", "Telefon", "Téléphone", "电话")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString6","String",0,0,15,15,15,15,new Array("Email", "E-Mail", "E-mail", "电子邮件")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString7","String",0,0,16,16,16,16,new Array("Language", "Sprache", "Langue", "语言")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString8","String",0,0,0,0,0,0,new Array("MitarbeiterString8","MitarbeiterString8","MitarbeiterString8","MitarbeiterString8")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString9","String",0,0,0,0,0,0,new Array("MitarbeiterString9","MitarbeiterString9","MitarbeiterString9","MitarbeiterString9")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString10","String",0,0,0,0,0,0,new Array("MitarbeiterString10","MitarbeiterString10","MitarbeiterString10","MitarbeiterString10")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString11","String",0,0,0,0,0,0,new Array("MitarbeiterString11","MitarbeiterString11","MitarbeiterString11","MitarbeiterString11")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString12","String",0,0,0,0,0,0,new Array("MitarbeiterString12","MitarbeiterString12","MitarbeiterString12","MitarbeiterString12")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString13","String",0,0,0,0,0,0,new Array("MitarbeiterString13","MitarbeiterString13","MitarbeiterString13","MitarbeiterString13")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString14","String",0,0,0,0,0,0,new Array("MitarbeiterString14","MitarbeiterString14","MitarbeiterString14","MitarbeiterString14")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString15","String",0,0,0,0,0,0,new Array("MitarbeiterString15","MitarbeiterString15","MitarbeiterString15","MitarbeiterString15")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString16","String",0,0,0,0,0,0,new Array("MitarbeiterString16","MitarbeiterString16","MitarbeiterString16","MitarbeiterString16")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString17","String",0,0,0,0,0,0,new Array("MitarbeiterString17","MitarbeiterString17","MitarbeiterString17","MitarbeiterString17")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString18","String",0,0,0,0,0,0,new Array("MitarbeiterString18","MitarbeiterString18","MitarbeiterString18","MitarbeiterString18")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString19","String",0,0,0,0,0,0,new Array("MitarbeiterString19","MitarbeiterString19","MitarbeiterString19","MitarbeiterString19")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString20","String",0,0,0,0,0,0,new Array("MitarbeiterString20","MitarbeiterString20","MitarbeiterString20","MitarbeiterString20")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString21","String",0,0,0,0,0,0,new Array("MitarbeiterString21","MitarbeiterString21","MitarbeiterString21","MitarbeiterString21")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString22","String",0,0,0,0,0,0,new Array("MitarbeiterString22","MitarbeiterString22","MitarbeiterString22","MitarbeiterString22")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString23","String",0,0,0,0,0,0,new Array("MitarbeiterString23","MitarbeiterString23","MitarbeiterString23","MitarbeiterString23")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString24","String",0,0,0,0,0,0,new Array("MitarbeiterString24","MitarbeiterString24","MitarbeiterString24","MitarbeiterString24")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString25","String",0,0,0,0,0,0,new Array("MitarbeiterString25","MitarbeiterString25","MitarbeiterString25","MitarbeiterString25")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString26","String",0,0,0,0,0,0,new Array("MitarbeiterString26","MitarbeiterString26","MitarbeiterString26","MitarbeiterString26")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString27","String",0,0,0,0,0,0,new Array("MitarbeiterString27","MitarbeiterString27","MitarbeiterString27","MitarbeiterString27")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString28","String",0,0,0,0,0,0,new Array("MitarbeiterString28","MitarbeiterString28","MitarbeiterString28","MitarbeiterString28")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString29","String",0,0,0,0,0,0,new Array("MitarbeiterString29","MitarbeiterString29","MitarbeiterString29","MitarbeiterString29")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString30","String",0,0,0,0,0,0,new Array("MitarbeiterString30","MitarbeiterString30","MitarbeiterString30","MitarbeiterString30")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString31","String",0,0,0,0,0,0,new Array("MitarbeiterString31","MitarbeiterString31","MitarbeiterString31","MitarbeiterString31")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString32","String",0,0,0,0,0,0,new Array("MitarbeiterString32","MitarbeiterString32","MitarbeiterString32","MitarbeiterString32")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString33","String",0,0,0,0,0,0,new Array("MitarbeiterString33","MitarbeiterString33","MitarbeiterString33","MitarbeiterString33")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString34","String",0,0,0,0,0,0,new Array("MitarbeiterString34","MitarbeiterString34","MitarbeiterString34","MitarbeiterString34")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString35","String",0,0,0,0,0,0,new Array("MitarbeiterString35","MitarbeiterString35","MitarbeiterString35","MitarbeiterString35")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString36","String",0,0,0,0,0,0,new Array("MitarbeiterString36","MitarbeiterString36","MitarbeiterString36","MitarbeiterString36")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString37","String",0,0,0,0,0,0,new Array("MitarbeiterString37","MitarbeiterString37","MitarbeiterString37","MitarbeiterString37")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString38","String",0,0,0,0,0,0,new Array("MitarbeiterString38","MitarbeiterString38","MitarbeiterString38","MitarbeiterString38")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString39","String",0,0,0,0,0,0,new Array("MitarbeiterString39","MitarbeiterString39","MitarbeiterString39","MitarbeiterString39")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString40","String",0,0,0,0,0,0,new Array("MitarbeiterString40","MitarbeiterString40","MitarbeiterString40","MitarbeiterString40")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString41","String",0,0,0,0,0,0,new Array("MitarbeiterString41","MitarbeiterString41","MitarbeiterString41","MitarbeiterString41")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString42","String",0,0,0,0,0,0,new Array("MitarbeiterString42","MitarbeiterString42","MitarbeiterString42","MitarbeiterString42")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString43","String",0,0,0,0,0,0,new Array("MitarbeiterString43","MitarbeiterString43","MitarbeiterString43","MitarbeiterString43")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString44","String",0,0,0,0,0,0,new Array("MitarbeiterString44","MitarbeiterString44","MitarbeiterString44","MitarbeiterString44")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString45","String",0,0,0,0,0,0,new Array("MitarbeiterString45","MitarbeiterString45","MitarbeiterString45","MitarbeiterString45")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString46","String",0,0,0,0,0,0,new Array("MitarbeiterString46","MitarbeiterString46","MitarbeiterString46","MitarbeiterString46")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString47","String",0,0,0,0,0,0,new Array("MitarbeiterString47","MitarbeiterString47","MitarbeiterString47","MitarbeiterString47")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString48","String",0,0,0,0,0,0,new Array("MitarbeiterString48","MitarbeiterString48","MitarbeiterString48","MitarbeiterString48")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString49","String",0,0,0,0,0,0,new Array("MitarbeiterString49","MitarbeiterString49","MitarbeiterString49","MitarbeiterString49")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterString50","String",0,0,0,0,0,0,new Array("MitarbeiterString50","MitarbeiterString50","MitarbeiterString50","MitarbeiterString50")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt1","Int",0,50,50,50,50,50,new Array("Position", "Mitarbeiter", "Poste", "职位")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt2","Int",0,0,0,0,0,0,new Array("MitarbeiterInt2","MitarbeiterInt2","MitarbeiterInt2","MitarbeiterInt2")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt3","Int",0,0,0,0,0,0,new Array("MitarbeiterInt3","MitarbeiterInt3","MitarbeiterInt3","MitarbeiterInt3")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt4","Int",0,0,0,0,0,0,new Array("MitarbeiterInt4","MitarbeiterInt4","MitarbeiterInt4","MitarbeiterInt4")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt5","Int",0,0,0,0,0,0,new Array("MitarbeiterInt5","MitarbeiterInt5","MitarbeiterInt5","MitarbeiterInt5")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt6","Int",0,0,0,0,0,0,new Array("MitarbeiterInt6","MitarbeiterInt6","MitarbeiterInt6","MitarbeiterInt6")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt7","Int",0,0,0,0,0,0,new Array("MitarbeiterInt7","MitarbeiterInt7","MitarbeiterInt7","MitarbeiterInt7")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt8","Int",0,0,0,0,0,0,new Array("MitarbeiterInt8","MitarbeiterInt8","MitarbeiterInt8","MitarbeiterInt8")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt9","Int",0,0,0,0,0,0,new Array("MitarbeiterInt9","MitarbeiterInt9","MitarbeiterInt9","MitarbeiterInt9")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt10","Int",0,0,0,0,0,0,new Array("MitarbeiterInt10","MitarbeiterInt10","MitarbeiterInt10","MitarbeiterInt10")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt11","Int",0,0,0,0,0,0,new Array("MitarbeiterInt11","MitarbeiterInt11","MitarbeiterInt11","MitarbeiterInt11")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt12","Int",0,0,0,0,0,0,new Array("MitarbeiterInt12","MitarbeiterInt12","MitarbeiterInt12","MitarbeiterInt12")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt13","Int",0,0,0,0,0,0,new Array("MitarbeiterInt13","MitarbeiterInt13","MitarbeiterInt13","MitarbeiterInt13")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt14","Int",0,0,0,0,0,0,new Array("MitarbeiterInt14","MitarbeiterInt14","MitarbeiterInt14","MitarbeiterInt14")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt15","Int",0,0,0,0,0,0,new Array("MitarbeiterInt15","MitarbeiterInt15","MitarbeiterInt15","MitarbeiterInt15")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt16","Int",0,0,0,0,0,0,new Array("MitarbeiterInt16","MitarbeiterInt16","MitarbeiterInt16","MitarbeiterInt16")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt17","Int",0,0,0,0,0,0,new Array("MitarbeiterInt17","MitarbeiterInt17","MitarbeiterInt17","MitarbeiterInt17")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt18","Int",0,0,0,0,0,0,new Array("MitarbeiterInt18","MitarbeiterInt18","MitarbeiterInt18","MitarbeiterInt18")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt19","Int",0,0,0,0,0,0,new Array("MitarbeiterInt19","MitarbeiterInt19","MitarbeiterInt19","MitarbeiterInt19")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt20","Int",0,0,0,0,0,0,new Array("MitarbeiterInt20","MitarbeiterInt20","MitarbeiterInt20","MitarbeiterInt20")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt21","Int",0,0,0,0,0,0,new Array("MitarbeiterInt21","MitarbeiterInt21","MitarbeiterInt21","MitarbeiterInt21")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt22","Int",0,0,0,0,0,0,new Array("MitarbeiterInt22","MitarbeiterInt22","MitarbeiterInt22","MitarbeiterInt22")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt23","Int",0,0,0,0,0,0,new Array("MitarbeiterInt23","MitarbeiterInt23","MitarbeiterInt23","MitarbeiterInt23")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt24","Int",0,0,0,0,0,0,new Array("MitarbeiterInt24","MitarbeiterInt24","MitarbeiterInt24","MitarbeiterInt24")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt25","Int",0,0,0,0,0,0,new Array("MitarbeiterInt25","MitarbeiterInt25","MitarbeiterInt25","MitarbeiterInt25")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt26","Int",0,0,0,0,0,0,new Array("MitarbeiterInt26","MitarbeiterInt26","MitarbeiterInt26","MitarbeiterInt26")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt27","Int",0,0,0,0,0,0,new Array("MitarbeiterInt27","MitarbeiterInt27","MitarbeiterInt27","MitarbeiterInt27")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt28","Int",0,0,0,0,0,0,new Array("MitarbeiterInt28","MitarbeiterInt28","MitarbeiterInt28","MitarbeiterInt28")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt29","Int",0,0,0,0,0,0,new Array("MitarbeiterInt29","MitarbeiterInt29","MitarbeiterInt29","MitarbeiterInt29")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt30","Int",0,0,0,0,0,0,new Array("MitarbeiterInt30","MitarbeiterInt30","MitarbeiterInt30","MitarbeiterInt30")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt31","Int",0,0,0,0,0,0,new Array("MitarbeiterInt31","MitarbeiterInt31","MitarbeiterInt31","MitarbeiterInt31")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt32","Int",0,0,0,0,0,0,new Array("MitarbeiterInt32","MitarbeiterInt32","MitarbeiterInt32","MitarbeiterInt32")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt33","Int",0,0,0,0,0,0,new Array("MitarbeiterInt33","MitarbeiterInt33","MitarbeiterInt33","MitarbeiterInt33")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt34","Int",0,0,0,0,0,0,new Array("MitarbeiterInt34","MitarbeiterInt34","MitarbeiterInt34","MitarbeiterInt34")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt35","Int",0,0,0,0,0,0,new Array("MitarbeiterInt35","MitarbeiterInt35","MitarbeiterInt35","MitarbeiterInt35")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt36","Int",0,0,0,0,0,0,new Array("MitarbeiterInt36","MitarbeiterInt36","MitarbeiterInt36","MitarbeiterInt36")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt37","Int",0,0,0,0,0,0,new Array("MitarbeiterInt37","MitarbeiterInt37","MitarbeiterInt37","MitarbeiterInt37")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt38","Int",0,0,0,0,0,0,new Array("MitarbeiterInt38","MitarbeiterInt38","MitarbeiterInt38","MitarbeiterInt38")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt39","Int",0,0,0,0,0,0,new Array("MitarbeiterInt39","MitarbeiterInt39","MitarbeiterInt39","MitarbeiterInt39")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterInt40","Int",0,0,0,0,0,0,new Array("MitarbeiterInt40","MitarbeiterInt40","MitarbeiterInt40","MitarbeiterInt40")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat1","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat1","MitarbeiterFloat1","MitarbeiterFloat1","MitarbeiterFloat1")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat2","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat2","MitarbeiterFloat2","MitarbeiterFloat2","MitarbeiterFloat2")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat3","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat3","MitarbeiterFloat3","MitarbeiterFloat3","MitarbeiterFloat3")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat4","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat4","MitarbeiterFloat4","MitarbeiterFloat4","MitarbeiterFloat4")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat5","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat5","MitarbeiterFloat5","MitarbeiterFloat5","MitarbeiterFloat5")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat6","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat6","MitarbeiterFloat6","MitarbeiterFloat6","MitarbeiterFloat6")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat7","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat7","MitarbeiterFloat7","MitarbeiterFloat7","MitarbeiterFloat7")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat8","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat8","MitarbeiterFloat8","MitarbeiterFloat8","MitarbeiterFloat8")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat9","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat9","MitarbeiterFloat9","MitarbeiterFloat9","MitarbeiterFloat9")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat10","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat10","MitarbeiterFloat10","MitarbeiterFloat10","MitarbeiterFloat10")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat11","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat11","MitarbeiterFloat11","MitarbeiterFloat11","MitarbeiterFloat11")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat12","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat12","MitarbeiterFloat12","MitarbeiterFloat12","MitarbeiterFloat12")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat13","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat13","MitarbeiterFloat13","MitarbeiterFloat13","MitarbeiterFloat13")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat14","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat14","MitarbeiterFloat14","MitarbeiterFloat14","MitarbeiterFloat14")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat15","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat15","MitarbeiterFloat15","MitarbeiterFloat15","MitarbeiterFloat15")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat16","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat16","MitarbeiterFloat16","MitarbeiterFloat16","MitarbeiterFloat16")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat17","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat17","MitarbeiterFloat17","MitarbeiterFloat17","MitarbeiterFloat17")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat18","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat18","MitarbeiterFloat18","MitarbeiterFloat18","MitarbeiterFloat18")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat19","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat19","MitarbeiterFloat19","MitarbeiterFloat19","MitarbeiterFloat19")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat20","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat20","MitarbeiterFloat20","MitarbeiterFloat20","MitarbeiterFloat20")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat21","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat21","MitarbeiterFloat21","MitarbeiterFloat21","MitarbeiterFloat21")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat22","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat22","MitarbeiterFloat22","MitarbeiterFloat22","MitarbeiterFloat22")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat23","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat23","MitarbeiterFloat23","MitarbeiterFloat23","MitarbeiterFloat23")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat24","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat24","MitarbeiterFloat24","MitarbeiterFloat24","MitarbeiterFloat24")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat25","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat25","MitarbeiterFloat25","MitarbeiterFloat25","MitarbeiterFloat25")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat26","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat26","MitarbeiterFloat26","MitarbeiterFloat26","MitarbeiterFloat26")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat27","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat27","MitarbeiterFloat27","MitarbeiterFloat27","MitarbeiterFloat27")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat28","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat28","MitarbeiterFloat28","MitarbeiterFloat28","MitarbeiterFloat28")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat29","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat29","MitarbeiterFloat29","MitarbeiterFloat29","MitarbeiterFloat29")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat30","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat30","MitarbeiterFloat30","MitarbeiterFloat30","MitarbeiterFloat30")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat31","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat31","MitarbeiterFloat31","MitarbeiterFloat31","MitarbeiterFloat31")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat32","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat32","MitarbeiterFloat32","MitarbeiterFloat32","MitarbeiterFloat32")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat33","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat33","MitarbeiterFloat33","MitarbeiterFloat33","MitarbeiterFloat33")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat34","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat34","MitarbeiterFloat34","MitarbeiterFloat34","MitarbeiterFloat34")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat35","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat35","MitarbeiterFloat35","MitarbeiterFloat35","MitarbeiterFloat35")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat36","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat36","MitarbeiterFloat36","MitarbeiterFloat36","MitarbeiterFloat36")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat37","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat37","MitarbeiterFloat37","MitarbeiterFloat37","MitarbeiterFloat37")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat38","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat38","MitarbeiterFloat38","MitarbeiterFloat38","MitarbeiterFloat38")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat39","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat39","MitarbeiterFloat39","MitarbeiterFloat39","MitarbeiterFloat39")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterFloat40","Float",0,0,0,0,0,0,new Array("MitarbeiterFloat40","MitarbeiterFloat40","MitarbeiterFloat40","MitarbeiterFloat40")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterBIT1","BIT",0,0,0,0,0,0,new Array("MitarbeiterBIT1","MitarbeiterBIT1","MitarbeiterBIT1","MitarbeiterBIT1")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterBIT2","BIT",0,0,0,0,0,0,new Array("MitarbeiterBIT2","MitarbeiterBIT2","MitarbeiterBIT2","MitarbeiterBIT2")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterBIT3","BIT",0,0,0,0,0,0,new Array("MitarbeiterBIT3","MitarbeiterBIT3","MitarbeiterBIT3","MitarbeiterBIT3")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterBIT4","BIT",0,0,0,0,0,0,new Array("MitarbeiterBIT4","MitarbeiterBIT4","MitarbeiterBIT4","MitarbeiterBIT4")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterBIT5","BIT",0,0,0,0,0,0,new Array("MitarbeiterBIT5","MitarbeiterBIT5","MitarbeiterBIT5","MitarbeiterBIT5")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterBIT6","BIT",0,0,0,0,0,0,new Array("MitarbeiterBIT6","MitarbeiterBIT6","MitarbeiterBIT6","MitarbeiterBIT6")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterBIT7","BIT",0,0,0,0,0,0,new Array("MitarbeiterBIT7","MitarbeiterBIT7","MitarbeiterBIT7","MitarbeiterBIT7")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterBIT8","BIT",0,0,0,0,0,0,new Array("MitarbeiterBIT8","MitarbeiterBIT8","MitarbeiterBIT8","MitarbeiterBIT8")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterBIT9","BIT",0,0,0,0,0,0,new Array("MitarbeiterBIT9","MitarbeiterBIT9","MitarbeiterBIT9","MitarbeiterBIT9")));
+			showMitarbeiterAttributArr.push(new showMitarbeiterAttributObj("MitarbeiterBIT10","BIT",0,0,0,0,0,0,new Array("MitarbeiterBIT10","MitarbeiterBIT10","MitarbeiterBIT10","MitarbeiterBIT10")));
+			
+			function showMitarbeiterAttributObj(Attribut,Type,indexA,indexB,indexC,indexD,indexE,indexF,lang){
+			   this.Attribut=Attribut;
+			   this.Type=Type;
+			   this.indexA=indexA;
+			   this.indexB=indexB;
+			   this.indexC=indexC;
+			   this.indexD=indexD;
+			   this.indexE=indexE;
+			   this.indexF=indexF;
+			   this.lang=lang;
+			}
+
+		</script>
+		
+		<!--begin::Global Config(global config for global JS scripts)-->
+		<script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1200 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#6993FF", "warning": "#FFA800", "danger": "#F64E60", "light": "#F3F6F9", "dark": "#212121" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#ECF0F3", "success": "#C9F7F5", "info": "#E1E9FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#FFFFFF", "secondary": "#212121", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#ECF0F3", "gray-300": "#E5EAEE", "gray-400": "#D6D6E0", "gray-500": "#B5B5C3", "gray-600": "#80808F", "gray-700": "#464E5F", "gray-800": "#1B283F", "gray-900": "#212121" } }, "font-family": "Poppins" };</script>
+		<!--end::Global Config-->
+		<!--begin::Global Theme Bundle(used by all pages)-->
+		<script src="assets/plugins/global/plugins.bundle.js"></script>
+		<script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+		<script src="assets/js/scripts.bundle.js"></script>
+		<!--end::Global Theme Bundle-->
+		<!--end::Page Scripts-->
+	</body>
+	<!--end::Body-->
+</html>

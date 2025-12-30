@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!--begin::Head-->
+	<head><base href="">
+		<meta charset="utf-8" />
+		<title>laaver</title>
+		<meta name="description" content="Updates and statistics" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<!--begin::Fonts-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<!--end::Fonts-->
+		<!--begin::Page Vendors Styles(used by this page)-->
+		<link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Page Vendors Styles-->
+		<!--begin::Global Theme Styles(used by all pages)-->
+		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Global Theme Styles-->
+		<!--begin::Layout Themes(used by all pages)-->
+		<link href="assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+		<!--end::Layout Themes-->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		
+		<link href="assets/css/main.css" rel="stylesheet" type="text/css" />
+		<script src="javascript/header_footer.js"></script>		
+		<%
+			if(lang==undefined) lang="en";
+			let langNum = 0;
+			switch (lang) {
+			case "en":
+				langNum = 0;
+				break;
+			case "de":
+				langNum = 1;
+				break;
+			case "fr":
+				langNum = 2;
+				break;
+			case "cn":
+				langNum = 3;
+				break;
+			}
+			
+			var ButtonTranslate = new Array();
+			ButtonTranslate.push(["Edit", "Bearbeiten", "Modifier", "编辑"]);
+			ButtonTranslate.push(["Change Password", "Passwort ändern", "Changer le mot de passe", "更改密码"]);
+			ButtonTranslate.push(["Save", "Speichern", "Enregistrer", "保存"]);
+			ButtonTranslate.push(["Close", "Schliessen", "Fermer", "关闭"]);
+			ButtonTranslate.push(["Change Password", "Passwort ändern", "Changer le mot de passe", "修改密码"]);
+			ButtonTranslate.push(["New Password", "Neues Passwort", "Nouveau mot de passe", "新密码"]);
+			ButtonTranslate.push(["Confirm Password", "Passwort bestätigen", "Confirmer le mot de passe", "确认密码"]);
+			ButtonTranslate.push(["Cancel", "Abbrechen", "Annuler", "取消"]);
+			ButtonTranslate.push(["Save", "Speichern", "Enregistrer", "保存"]);
+			ButtonTranslate.push(["Please fill both fields.", "Bitte beide Felder ausfüllen.", "Veuillez remplir les deux champs.", "请填写两个字段。"]);
+			ButtonTranslate.push(["Passwords do not match.", "Die Passwörter stimmen nicht überein.", "Les mots de passe ne correspondent pas.", "两次输入的密码不一致。"]);
+
+
+
+		%>
+	</head>
+	<!--end::Head-->
+	<!--begin::Body-->
+	<body id="kt_body" class="quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+	<div id="loadingDiv"><div class="spinner-border" id="loadingDivSym" role="status">
+	  <span class="sr-only">Loading...</span>
+	</div></div>
+		<!--begin::Main-->
+		<!--begin::Header Mobile-->
+		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
+			<!--begin::Logo-->
+			<a href="/">
+				<img alt="Logo" src="images/banner.png" style="height:30px;" />
+			</a>
+			<!--end::Logo-->
+			<!--begin::Toolbar-->
+			<div class="d-flex align-items-center">
+				<!--begin::Aside Mobile Toggle-->
+				<button class="btn p-0 burger-icon burger-icon-left" id="kt_aside_mobile_toggle">
+					<span></span>
+				</button>
+				<!--end::Aside Mobile Toggle-->
+				<!--begin::Topbar Mobile Toggle-->
+				<button class="btn btn-hover-text-primary p-0 ml-3" id="kt_header_mobile_topbar_toggle">
+					<span class="svg-icon svg-icon-xl">
+						<!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<rect x="0" y="0" width="24" height="24"/>
+								<path d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,5 L19,5 L19,9.51471863 L21.4852814,12 L19,14.4852814 L19,19 L14.4852814,19 L11.5857864,21.8994949 L8.6862915,19 L5,19 L5,15.3137085 L1.6862915,12 L5,8.6862915 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,13.6568542 10.3431458,15 12,15 Z" fill="#000000"/>
+							</g>
+						</svg>
+						<!--end::Svg Icon-->
+					</span>
+				</button>
+				<!--end::Topbar Mobile Toggle-->
+			</div>
+			<!--end::Toolbar-->
+		</div>
+		<!--end::Header Mobile-->
+		
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Page-->
+			<div class="d-flex flex-row flex-column-fluid page">
+				
+				<%- include('./header_left.ejs') %>  				
+			
+				<!--begin::Wrapper-->
+				<div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+					
+					<%- include('./header_top.ejs') %>  
+				
+					<!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Subheader-->
+						<div class="subheader py-6 py-lg-8 subheader-transparent" id="kt_subheader">
+							<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+								<!--begin::Info-->
+								<div class="d-flex align-items-center flex-wrap mr-1">
+									<!--begin::Page Heading-->
+									<div class="d-flex align-items-baseline flex-wrap mr-5">
+										<!--begin::Page Title-->
+										<h5 id="header_title_dashboard" class="text-dark font-weight-bold my-1 mr-5"></h5>
+										<!--end::Page Title-->
+									</div>
+									<!--end::Page Heading-->
+								</div>
+								<!--end::Info-->
+							</div>
+						</div>
+						<!--end::Subheader-->
+						<!--begin::Entry-->
+							<div class="d-flex flex-column-fluid">
+								<div class="container" style="min-height:1000px;">						
+									<div class="row">
+										<div class="col-lg-7 col-md-12">
+										<div class="card card-custom card-stretch gutter-b">
+										<div class="card-body d-flex align-items-center justify-content-between pt-7 flex-wrap">																
+											<div style='font-size:18px;padding-left:5px;width:100%;' id='tableDiv'></div>								
+										</div></div></div>
+										
+										<div class="col-lg-5 col-md-12">
+										<div class="card card-custom card-stretch gutter-b">
+										<div class="card-body pt-7">
+											<button type='button' class='btn btn-outline-info mb-3' style='width:100%;' onclick='changeVertreter()'><%=ButtonTranslate[0][langNum]%></button>
+
+											<button type='button' class='btn btn-outline-warning' style='width:100%;' onclick='changePassword()'><%=ButtonTranslate[1][langNum]%></button>
+										</div></div></div>
+										
+										<div class="col-xl-12">
+											<!--begin::Stats Widget 3-->
+											<div class="card card-custom card-stretch gutter-b">
+												<!--begin::Header-->
+												<div class="card-header border-0 pt-6">
+													<h3 class="card-title">
+														<span class="card-label font-weight-bolder font-size-h4 text-dark-75" id="dashboard_label_sales">Sales</span>
+													</h3>
+												</div>
+												<!--end::Header-->
+												<!--begin::Body-->
+												<div class="card-body d-flex align-items-center justify-content-between pt-7 flex-wrap">
+													<!--begin::Chart-->
+														<div style="min-height:285px;width:100%;">
+															<div id="chart_1"></div>
+														</div>
+													<!--end::Chart-->
+												</div>
+												<!--end::Body-->
+											</div>
+											<!--end::Stats Widget 3-->
+										</div>																											
+									</div>				
+								
+								</div>
+							</div>
+							<!--end::Entry-->
+					</div>
+					<!--end::Content-->
+									
+				</div>
+				<!--end::Wrapper-->
+			</div>
+			<!--end::Page-->
+		</div>
+		<!--end::Main-->
+		
+		<!-- Modal-->								
+		<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+		<div class='modal-dialog modal-xl' style='width:95%;max-width: none;'>
+		<div class='modal-content'>
+		<div class='modal-header'>
+		<h5 class='modal-title'><%=ButtonTranslate[0][langNum]%></h5>
+		<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+		<span aria-hidden='true'>×</span>
+		</button>
+		</div>
+		<div class='modal-body'>
+		<div class='form-group'>
+		<div class='checkbox-inline'>
+
+		<div class='col-xl-3 col-md-12' id='prIDXModalDiv' style='display:none;'>
+		   <div class='form-group'>
+		   <label for='prIDXModal' id='prIDXModalLabel'></label>
+		   <input class='form-control' type='text' id='prIDXModal' autocomplete='off'>
+		</div></div>
+		
+		<%
+			function generateModalRow(param) {
+				let colClass = "3";
+				if (param == "VertreterFloat10" || param == "VertreterFloat11") {
+					colClass = "2";
+				}else if (param == "VertreterInt1") {
+					colClass = "1";
+				}
+				return colClass;
+			}
+			function generateModalType(param) {
+				let txt = "text";
+				if (param.indexOf("Int")>0 || param.indexOf("Float")>0) {
+					txt = "number";
+				}else if (param.indexOf("Datum")>=0) {
+					txt = "date";
+				}
+				return txt;
+			}
+			%>
+			<%  [
+				  "VertreterString1", "frIDX", "Datum1", "Datum2", "Datum3", "Datum4",
+				  "VertreterString2", "VertreterString3", "VertreterString4", "VertreterString5",
+				  "VertreterString6", "VertreterString7", "VertreterString8", "VertreterString9", "VertreterString10",
+				  "VertreterString11", "VertreterString12", "VertreterString13", "VertreterString14", "VertreterString15",
+				  "VertreterString16", "VertreterString17", "VertreterString18", "VertreterString19", "VertreterString20",
+				  "VertreterString21", "VertreterString22", "VertreterString23", "VertreterString24", "VertreterString25",
+				  "VertreterString26", "VertreterString27", "VertreterString28", "VertreterString29", "VertreterString30",
+				  "VertreterString31", "VertreterString32", "VertreterString33", "VertreterString34", "VertreterString35",
+				  "VertreterString36", "VertreterString37", "VertreterString38", "VertreterString39", "VertreterString40",
+				  "VertreterString41", "VertreterString42", "VertreterString43", "VertreterString44", "VertreterString45",
+				  "VertreterString46", "VertreterString47", "VertreterString48", "VertreterString49", "VertreterString50",
+
+				  "VertreterInt1", "VertreterInt2", "VertreterInt3", "VertreterInt4", "VertreterInt5",
+				  "VertreterInt6", "VertreterInt7", "VertreterInt8", "VertreterInt9", "VertreterInt10",
+				  "VertreterInt11", "VertreterInt12", "VertreterInt13", "VertreterInt14", "VertreterInt15",
+				  "VertreterInt16", "VertreterInt17", "VertreterInt18", "VertreterInt19", "VertreterInt20",
+				  "VertreterInt21", "VertreterInt22", "VertreterInt23", "VertreterInt24", "VertreterInt25",
+				  "VertreterInt26", "VertreterInt27", "VertreterInt28", "VertreterInt29", "VertreterInt30",
+				  "VertreterInt31", "VertreterInt32", "VertreterInt33", "VertreterInt34", "VertreterInt35",
+				  "VertreterInt36", "VertreterInt37", "VertreterInt38", "VertreterInt39", "VertreterInt40",
+
+				  "VertreterFloat1", "VertreterFloat2", "VertreterFloat3", "VertreterFloat4", "VertreterFloat5",
+				  "VertreterFloat6", "VertreterFloat7", "VertreterFloat8", "VertreterFloat9", "VertreterFloat10",
+				  "VertreterFloat11", "VertreterFloat12", "VertreterFloat13", "VertreterFloat14", "VertreterFloat15",
+				  "VertreterFloat16", "VertreterFloat17", "VertreterFloat18", "VertreterFloat19", "VertreterFloat20",
+				  "VertreterFloat21", "VertreterFloat22", "VertreterFloat23", "VertreterFloat24", "VertreterFloat25",
+				  "VertreterFloat26", "VertreterFloat27", "VertreterFloat28", "VertreterFloat29", "VertreterFloat30",
+				  "VertreterFloat31", "VertreterFloat32", "VertreterFloat33", "VertreterFloat34", "VertreterFloat35",
+				  "VertreterFloat36", "VertreterFloat37", "VertreterFloat38", "VertreterFloat39", "VertreterFloat40"
+				]
+			.forEach(function(param) { %>
+			<div class='col-xl-<%= generateModalRow(param) %> col-md-12' id='<%= param %>ModalDiv' style='display:none;'>
+			   <div class='form-group'>
+			   <label id='<%= param %>ModalLabel' for='<%= param %>Modal'><%= param %></label>
+			   <input class='form-control' type='<%= generateModalType(param)%>' id='<%= param %>Modal' autocomplete='off'>						   
+			</div></div>
+			<% }) %>
+			<%  [								  
+				  "VertreterBIT1", "VertreterBIT2", "VertreterBIT3", "VertreterBIT4", "VertreterBIT5",
+				  "VertreterBIT6", "VertreterBIT7", "VertreterBIT8", "VertreterBIT9", "VertreterBIT10"
+				]
+			.forEach(function(param) { %>
+			<div class='col-xl-<%= generateModalRow(param) %> col-md-12' id='<%= param %>ModalDiv' style='display:none;'>
+			   <div class='form-group'>
+			   <label id='<%= param %>ModalLabel' for='<%= param %>Modal'><%= param %></label>
+			   <span class='switch'><label><input type='checkbox' id='<%= param %>Modal' /><span></span></label></span>
+			</div></div>
+			<% }) %>
+			
+			<div class='col-xl-3 col-md-12' style='display:none;'>
+			   <div class='form-group'>
+			   <label for='StatusModal' id='StatusModalLabel'></label>
+			   <select class='form-control' id='StatusModal'><option value='0'> ---- </option></select>
+			</div></div>
+		
+		</div>
+		</div>
+		</div>
+		<div class='modal-footer'>
+		<button type='button' class='btn btn-outline-secondary' style='width:120px;' data-dismiss='modal'><%=ButtonTranslate[3][langNum]%></button>
+		<button type='button' class='btn btn-outline-success' style='width:120px;' onclick='saveVertreter()' id='saveButton'><%=ButtonTranslate[2][langNum]%></button>
+		</div>
+		</div>
+		</div>
+		</div>
+		
+		<!-- 修改密码 Modal -->
+		<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-md">
+			<div class="modal-content">
+
+			  <!-- Modal Header -->
+			  <div class="modal-header">
+				<h5 class="modal-title"><%= ButtonTranslate[4][langNum] %></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">×</span>
+				</button>
+			  </div>
+
+			  <!-- Modal Body -->
+			  <div class="modal-body">
+				<div class="form-group">
+				  <label for="newPassword"><%= ButtonTranslate[5][langNum] %></label>
+				  <input type="password" class="form-control" id="newPassword" placeholder="" autocomplete="off">
+				</div>
+
+				<div class="form-group">
+				  <label for="confirmPassword"><%= ButtonTranslate[6][langNum] %></label>
+				  <input type="password" class="form-control" id="confirmPassword" placeholder="" autocomplete="off">
+				</div>
+
+				<div id="passwordError" class="text-danger" style="display:none;"></div>
+			  </div>
+
+			  <!-- Modal Footer -->
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><%= ButtonTranslate[7][langNum] %></button>
+				<button type="button" class="btn btn-outline-success" id="savePasswordButton" onclick="savePassword()"><%= ButtonTranslate[8][langNum] %></button>
+			  </div>
+
+			</div>
+		  </div>
+		</div>
+
+		<script>
+		languageInnerHTMLArr.push(new languageObj("dashboard_label_sales", "Sales", "Umsatz", "Ventes", "销售额"));
+		</script>
+	
+		<%- include('./footer.ejs') %>  	
+		
+				
+		
+		<!--begin::Global Theme Bundle(used by all pages)-->
+		<script src="assets/plugins/global/plugins.bundle.js"></script>
+		<script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+		<script src="assets/js/scripts.bundle.js"></script>
+		<!--end::Global Theme Bundle-->
+		<!--begin::Page Vendors(used by this page)-->
+		<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+		<!--end::Page Vendors-->
+		<!--begin::Page Scripts(used by this page)-->
+		<script src="assets/js/pages/widgets.js"></script>
+		<!--end::Page Scripts-->
+		
+		<script src="javascript/Dashboard.js"></script>
+		<script> initGUI(); </script>
+	</body>
+	<!--end::Body-->
+</html>

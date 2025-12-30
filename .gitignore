@@ -1,0 +1,22 @@
+# Node
+node_modules/
+
+# Media
+*.mp4
+*.zip
+*.rar
+*.7z
+
+# Uploads
+httpdocs/uploads/
+httpdocs/public/uploads/
+
+# Env
+.env
+.env.*
+
+# Logs / server
+logs/
+tmp/
+.trash/
+error_docs/

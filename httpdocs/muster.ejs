@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!--begin::Head-->
+	<head><base href="">
+		<meta charset="utf-8" />
+		<title>Sansintl</title>
+		<meta name="description" content="Updates and statistics" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<!--begin::Fonts-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<!--end::Fonts-->
+		<!--begin::Page Vendors Styles(used by this page)-->
+		<link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Page Vendors Styles-->
+		<!--begin::Global Theme Styles(used by all pages)-->
+		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Global Theme Styles-->
+		<!--begin::Layout Themes(used by all pages)-->
+		<link href="assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+		<!--end::Layout Themes-->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		
+		<link href="assets/css/main.css" rel="stylesheet" type="text/css" />
+		<script src="javascript/header_footer.js"></script>		
+	</head>
+	<!--end::Head-->
+	<!--begin::Body-->
+	<body id="kt_body" class="quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+	<div id="loadingDiv"><div class="spinner-border" id="loadingDivSym" role="status">
+	  <span class="sr-only">Loading...</span>
+	</div></div>
+		<!--begin::Main-->
+		<!--begin::Header Mobile-->
+		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
+			<!--begin::Logo-->
+			<a href="/">
+				<img alt="Logo" src="images/banner.png" style="height:30px;" />
+			</a>
+			<!--end::Logo-->
+			<!--begin::Toolbar-->
+			<div class="d-flex align-items-center">
+				<!--begin::Aside Mobile Toggle-->
+				<button class="btn p-0 burger-icon burger-icon-left" id="kt_aside_mobile_toggle">
+					<span></span>
+				</button>
+				<!--end::Aside Mobile Toggle-->
+				<!--begin::Topbar Mobile Toggle-->
+				<button class="btn btn-hover-text-primary p-0 ml-3" id="kt_header_mobile_topbar_toggle">
+					<span class="svg-icon svg-icon-xl">
+						<!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<rect x="0" y="0" width="24" height="24"/>
+								<path d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,5 L19,5 L19,9.51471863 L21.4852814,12 L19,14.4852814 L19,19 L14.4852814,19 L11.5857864,21.8994949 L8.6862915,19 L5,19 L5,15.3137085 L1.6862915,12 L5,8.6862915 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,13.6568542 10.3431458,15 12,15 Z" fill="#000000"/>
+							</g>
+						</svg>
+						<!--end::Svg Icon-->
+					</span>
+				</button>
+				<!--end::Topbar Mobile Toggle-->
+			</div>
+			<!--end::Toolbar-->
+		</div>
+		<!--end::Header Mobile-->
+		
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Page-->
+			<div class="d-flex flex-row flex-column-fluid page">
+				
+				<%- include('./header_left.ejs') %>  				
+			
+				<!--begin::Wrapper-->
+				<div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+					
+					<%- include('./header_top.ejs') %>  
+				
+					<!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Subheader-->
+						<div class="subheader py-6 py-lg-8 subheader-transparent" id="kt_subheader">
+							<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+								<!--begin::Info-->
+								<div class="d-flex align-items-center flex-wrap mr-1">
+									<!--begin::Page Heading-->
+									<div class="d-flex align-items-baseline flex-wrap mr-5">
+										<!--begin::Page Title-->
+										<h5 id="header_title_employees" class="text-dark font-weight-bold my-1 mr-5">Employees</h5>
+										<!--end::Page Title-->
+									</div>
+									<!--end::Page Heading-->
+								</div>
+								<!--end::Info-->
+							</div>
+						</div>
+						<!--end::Subheader-->
+						<!--begin::Entry-->
+						<div class="d-flex flex-column-fluid">
+						<div class="container" style="min-height:1000px;">
+						
+							<div class="card card-custom mt-4">
+								<div class="card-header flex-wrap border-0 pt-6 pb-0"></div>
+								<div class="card-body row">	
+										
+									<div class='col-xl-3 col-md-12' id='prIDXSearchDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='prIDXSearch' id='prIDXSearchLabel'></label>
+									   <input class='form-control' type='number' id='prIDXSearch' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' id='frIDXSearchDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='frIDXSearch' id='frIDXSearchLabel'></label>
+									   <input class='form-control' type='number' id='frIDXSearch' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum1_1Search' id='Datum1_1SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum1_1Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum1_2Search' id='Datum1_2SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum1_2Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum2_1Search' id='Datum2_1SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum2_1Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum2_2Search' id='Datum2_2SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum2_2Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum3_1Search' id='Datum3_1SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum3_1Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum3_2Search' id='Datum3_2SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum3_2Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum4_1Search' id='Datum4_1SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum4_1Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum4_2Search' id='Datum4_2SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum4_2Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='StatusSearch' id='StatusSearchLabel'></label>
+									   <select class='form-control' id='StatusSearch'><option value='0'> ---- </option></select>
+									</div></div>
+
+									
+									<%
+									function generateSearchRow(param) {
+										let colClass = "3";
+										if (param == "HomepageEditFloat10" || param == "HomepageEditFloat11") {
+											colClass = "2";
+										}else if (param == "HomepageEditInt1") {
+											colClass = "1";
+										}
+										return colClass;
+									}
+									function generateSearchType(param) {
+										let txt = "text";
+										if (param.indexOf("Int")>0 || param.indexOf("Float")>0) {
+											txt = "number";
+										}else if (param.indexOf("Datum")>=0) {
+											txt = "date";
+										}
+										return txt;
+									}
+									%>
+									<%  [
+										  "HomepageEditString1", "HomepageEditString2", "HomepageEditString3", "HomepageEditString4", "HomepageEditString5",
+										  "HomepageEditString6", "HomepageEditString7", "HomepageEditString8", "HomepageEditString9", "HomepageEditString10",
+										  "HomepageEditString11", "HomepageEditString12", "HomepageEditString13", "HomepageEditString14", "HomepageEditString15",
+										  "HomepageEditString16", "HomepageEditString17", "HomepageEditString18", "HomepageEditString19", "HomepageEditString20",
+										  "HomepageEditString21", "HomepageEditString22", "HomepageEditString23", "HomepageEditString24", "HomepageEditString25",
+										  "HomepageEditString26", "HomepageEditString27", "HomepageEditString28", "HomepageEditString29", "HomepageEditString30",
+										  "HomepageEditString31", "HomepageEditString32", "HomepageEditString33", "HomepageEditString34", "HomepageEditString35",
+										  "HomepageEditString36", "HomepageEditString37", "HomepageEditString38", "HomepageEditString39", "HomepageEditString40",
+										  "HomepageEditString41", "HomepageEditString42", "HomepageEditString43", "HomepageEditString44", "HomepageEditString45",
+										  "HomepageEditString46", "HomepageEditString47", "HomepageEditString48", "HomepageEditString49", "HomepageEditString50",
+
+										  "HomepageEditInt2", "HomepageEditInt3", "HomepageEditInt4", "HomepageEditInt5",
+										  "HomepageEditInt6", "HomepageEditInt7", "HomepageEditInt8", "HomepageEditInt9", "HomepageEditInt10",
+										  "HomepageEditInt11", "HomepageEditInt12", "HomepageEditInt13", "HomepageEditInt14", "HomepageEditInt15",
+										  "HomepageEditInt16", "HomepageEditInt17", "HomepageEditInt18", "HomepageEditInt19", "HomepageEditInt20",
+										  "HomepageEditInt21", "HomepageEditInt22", "HomepageEditInt23", "HomepageEditInt24", "HomepageEditInt25",
+										  "HomepageEditInt26", "HomepageEditInt27", "HomepageEditInt28", "HomepageEditInt29", "HomepageEditInt30",
+										  "HomepageEditInt31", "HomepageEditInt32", "HomepageEditInt33", "HomepageEditInt34", "HomepageEditInt35",
+										  "HomepageEditInt36", "HomepageEditInt37", "HomepageEditInt38", "HomepageEditInt39", "HomepageEditInt40",
+
+										  "HomepageEditFloat1", "HomepageEditFloat2", "HomepageEditFloat3", "HomepageEditFloat4", "HomepageEditFloat5",
+										  "HomepageEditFloat6", "HomepageEditFloat7", "HomepageEditFloat8", "HomepageEditFloat9", "HomepageEditFloat10",
+										  "HomepageEditFloat11", "HomepageEditFloat12", "HomepageEditFloat13", "HomepageEditFloat14", "HomepageEditFloat15",
+										  "HomepageEditFloat16", "HomepageEditFloat17", "HomepageEditFloat18", "HomepageEditFloat19", "HomepageEditFloat20",
+										  "HomepageEditFloat21", "HomepageEditFloat22", "HomepageEditFloat23", "HomepageEditFloat24", "HomepageEditFloat25",
+										  "HomepageEditFloat26", "HomepageEditFloat27", "HomepageEditFloat28", "HomepageEditFloat29", "HomepageEditFloat30",
+										  "HomepageEditFloat31", "HomepageEditFloat32", "HomepageEditFloat33", "HomepageEditFloat34", "HomepageEditFloat35",
+										  "HomepageEditFloat36", "HomepageEditFloat37", "HomepageEditFloat38", "HomepageEditFloat39", "HomepageEditFloat40"
+										]
+									.forEach(function(param) { %>
+									<div class='col-xl-<%= generateSearchRow(param) %> col-md-12' id='<%= param %>SearchDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label id='<%= param %>SearchLabel' for='<%= param %>Search'><%= param %></label>
+									   <input class='form-control' type='<%= generateSearchType(param) %>' id='<%= param %>Search' autocomplete='off'>						   
+									</div></div>
+									<% }) %>
+									<%  [								  
+										  "HomepageEditBIT1", "HomepageEditBIT2", "HomepageEditBIT3", "HomepageEditBIT4", "HomepageEditBIT5",
+										  "HomepageEditBIT6", "HomepageEditBIT7", "HomepageEditBIT8", "HomepageEditBIT9", "HomepageEditBIT10"
+										]
+									.forEach(function(param) { %>
+									<div class='col-xl-<%= generateSearchRow(param) %> col-md-12' id='<%= param %>SearchDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label id='<%= param %>SearchLabel' for='<%= param %>Search'><%= param %></label>
+									   <span class='switch'><label><input type='checkbox' id='<%= param %>Search' /><span></span></label></span>
+									</div></div>
+									<% }) %>
+									
+									<div class='col-xl-3 col-md-12' id='HomepageEditInt1SearchlDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label id='HomepageEditInt1SearchLabel' for='HomepageEditInt1Search'>HomepageEditInt1</label>
+									   <select class='form-control' id='HomepageEditInt1Search' ><option value = '0'> ---- </option></select>
+									</div></div>
+									
+
+									<div class='col-xl-12 col-md-12'>
+									   <div class='form-group'>
+									   <label> </label>
+									   <button id="button_search_vat" type='button' class='btn btn-outline-primary' style='width:100%;' onclick='searchHomepageEdit()'>Search</button>
+									</div></div>
+										
+									</div>
+							</div>
+									
+							<!--begin::Card-->
+							<div class="card card-custom">
+								<div class='card-header flex-wrap border-0 pt-6 pb-0'>
+								<div class='card-title'>
+								<h3 class='card-label' style="width:250px;"><span id="card_label_result" >Result:</span> <span id='ErgebnisSpan'>0</span></h3>
+								</div>
+								<div class="card-toolbar" id="card-toolbar">			
+									<button id="button_add_vat" type='button' class='btn btn-outline-danger' style='width:150px;margin-bottom:5px;' onclick='showNewHomepageEditModal()'>Add</button>
+									&nbsp;&nbsp;
+									<button id="button_export_excel" type='button' class='btn btn-outline-success' style='width:150px;margin-bottom:5px;display:none;' onclick='exportExcel()'>Export Excel</button>
+									&nbsp;&nbsp;		
+									<button id="button_export_pdf" type='button' class='btn btn-outline-warning' style='width:120px;margin-bottom:5px;display:none;' onclick='exportPDF()'>Export PDF</button>
+									&nbsp;&nbsp;
+								</div>
+
+								</div>
+								<div class="card-body" id="tableDiv"></div>
+							</div>
+							<!--end::Card-->
+							
+						</div>
+						<!--end::Container-->
+						</div>
+						<!--end::Entry-->
+					</div>
+					<!--end::Content-->
+									
+				</div>
+				<!--end::Wrapper-->
+			</div>
+			<!--end::Page-->
+		</div>
+		<!--end::Main-->
+		
+		
+		<!-- Modal-->								
+		<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+		<div class='modal-dialog modal-xl' style='width:95%;max-width: none;'>
+		<div class='modal-content'>
+		<div class='modal-header'>
+		<h5 id="modal_title_detail" class='modal-title'>Detail</h5>
+		<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+		<span aria-hidden='true'>×</span>
+		</button>
+		</div>
+		<div class='modal-body'>
+		<div class='form-group'>
+		<div class='checkbox-inline'>
+
+		<div class='col-xl-3 col-md-12' id='prIDXModalDiv' style='display:none;'>
+		   <div class='form-group'>
+		   <label for='prIDXModal' id='prIDXModalLabel'></label>
+		   <input class='form-control' type='text' id='prIDXModal' autocomplete='off'>
+		</div></div>
+		
+		<%
+			function generateModalRow(param) {
+				let colClass = "3";
+				if (param == "HomepageEditFloat10" || param == "HomepageEditFloat11") {
+					colClass = "2";
+				}else if (param == "HomepageEditInt1") {
+					colClass = "1";
+				}
+				return colClass;
+			}
+			function generateModalType(param) {
+				let txt = "text";
+				if (param.indexOf("Int")>0 || param.indexOf("Float")>0) {
+					txt = "number";
+				}else if (param.indexOf("Datum")>=0) {
+					txt = "date";
+				}
+				return txt;
+			}
+			%>
+			<%  [
+				  "HomepageEditString1", "frIDX", "Datum1", "Datum2", "Datum3", "Datum4",
+				  "HomepageEditString2", "HomepageEditString3", "HomepageEditString4", "HomepageEditString5",
+				  "HomepageEditString6", "HomepageEditString7", "HomepageEditString8", "HomepageEditString9", "HomepageEditString10",
+				  "HomepageEditString11", "HomepageEditString12", "HomepageEditString13", "HomepageEditString14", "HomepageEditString15",
+				  "HomepageEditString16", "HomepageEditString17", "HomepageEditString18", "HomepageEditString19", "HomepageEditString20",
+				  "HomepageEditString21", "HomepageEditString22", "HomepageEditString23", "HomepageEditString24", "HomepageEditString25",
+				  "HomepageEditString26", "HomepageEditString27", "HomepageEditString28", "HomepageEditString29", "HomepageEditString30",
+				  "HomepageEditString31", "HomepageEditString32", "HomepageEditString33", "HomepageEditString34", "HomepageEditString35",
+				  "HomepageEditString36", "HomepageEditString37", "HomepageEditString38", "HomepageEditString39", "HomepageEditString40",
+				  "HomepageEditString41", "HomepageEditString42", "HomepageEditString43", "HomepageEditString44", "HomepageEditString45",
+				  "HomepageEditString46", "HomepageEditString47", "HomepageEditString48", "HomepageEditString49", "HomepageEditString50",
+
+				  "HomepageEditInt2", "HomepageEditInt3", "HomepageEditInt4", "HomepageEditInt5",
+				  "HomepageEditInt6", "HomepageEditInt7", "HomepageEditInt8", "HomepageEditInt9", "HomepageEditInt10",
+				  "HomepageEditInt11", "HomepageEditInt12", "HomepageEditInt13", "HomepageEditInt14", "HomepageEditInt15",
+				  "HomepageEditInt16", "HomepageEditInt17", "HomepageEditInt18", "HomepageEditInt19", "HomepageEditInt20",
+				  "HomepageEditInt21", "HomepageEditInt22", "HomepageEditInt23", "HomepageEditInt24", "HomepageEditInt25",
+				  "HomepageEditInt26", "HomepageEditInt27", "HomepageEditInt28", "HomepageEditInt29", "HomepageEditInt30",
+				  "HomepageEditInt31", "HomepageEditInt32", "HomepageEditInt33", "HomepageEditInt34", "HomepageEditInt35",
+				  "HomepageEditInt36", "HomepageEditInt37", "HomepageEditInt38", "HomepageEditInt39", "HomepageEditInt40",
+
+				  "HomepageEditFloat1", "HomepageEditFloat2", "HomepageEditFloat3", "HomepageEditFloat4", "HomepageEditFloat5",
+				  "HomepageEditFloat6", "HomepageEditFloat7", "HomepageEditFloat8", "HomepageEditFloat9", "HomepageEditFloat10",
+				  "HomepageEditFloat11", "HomepageEditFloat12", "HomepageEditFloat13", "HomepageEditFloat14", "HomepageEditFloat15",
+				  "HomepageEditFloat16", "HomepageEditFloat17", "HomepageEditFloat18", "HomepageEditFloat19", "HomepageEditFloat20",
+				  "HomepageEditFloat21", "HomepageEditFloat22", "HomepageEditFloat23", "HomepageEditFloat24", "HomepageEditFloat25",
+				  "HomepageEditFloat26", "HomepageEditFloat27", "HomepageEditFloat28", "HomepageEditFloat29", "HomepageEditFloat30",
+				  "HomepageEditFloat31", "HomepageEditFloat32", "HomepageEditFloat33", "HomepageEditFloat34", "HomepageEditFloat35",
+				  "HomepageEditFloat36", "HomepageEditFloat37", "HomepageEditFloat38", "HomepageEditFloat39", "HomepageEditFloat40"
+				]
+			.forEach(function(param) { %>
+			<div class='col-xl-<%= generateModalRow(param) %> col-md-12' id='<%= param %>ModalDiv' style='display:none;'>
+			   <div class='form-group'>
+			   <label id='<%= param %>ModalLabel' for='<%= param %>Modal'><%= param %></label>
+			   <input class='form-control' type='<%= generateModalType(param)%>' id='<%= param %>Modal' autocomplete='off'>						   
+			</div></div>
+			<% }) %>
+			<%  [								  
+				  "HomepageEditBIT1", "HomepageEditBIT2", "HomepageEditBIT3", "HomepageEditBIT4", "HomepageEditBIT5",
+				  "HomepageEditBIT6", "HomepageEditBIT7", "HomepageEditBIT8", "HomepageEditBIT9", "HomepageEditBIT10"
+				]
+			.forEach(function(param) { %>
+			<div class='col-xl-<%= generateModalRow(param) %> col-md-12' id='<%= param %>ModalDiv' style='display:none;'>
+			   <div class='form-group'>
+			   <label id='<%= param %>ModalLabel' for='<%= param %>Modal'><%= param %></label>
+			   <span class='switch'><label><input type='checkbox' id='<%= param %>Modal' /><span></span></label></span>
+			</div></div>
+			<% }) %>
+			
+			<div class='col-xl-3 col-md-12' id='HomepageEditInt1ModalDiv'>
+			   <div class='form-group'>
+			   <label id='HomepageEditInt1ModalLabel' for='HomepageEditInt1Modal'>HomepageEditInt1</label>
+			   <select class='form-control' id='HomepageEditInt1Modal' ><option value = '0'> ---- </option></select>
+			</div></div>
+			
+			<div class='col-xl-3 col-md-12'>
+			   <div class='form-group'>
+			   <label for='StatusModal' id='StatusModalLabel'></label>
+			   <select class='form-control' id='StatusModal'><option value='0'> ---- </option></select>
+			</div></div>
+			
+		
+		</div>
+		</div>
+		</div>
+		<div class='modal-footer'>
+		<button id="button_modal_close" type='button' class='btn btn-outline-secondary' style='width:120px;' data-dismiss='modal'>Close</button>
+		<button id="button_modal_save" type='button' class='btn btn-outline-success' style='width:120px;' onclick='saveHomepageEdit()'>Save</button>
+
+		</div>
+		</div>
+		</div>
+		</div>
+		
+		<!-- Modal-->								
+		<div class='modal fade' id='exampleNewModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+		<div class='modal-dialog modal-md'>
+		<div class='modal-content'>
+		<div class='modal-header'>
+		<h5 id="modal_title_add_new" class='modal-title'>Add new</h5>
+		<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+		<span aria-hidden='true'>×</span>
+		</button>
+		</div>
+		<div class='modal-body'>
+		<div class='form-group'>
+		<div class='checkbox-inline'>
+
+		<%
+		function generateNewRow(param) {
+			let colClass = "12";
+			if (param == "HomepageEditFloat10" || param == "HomepageEditFloat11") {
+				colClass = "6";
+			}else if (param == "HomepageEditInt1") {
+				colClass = "6";
+			}
+			return colClass;
+		}
+		function generateNewType(param) {
+			let txt = "text";
+			if (param.indexOf("Int")>0 || param.indexOf("Float")>0) {
+				txt = "number";
+			}else if (param.indexOf("Datum")>=0) {
+				txt = "date";
+			}
+			return txt;
+		}
+		%>
+		<%  ["HomepageEditString1", "HomepageEditString2", "HomepageEditString3"]
+		.forEach(function(param) { %>
+		<div class='col-xl-<%= generateNewRow(param) %> col-md-12' id='<%= param %>NewDiv'>
+		   <div class='form-group'>
+		   <label id='<%= param %>NewLabel' for='<%= param %>New'><%= param %></label>
+		   <input class='form-control' type='<%=generateNewType(param)%>' id='<%= param %>New' autocomplete='off'>							   
+		</div></div>
+		<% }) %>
+		
+		</div>
+		</div>
+		</div>
+		<div class='modal-footer'>
+		<button id="button_add_close" type='button' class='btn btn-outline-secondary' data-dismiss='modal'>Close</button>
+		<button id="button_add_save" type='button' class='btn btn-outline-success' onclick='saveNewHomepageEdit()'>Save</button>
+		</div>
+		</div>
+		</div>
+		</div>
+		
+		
+		<script>
+			languageInnerHTMLArr.push(new languageObj("header_title_employees", "HomepageEdit", "Startseite bearbeiten", "Modifier la page d’accueil", "主页编辑"));
+
+		</script>	
+		<%- include('./footer.ejs') %>  	
+		
+		
+		<!--begin::Global Theme Bundle(used by all pages)-->
+		<script src="assets/plugins/global/plugins.bundle.js"></script>
+		<script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+		<script src="assets/js/scripts.bundle.js"></script>
+		<!--end::Global Theme Bundle-->
+		<!--begin::Page Vendors(used by this page)-->
+		<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+		<!--end::Page Vendors-->
+		<!--begin::Page Scripts(used by this page)-->
+		<script src="assets/js/pages/widgets.js"></script>
+		<!--end::Page Scripts-->
+		
+		<script src="javascript/HomepageEdit.js"></script>
+		<script> initGUI(); </script>
+	</body>
+	<!--end::Body-->
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html class="no-js layout__7" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Laaver</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+
+        <!-- CSS here -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/animate.min.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/all.min.css">
+        <link rel="stylesheet" href="css/futura-std-4.css">
+        <link rel="stylesheet" href="css/slick.css">
+        <link rel="stylesheet" href="css/style.css">
+
+		<script src="javascript/header_footer.js "></script>
+</head>
+
+
+<body>
+
+
+    <main class="main_wrapper body__overlay overflow__hidden">
+
+		<%- include('./header.ejs') %>       
+		
+		<!-- about__section__start -->
+		<div class="about" style="margin:50px 0 50px 0;">
+			<div class="container" style="margin-bottom:50px;">
+				<div class="row align-items-center">
+					<div class="col-12">
+						
+						<div id="lc-text"></div>
+						<script>
+						  fetch(`https://app.cockpit.legal/api/cockpit/resources/legaldocumentshare/f982cba0192a8ef8fb66f64bedd4a264/document/render/html?language=de`)
+						  .then((result) => { return result.text(); })
+						  .then((content) => {
+							document.getElementById("lc-text").innerHTML = content
+						  });
+						</script>
+						<noscript>
+						  Sie können diesen Rechtstext nicht sehen, weil Sie JavaScript deaktiviert haben.
+						  Folgen Sie bitte diesem
+						  <a target="_blank" href="https://app.cockpit.legal/api/cockpit/resources/legaldocumentshare/f982cba0192a8ef8fb66f64bedd4a264/document/render/html?language=de">Link</a>,
+						  um den Rechtstext anzuzeigen.
+						</noscript>
+
+						
+					</div>					
+				</div>
+			</div>
+		</div>
+        <!-- about__section__end -->
+		
+		<script>
+
+		</script>
+
+	    <%- include('./footer.ejs') %>     
+
+	</main>
+
+    <!-- JS here -->
+    <script src="js/vendor/modernizr-3.5.0.min.js "></script>
+    <script src="js/vendor/jquery-3.6.0.min.js "></script>
+	
+    <script src="js/popper.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/isotope.pkgd.min.js "></script>
+    <script src="js/one-page-nav-min.js "></script>
+    <script src="js/slick.min.js "></script>
+    <script src="js/jquery.meanmenu.min.js "></script>
+    <script src="js/ajax-form.js "></script>
+    <script src="js/wow.min.js "></script>
+    <script src="js/jquery.scrollUp.min.js "></script>
+    <script src="js/imagesloaded.pkgd.min.js "></script>
+    <script src="js/jquery.magnific-popup.min.js "></script>
+    <script src="js/waypoints.min.js "></script>
+    <script src="js/jquery.counterup.min.js "></script>
+    <script src="js/fontawesome.min.js "></script>
+    <script src="js/plugins.js "></script>
+    <script src="js/main.js "></script>
+	
+
+</body>
+
+</html>

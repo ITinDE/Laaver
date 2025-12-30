@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!--begin::Head-->
+	<head><base href="">
+		<meta charset="utf-8" />
+		<title>laaver</title>
+		<meta name="description" content="Updates and statistics" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<!--begin::Fonts-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<!--end::Fonts-->
+		<!--begin::Page Vendors Styles(used by this page)-->
+		<link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Page Vendors Styles-->
+		<!--begin::Global Theme Styles(used by all pages)-->
+		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Global Theme Styles-->
+		<!--begin::Layout Themes(used by all pages)-->
+		<link href="assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+		<!--end::Layout Themes-->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		
+		<link href="assets/css/main.css" rel="stylesheet" type="text/css" />
+		<script src="javascript/header_footer.js"></script>		
+	</head>
+	<!--end::Head-->
+	<!--begin::Body-->
+	<body id="kt_body" class="quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+	<div id="loadingDiv"><div class="spinner-border" id="loadingDivSym" role="status">
+	  <span class="sr-only">Loading...</span>
+	</div></div>
+		<!--begin::Main-->
+		<!--begin::Header Mobile-->
+		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
+			<!--begin::Logo-->
+			<a href="/">
+				<img alt="Logo" src="images/banner.png" style="height:30px;" />
+			</a>
+			<!--end::Logo-->
+			<!--begin::Toolbar-->
+			<div class="d-flex align-items-center">
+				<!--begin::Aside Mobile Toggle-->
+				<button class="btn p-0 burger-icon burger-icon-left" id="kt_aside_mobile_toggle">
+					<span></span>
+				</button>
+				<!--end::Aside Mobile Toggle-->
+				<!--begin::Topbar Mobile Toggle-->
+				<button class="btn btn-hover-text-primary p-0 ml-3" id="kt_header_mobile_topbar_toggle">
+					<span class="svg-icon svg-icon-xl">
+						<!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<rect x="0" y="0" width="24" height="24"/>
+								<path d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,5 L19,5 L19,9.51471863 L21.4852814,12 L19,14.4852814 L19,19 L14.4852814,19 L11.5857864,21.8994949 L8.6862915,19 L5,19 L5,15.3137085 L1.6862915,12 L5,8.6862915 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,13.6568542 10.3431458,15 12,15 Z" fill="#000000"/>
+							</g>
+						</svg>
+						<!--end::Svg Icon-->
+					</span>
+				</button>
+				<!--end::Topbar Mobile Toggle-->
+			</div>
+			<!--end::Toolbar-->
+		</div>
+		<!--end::Header Mobile-->
+		
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Page-->
+			<div class="d-flex flex-row flex-column-fluid page">
+				
+				<%- include('./header_left.ejs') %>  				
+			
+				<!--begin::Wrapper-->
+				<div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+					
+					<%- include('./header_top.ejs') %>  
+				
+					<!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Subheader-->
+						<div class="subheader py-6 py-lg-8 subheader-transparent" id="kt_subheader">
+							<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+								<!--begin::Info-->
+								<div class="d-flex align-items-center flex-wrap mr-1">
+									<!--begin::Page Heading-->
+									<div class="d-flex align-items-baseline flex-wrap mr-5">
+										<!--begin::Page Title-->
+										<h5 class="text-dark font-weight-bold my-1 mr-5" id="product_manage_title">产品管理</h5>
+										<!--end::Page Title-->
+									</div>
+									<!--end::Page Heading-->
+								</div>
+								<!--end::Info-->
+							</div>
+						</div>
+						<!--end::Subheader-->
+						<!--begin::Entry-->
+						<div class="d-flex flex-column-fluid">
+						<div class="container" style="min-height:1000px;">
+						
+							<div class="card card-custom mt-4">
+								<div class="card-header flex-wrap border-0 pt-6 pb-0"></div>
+								<div class="card-body row">	
+										
+									<div class='col-xl-3 col-md-12' id='prIDXSearchDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='prIDXSearch' id='prIDXSearchLabel'></label>
+									   <input class='form-control' type='number' id='prIDXSearch' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' id='frIDXSearchDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='frIDXSearch' id='frIDXSearchLabel'></label>
+									   <input class='form-control' type='number' id='frIDXSearch' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum1_1Search' id='Datum1_1SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum1_1Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum1_2Search' id='Datum1_2SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum1_2Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum2_1Search' id='Datum2_1SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum2_1Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum2_2Search' id='Datum2_2SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum2_2Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum3_1Search' id='Datum3_1SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum3_1Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum3_2Search' id='Datum3_2SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum3_2Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum4_1Search' id='Datum4_1SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum4_1Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='Datum4_2Search' id='Datum4_2SearchLabel'></label>
+									   <input class='form-control' type='date' id='Datum4_2Search' autocomplete='off'>
+									</div></div>
+
+									<div class='col-xl-3 col-md-12' style='display:none;'>
+									   <div class='form-group'>
+									   <label for='StatusSearch' id='StatusSearchLabel'></label>
+									   <select class='form-control' id='StatusSearch'><option value='0'> ---- </option></select>
+									</div></div>
+
+									
+									<%
+									function generateSearchRow(param) {
+										let colClass = "3";
+										if (param == "ProduktFloat10" || param == "ProduktFloat11") {
+											colClass = "2";
+										}else if (param == "ProduktInt1") {
+											colClass = "3";
+										}
+										return colClass;
+									}
+									function generateSearchType(param) {
+										let txt = "text";
+										if (param.indexOf("Int")>0 || param.indexOf("Float")>0) {
+											txt = "number";
+										}else if (param.indexOf("Datum")>=0) {
+											txt = "date";
+										}
+										return txt;
+									}
+									%>
+									<%  [
+										  "ProduktString1", "ProduktString2", "ProduktString3", "ProduktString4", "ProduktString5",
+										  "ProduktString6", "ProduktString7", "ProduktString8", "ProduktString9", "ProduktString10",
+										  "ProduktString11", "ProduktString12", "ProduktString13", "ProduktString14", "ProduktString15",
+										  "ProduktString16", "ProduktString17", "ProduktString18", "ProduktString19", "ProduktString20",
+										  "ProduktString21", "ProduktString22", "ProduktString23", "ProduktString24", "ProduktString25",
+										  "ProduktString26", "ProduktString27", "ProduktString28", "ProduktString29", "ProduktString30",
+										  "ProduktString31", "ProduktString32", "ProduktString33", "ProduktString34", "ProduktString35",
+										  "ProduktString36", "ProduktString37", "ProduktString38", "ProduktString39", "ProduktString40",
+										  "ProduktString41", "ProduktString42", "ProduktString43", "ProduktString44", "ProduktString45",
+										  "ProduktString46", "ProduktString47", "ProduktString48", "ProduktString49", "ProduktString50",
+
+										  "ProduktInt4", "ProduktInt5",
+										  "ProduktInt6", "ProduktInt7", "ProduktInt8", "ProduktInt9", "ProduktInt10",
+										  "ProduktInt11", "ProduktInt12", "ProduktInt13", "ProduktInt14", "ProduktInt15",
+										  "ProduktInt16", "ProduktInt17", "ProduktInt18", "ProduktInt19", "ProduktInt20",
+										  "ProduktInt21", "ProduktInt22", "ProduktInt23", "ProduktInt24", "ProduktInt25",
+										  "ProduktInt26", "ProduktInt27", "ProduktInt28", "ProduktInt29", "ProduktInt30",
+										  "ProduktInt31", "ProduktInt32", "ProduktInt33", "ProduktInt34", "ProduktInt35",
+										  "ProduktInt36", "ProduktInt37", "ProduktInt38", "ProduktInt39", "ProduktInt40",
+
+										  "ProduktFloat1", "ProduktFloat2", "ProduktFloat3", "ProduktFloat4", "ProduktFloat5",
+										  "ProduktFloat6", "ProduktFloat7", "ProduktFloat8", "ProduktFloat9", "ProduktFloat10",
+										  "ProduktFloat11", "ProduktFloat12", "ProduktFloat13", "ProduktFloat14", "ProduktFloat15",
+										  "ProduktFloat16", "ProduktFloat17", "ProduktFloat18", "ProduktFloat19", "ProduktFloat20",
+										  "ProduktFloat21", "ProduktFloat22", "ProduktFloat23", "ProduktFloat24", "ProduktFloat25",
+										  "ProduktFloat26", "ProduktFloat27", "ProduktFloat28", "ProduktFloat29", "ProduktFloat30",
+										  "ProduktFloat31", "ProduktFloat32", "ProduktFloat33", "ProduktFloat34", "ProduktFloat35",
+										  "ProduktFloat36", "ProduktFloat37", "ProduktFloat38", "ProduktFloat39", "ProduktFloat40"
+										]
+									.forEach(function(param) { %>
+									<div class='col-xl-<%= generateSearchRow(param) %> col-md-12' id='<%= param %>SearchDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label id='<%= param %>SearchLabel' for='<%= param %>Search'><%= param %></label>
+									   <input class='form-control' type='<%= generateSearchType(param) %>' id='<%= param %>Search' autocomplete='off'>						   
+									</div></div>
+									<% }) %>
+									<%  [								  
+										  "ProduktBIT1", "ProduktBIT2", "ProduktBIT3", "ProduktBIT4", "ProduktBIT5",
+										  "ProduktBIT6", "ProduktBIT7", "ProduktBIT8", "ProduktBIT9", "ProduktBIT10"
+										]
+									.forEach(function(param) { %>
+									<div class='col-xl-<%= generateSearchRow(param) %> col-md-12' id='<%= param %>SearchDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label id='<%= param %>SearchLabel' for='<%= param %>Search'><%= param %></label>
+									   <span class='switch'><label><input type='checkbox' id='<%= param %>Search' /><span></span></label></span>
+									</div></div>
+									<% }) %>
+									
+									<div class='col-xl-3 col-md-12' id='ProduktInt1SearchlDiv'>
+									   <div class='form-group'>
+									   <label id='ProduktInt1SearchLabel' for='ProduktInt1Search'>ProduktInt1</label>
+									   <select class='form-control' id='ProduktInt1Search' ><option value = '0'> ---- </option></select>
+									</div></div>
+									
+									<div class='col-xl-3 col-md-12' id='ProduktInt2SearchlDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label id='ProduktInt2SearchLabel' for='ProduktInt2Search'>ProduktInt1</label>
+									   <select class='form-control' id='ProduktInt2Search' ><option value = '0'> ---- </option></select>
+									</div></div>
+									
+									<div class='col-xl-3 col-md-12' id='ProduktInt3SearchlDiv' style='display:none;'>
+									   <div class='form-group'>
+									   <label id='ProduktInt3SearchLabel' for='ProduktInt3Search'>ProduktInt1</label>
+									   <select class='form-control' id='ProduktInt3Search' ><option value = '0'> ---- </option></select>
+									</div></div>
+									
+
+									<div class='col-xl-12 col-md-12'>
+									   <div class='form-group'>
+									   <label> </label>
+									   <button id="button_search_vat" type='button' class='btn btn-outline-primary' style='width:100%;' onclick='searchProdukt()'>Search</button>
+									</div></div>
+										
+									</div>
+							</div>
+									
+							<!--begin::Card-->
+							<div class="card card-custom">
+								<div class='card-header flex-wrap border-0 pt-6 pb-0'>
+								<div class='card-title'>
+								<h3 class='card-label' style="width:250px;"><span id="card_label_result" >Result:</span> <span id='ErgebnisSpan'>0</span></h3>
+								</div>
+								<div class="card-toolbar" id="card-toolbar">												
+									<button id="button_export_excel" type='button' class='btn btn-outline-success' style='width:150px;margin-bottom:5px;display:none;' onclick='exportExcel()'>Export Excel</button>
+									&nbsp;&nbsp;		
+									<button id="button_export_pdf" type='button' class='btn btn-outline-warning' style='width:150px;margin-bottom:5px;display:none;' onclick='exportPDF()'>Export PDF</button>
+									&nbsp;&nbsp;
+									<button id="button_add_vat" type='button' class='btn btn-outline-danger' style='width:150px;margin-bottom:5px;' onclick='showNewProduktModal()'>Add</button>
+									&nbsp;&nbsp;
+									<button id="button_export_product" type='button' class='btn btn-outline-warning' style='width:150px;margin-bottom:5px;' onclick='shotImportProductModal()'>Product import</button>
+									&nbsp;&nbsp;
+								</div>
+
+								</div>
+								<div class="card-body" id="tableDiv"></div>
+							</div>
+							<!--end::Card-->
+							
+						</div>
+						<!--end::Container-->
+						</div>
+						<!--end::Entry-->
+					</div>
+					<!--end::Content-->
+									
+				</div>
+				<!--end::Wrapper-->
+			</div>
+			<!--end::Page-->
+		</div>
+		<!--end::Main-->
+		
+		
+		<!-- Modal-->								
+		<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+		<div class='modal-dialog modal-xl' style='width:95%;max-width: none;'>
+		<div class='modal-content'>
+		<div class='modal-header'>
+		<h5 id="modal_title_detail" class='modal-title'>Detail</h5>
+		<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+		<span aria-hidden='true'>×</span>
+		</button>
+		</div>
+		<div class='modal-body'>
+		<div class='form-group'>
+		<div class='checkbox-inline'>
+
+		<div class='col-xl-3 col-md-12' id='prIDXModalDiv' style='display:none;'>
+		   <div class='form-group'>
+		   <label for='prIDXModal' id='prIDXModalLabel'></label>
+		   <input class='form-control' type='text' id='prIDXModal' autocomplete='off'>
+		</div></div>
+		
+		<%
+			function generateModalRow(param) {
+				let colClass = "3";
+				if (param == "ProduktString8") {
+					colClass = "12";
+				}else if (param == "ProduktString2" || param == "ProduktString3" || param == "ProduktString4" || param == "ProduktString5") {
+					colClass = "6";
+				}
+				return colClass;
+			}
+			function generateModalType(param) {
+				let txt = "text";
+				if (param.indexOf("Int")>0 || param.indexOf("Float")>0) {
+					txt = "number";
+				}else if (param.indexOf("Datum")>=0) {
+					txt = "date";
+				}
+				return txt;
+			}
+			%>
+			<%  [
+				  "frIDX", "Datum1", "Datum2", "Datum3", "Datum4", "Status", "ProduktString12",
+				  "ProduktString1", "ProduktString2", "ProduktString3", "ProduktString4", "ProduktString5",
+				  "ProduktString6", "ProduktString7", "ProduktString8", "ProduktString9", "ProduktString10",
+				  "ProduktString11", "ProduktString13", "ProduktString14", "ProduktString15",
+				  "ProduktString16", "ProduktString17", "ProduktString18", "ProduktString19", "ProduktString20",
+				  "ProduktString21", "ProduktString22", "ProduktString23", "ProduktString24", "ProduktString25",
+				  "ProduktString26", "ProduktString27", "ProduktString28", "ProduktString29", "ProduktString30",
+				  "ProduktString31", "ProduktString32", "ProduktString33", "ProduktString34", "ProduktString35",
+				  "ProduktString36", "ProduktString37", "ProduktString38", "ProduktString39", "ProduktString40",
+				  "ProduktString41", "ProduktString42", "ProduktString43", "ProduktString44", "ProduktString45",
+				  "ProduktString46", "ProduktString47", "ProduktString48", "ProduktString49", "ProduktString50",
+
+				  "ProduktInt4", "ProduktInt5",
+				  "ProduktInt6", "ProduktInt7", "ProduktInt8", "ProduktInt9", "ProduktInt10",
+				  "ProduktInt11", "ProduktInt12", "ProduktInt13", "ProduktInt14", "ProduktInt15",
+				  "ProduktInt16", "ProduktInt17", "ProduktInt18", "ProduktInt19", "ProduktInt20",
+				  "ProduktInt21", "ProduktInt22", "ProduktInt23", "ProduktInt24", "ProduktInt25",
+				  "ProduktInt26", "ProduktInt27", "ProduktInt28", "ProduktInt29", "ProduktInt30",
+				  "ProduktInt31", "ProduktInt32", "ProduktInt33", "ProduktInt34", "ProduktInt35",
+				  "ProduktInt36", "ProduktInt37", "ProduktInt38", "ProduktInt39", "ProduktInt40",
+
+				  "ProduktFloat1", "ProduktFloat2", "ProduktFloat3", "ProduktFloat4", "ProduktFloat5",
+				  "ProduktFloat6", "ProduktFloat7", "ProduktFloat8", "ProduktFloat9", "ProduktFloat10",
+				  "ProduktFloat11", "ProduktFloat12", "ProduktFloat13", "ProduktFloat14", "ProduktFloat15",
+				  "ProduktFloat16", "ProduktFloat17", "ProduktFloat18", "ProduktFloat19", "ProduktFloat20",
+				  "ProduktFloat21", "ProduktFloat22", "ProduktFloat23", "ProduktFloat24", "ProduktFloat25",
+				  "ProduktFloat26", "ProduktFloat27", "ProduktFloat28", "ProduktFloat29", "ProduktFloat30",
+				  "ProduktFloat31", "ProduktFloat32", "ProduktFloat33", "ProduktFloat34", "ProduktFloat35",
+				  "ProduktFloat36", "ProduktFloat37", "ProduktFloat38", "ProduktFloat39", "ProduktFloat40"
+				]
+			.forEach(function(param) { 
+				if(param=="Status"){
+			%>
+			<div class='col-xl-3 col-md-12'>
+			   <div class='form-group'>
+			   <label for='StatusModal' id='StatusModalLabel'></label>
+			   <select class='form-control' id='StatusModal'><option value='0'> ---- </option></select>
+			</div></div>				
+			<%
+				}else if(param=="ProduktString21" ){
+			%>
+			<div class='col-xl-6 col-md-12'>
+			   <div class='form-group'>
+			   <label for='ProduktString21Modal' id='ProduktString21ModalLabel'></label>
+			   <textarea class='form-control' id='ProduktString21Modal' style='height:200px;'></textarea>
+			</div></div>
+			<%
+				}else if(param=="ProduktString22" ){
+			%>
+			<div class='col-xl-6 col-md-12'>
+			   <div class='form-group'>
+			   <label for='ProduktString22Modal' id='ProduktString22ModalLabel'></label>
+			   <textarea class='form-control' id='ProduktString22Modal' style='height:200px;'></textarea>
+			</div></div>	
+			<%
+				}else if(param=="ProduktString23" ){
+			%>
+			<div class='col-xl-6 col-md-12'>
+			   <div class='form-group'>
+			   <label for='ProduktString23Modal' id='ProduktString23ModalLabel'></label>
+			   <textarea class='form-control' id='ProduktString23Modal' style='height:200px;'></textarea>
+			</div></div>
+			<%
+				}else if(param=="ProduktString24" ){
+			%>
+			<div class='col-xl-6 col-md-12'>
+			   <div class='form-group'>
+			   <label for='ProduktString24Modal' id='ProduktString24ModalLabel'></label>
+			   <textarea class='form-control' id='ProduktString24Modal' style='height:200px;'></textarea>
+			</div></div>
+			<%
+				}else if(param=="ProduktString25" ){
+			%>
+			<div class='col-xl-6 col-md-12'>
+			   <div class='form-group'>
+			   <label for='ProduktString25Modal' id='ProduktString25ModalLabel'></label>
+			   <textarea class='form-control' id='ProduktString25Modal' style='height:200px;'></textarea>
+			</div></div>
+			<%
+				}else if(param=="ProduktString26" ){
+			%>
+			<div class='col-xl-6 col-md-12'>
+			   <div class='form-group'>
+			   <label for='ProduktString26Modal' id='ProduktString26ModalLabel'></label>
+			   <textarea class='form-control' id='ProduktString26Modal' style='height:200px;'></textarea>
+			</div></div>
+			<%
+				}else if(param=="ProduktString27" ){
+			%>
+			<div class='col-xl-6 col-md-12'>
+			   <div class='form-group'>
+			   <label for='ProduktString27Modal' id='ProduktString27ModalLabel'></label>
+			   <textarea class='form-control' id='ProduktString27Modal' style='height:200px;'></textarea>
+			</div></div>
+			<%
+				}else if(param=="ProduktString28" ){
+			%>
+			<div class='col-xl-6 col-md-12'>
+			   <div class='form-group'>
+			   <label for='ProduktString28Modal' id='ProduktString28ModalLabel'></label>
+			   <textarea class='form-control' id='ProduktString28Modal' style='height:200px;'></textarea>
+			</div></div>
+			<%
+				}else{			
+			%>
+			<div class='col-xl-<%= generateModalRow(param) %> col-md-12' id='<%= param %>ModalDiv' style='display:none;'>
+			   <div class='form-group'>
+			   <label id='<%= param %>ModalLabel' for='<%= param %>Modal'><%= param %></label>
+			   <input class='form-control' type='<%= generateModalType(param)%>' id='<%= param %>Modal' autocomplete='off'>						   
+			</div></div>
+			<% }}) %>
+			<%  [								  
+				  "ProduktBIT1", "ProduktBIT2", "ProduktBIT3", "ProduktBIT4", "ProduktBIT5",
+				  "ProduktBIT6", "ProduktBIT7", "ProduktBIT8", "ProduktBIT9", "ProduktBIT10"
+				]
+			.forEach(function(param) { %>
+			<div class='col-xl-<%= generateModalRow(param) %> col-md-12' id='<%= param %>ModalDiv' style='display:none;'>
+			   <div class='form-group'>
+			   <label id='<%= param %>ModalLabel' for='<%= param %>Modal'><%= param %></label>
+			   <span class='switch'><label><input type='checkbox' id='<%= param %>Modal' /><span></span></label></span>
+			</div></div>
+			<% }) %>
+			
+			<div class='col-xl-3 col-md-12' id='ProduktInt1ModalDiv'>
+			   <div class='form-group'>
+			   <label id='ProduktInt1ModalLabel' for='ProduktInt1Modal'>ProduktInt1</label>
+			   <select class='form-control' id='ProduktInt1Modal' ><option value = '0'> ---- </option></select>
+			</div></div>
+			
+			<div class='col-xl-3 col-md-12' id='ProduktInt2ModalDiv'>
+			   <div class='form-group'>
+			   <label id='ProduktInt2ModalLabel' for='ProduktInt2Modal'>ProduktInt2</label>
+			   <select class='form-control' id='ProduktInt2Modal' ><option value = '0'> ---- </option></select>
+			</div></div>
+			
+			<div class='col-xl-3 col-md-12' id='ProduktInt3ModalDiv'>
+			   <div class='form-group'>
+			   <label id='ProduktInt3ModalLabel' for='ProduktInt3Modal'>ProduktInt3</label>
+			   <select class='form-control' id='ProduktInt3Modal' ><option value = '0'> ---- </option></select>
+			</div></div>
+			
+			<div class='col-12'><hr/></div>
+			
+			<div class='col-12' id='AttributeEinzelMainDiv' style='display:none;'>
+			<div class='row'>
+			
+				<div class='col-xl-12 col-md-12 row' style="margin-top:15px;">
+				  <div class='col-xl-12 col-md-6' id="product_attribute_label" style="font-size:16px;margin-bottom:10px;line-height: 35px;">产品属性</div>
+
+				  <div class='col-xl-3 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeName1Input' placeholder="产品属性名" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-3 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeName2Input' placeholder="产品属性名" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-3 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeName3Input' placeholder="产品属性名" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-3 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeName4Input' placeholder="产品属性名" autocomplete='off'>
+				  </div>
+				  
+
+				  <div class='col-xl-4 col-md-6' style="margin-bottom:10px;">
+					<span class='switch'>
+					  <label style='font-size:16px;' id="label_price_affect">决定价格</label>&nbsp;&nbsp;
+					  <label>
+						<input type='checkbox' id='ProduktAliAttributeBIT1Input' />
+						<span></span>
+					  </label>
+					</span>
+				  </div>
+				  
+				  <div class='col-xl-4 col-md-6' id="save_warn_tip" style="font-size:12px;margin-bottom:10px;color:red;line-height: 35px;">保存后不能更改或删除</div>
+
+				  <div class='col-xl-4 col-md-6' style="margin-bottom:10px;">
+					<button type='button' class='btn btn-info' style='width:100%;' id='saveProduktAttributeButton' onclick='saveProduktAttribute()'>新增属性</button>
+				  </div>
+
+				  <div class='col-12' style="margin-bottom:10px;">&nbsp;</div>
+				  
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue1_1Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue2_1Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue3_1Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue4_1Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue5_1Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue6_1Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue1_2Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue2_2Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue3_2Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue4_2Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue5_2Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue6_2Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue1_3Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue2_3Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue3_3Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue4_3Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue5_3Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue6_3Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue1_4Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue2_4Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue3_4Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue4_4Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue5_4Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+				  <div class='col-xl-2 col-md-6' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktAttributeValue6_4Input' placeholder="产品属性值" autocomplete='off'>
+				  </div>
+
+				  <div class='col-xl-12 col-md-12' style="margin:15px;padding:10px;border:1px solid #EEE;border-radius:5px;" id='ProduktAttributeDiv'></div>
+				</div>
+
+				<div class='col-xl-12 col-md-12 row' id='ProduktEinzelDiv' style="display:none;">
+				  <div class='col-xl-12 col-md-12' id='ProduktEinzelOptionDiv' style='margin-bottom:15px;'></div>
+
+				  <div class='col-xl-5 col-md-12' style="margin-bottom:10px;">
+					<input class='form-control' type='text' id='ProduktEinzelASINInput' placeholder="ASIN" autocomplete='off'>
+				  </div>
+
+				  <div class='col-xl-4 col-md-12' style="margin-bottom:10px;">
+					<input class='form-control' type='number' id='ProduktEinzelPreisInput' placeholder="售价" autocomplete='off'>
+				  </div>
+
+				  <div class='col-xl-3 col-md-12' style="margin-bottom:10px;display:none;">
+					<input class='form-control' type='number' id='ProduktEinzelAngebotInput' placeholder="特价" autocomplete='off'>
+				  </div>
+
+				  <div class='col-xl-3 col-md-12' style="margin-bottom:10px;">
+					<button type='button' class='btn btn-warning' style='width:100%;' id='saveProduktEinzelButton' onclick='saveProduktEinzel()'>新增产品</button>
+				  </div>
+
+				  <div class='col-xl-12 col-md-12'><hr/></div>
+				</div>
+				
+				<div class='col-xl-12 col-md-12' id='ProduktTableDiv' style="margin-bottom:30px;"></div>
+			
+			</div>
+			</div>
+			
+			<div class='col-xl-12 col-md-12'><hr/></div>
+			<div class='col-xl-4 col-md-12'>		   
+			  <div>
+				<h5 id="upload_title_pdf">PDF上传</h5>
+				<input class='form-control' type='text' id='filePDFName' placeholder="显示名称" autocomplete='off'><br/>
+				<input type="file" id="fileInputPDF" multiple>														
+				<div class='form-control' id="dropZonePDF" style="width:100%;height:60px;margin:15px 0;">
+				  <span id="dropZonePDF_text">PDF拖拽到这里</span>
+				</div>
+				<div id="uploadStatusPDF" style="padding-top:5px;word-wrap: break-word;display:none;"></div>				
+			  </div>
+			</div>
+			<div class='col-xl-8 col-md-12'>		   
+			  <div>
+				<div id="PDFShowDiv" style="padding-top:26px;margin-bottom:20px;"></div>	
+			  </div>
+			</div>
+			
+			<div class='col-xl-12 col-md-12'><hr/></div>
+			<div class='col-xl-4 col-md-12'>		   
+			  <div>
+				<h5 id="upload_title_main">首图上传</h5>
+				<input type="file" id="fileInput1" multiple>														
+				<div class='form-control' id="dropZone1" style="width:100%;height:60px;margin:15px 0;">
+				  <span id="upload_drop_tip1">图片拖拽到这里</span>
+				</div>	
+				<div id="uploadStatus1" style="padding-top:5px;word-wrap: break-word;display:none;"></div>	
+				<div id="BildShowDiv1" style="padding-top:15px;margin-bottom:20px;"></div>	
+			  </div>
+			</div>
+
+			<div class='col-xl-4 col-md-12'>		   
+			  <div>
+				<h5 id="upload_title_slider">轮播图上传</h5>
+				<input type="file" id="fileInput2" multiple>														
+				<div class='form-control' id="dropZone2" style="width:100%;height:60px;margin:15px 0;">
+				  <span id="upload_drop_tip2">图片拖拽到这里</span>
+				</div>	
+				<div id="uploadStatus2" style="padding-top:5px;word-wrap: break-word;display:none;"></div>	
+				<div id="BildShowDiv2" style="padding-top:15px;margin-bottom:20px;"></div>	
+			  </div>
+			</div>
+
+			<div class='col-xl-4 col-md-12'>		   
+			  <div>
+				<h5 id="upload_title_detail">详情图上传</h5>
+				<input type="file" id="fileInput3" multiple>														
+				<div class='form-control' id="dropZone3" style="width:100%;height:60px;margin:15px 0;">
+				  <span id="upload_drop_tip3">图片拖拽到这里</span>
+				</div>	
+				<div id="uploadStatus3" style="padding-top:5px;word-wrap: break-word;display:none;"></div>	
+				<div id="BildShowDiv3" style="padding-top:15px;margin-bottom:20px;"></div>	
+			  </div>
+			</div>
+
+		
+		</div>
+		</div>
+		</div>
+		<div class='modal-footer'>		
+		<button id="button_modal_close" type='button' class='btn btn-outline-secondary' style='width:120px;' data-dismiss='modal'>Close</button>
+		<button id="button_modal_variants" type='button' class='btn btn-outline-warning' style='width:120px;display:none;' onclick='setEinzelAktiv()'>Set variants</button>
+		<button id="button_modal_copie" type='button' class='btn btn-outline-primary' style='width:120px;' onclick='kopieProduktObj()'>Copy product</button>
+		<button id="button_modal_save" type='button' class='btn btn-outline-success' style='width:120px;' onclick='saveProdukt()'>Save</button>
+
+		</div>
+		</div>
+		</div>
+		</div>
+		
+		<!-- Modal-->								
+		<div class='modal fade' id='exampleNewModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+		<div class='modal-dialog modal-md'>
+		<div class='modal-content'>
+		<div class='modal-header'>
+		<h5 id="modal_title_add_new" class='modal-title'>Add new</h5>
+		<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+		<span aria-hidden='true'>×</span>
+		</button>
+		</div>
+		<div class='modal-body'>
+		<div class='form-group'>
+		<div class='checkbox-inline'>
+		
+		<%
+		function generateNewRow(param) {
+			let colClass = "12";
+			if (param == "ProduktFloat10" || param == "ProduktFloat11") {
+				colClass = "6";
+			}else if (param == "ProduktInt1") {
+				colClass = "6";
+			}
+			return colClass;
+		}
+		function generateNewType(param) {
+			let txt = "text";
+			if (param.indexOf("Int")>0 || param.indexOf("Float")>0) {
+				txt = "number";
+			}else if (param.indexOf("Datum")>=0) {
+				txt = "date";
+			}
+			return txt;
+		}
+		%>
+		<%  ["ProduktString1"]
+		.forEach(function(param) { %>
+		<div class='col-xl-<%= generateNewRow(param) %> col-md-12' id='<%= param %>NewDiv'>
+		   <div class='form-group'>
+		   <label id='<%= param %>NewLabel' for='<%= param %>New'><%= param %></label>
+		   <input class='form-control' type='<%=generateNewType(param)%>' id='<%= param %>New' autocomplete='off'>							   
+		</div></div>
+		<% }) %>
+		
+		</div>
+		</div>
+		</div>
+		<div class='modal-footer'>
+		<button id="button_add_close" type='button' class='btn btn-outline-secondary' data-dismiss='modal'>Close</button>
+		<button id="button_add_save" type='button' class='btn btn-outline-success' onclick='saveNewProdukt()'>Save</button>
+		</div>
+		</div>
+		</div>
+		</div>
+		
+		<!-- Modal-->								
+		<div class='modal fade' id='exampleImportModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+		<div class='modal-dialog modal-lg'>
+		<div class='modal-content'>
+		<div class='modal-header'>
+		<h5 class='modal-title' id="modal_title_product_import">Produkt Import</h5>
+		<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+		<span aria-hidden='true'>×</span>
+		</button>
+		</div>
+		<div class='modal-body'>
+		<div class='form-group'>
+		<div class='checkbox-inline'>
+		
+		<div class='row'>
+			<div class='col-12 pb-2'>
+				<div>
+				  <span id="table_header_index">序号</span> |
+				  <span id="table_header_cn">中文名</span> |
+				  <span id="table_header_de">德语名</span> |
+				  <span id="table_header_en">英语名</span> |
+				  <span id="table_header_onb_price">ONB售价€</span> |
+				  <span id="table_header_amazon_min_price">亚马逊最低售价€</span> |
+				  <span id="table_header_image_link">图片链接</span> |
+				  <span id="table_header_amazon_link">亚马逊链接</span>
+				</div>	   
+			</div>
+			<div class='col-12'>
+				<textarea style='width:100%;height:500px;' id='ImportProductTextarea'></textarea>
+			</div>
+			<div class='col-12 pt-2'>
+				<span style='font-weight:bold;color:red;font-size:16px;' id='ImportProductHinweis'></span>
+			</div>
+		</div>
+
+		
+		
+		</div>
+		</div>
+		</div>
+		<div class='modal-footer'>
+			<button type='button' class='btn btn-outline-secondary' data-dismiss='modal' id="button_close_modal">Close</button>
+			<button type='button' class='btn btn-outline-success' onclick='checkImportProdukt()' id="button_save_import">Save</button>
+		</div>
+		</div>
+		</div>
+		</div>
+		
+		
+		<script>
+			languageInnerHTMLArr.push(new languageObj("product_manage_title", "Manage Product", "Produkt verwalten", "Gérer le produit", "产品管理"));
+			languageInnerHTMLArr.push(new languageObj("product_attribute_label", "Product Attribute", "Produkteigenschaft", "Attribut du produit", "产品属性"));
+			languageInnerHTMLArr.push(new languageObj("label_price_affect", "Affects Price", "Beeinflusst Preis", "Influe sur le prix", "决定价格"));
+			languageInnerHTMLArr.push(new languageObj("saveProduktAttributeButton", "Add Attribute", "Attribut hinzufügen", "Ajouter un attribut", "新增属性"));
+			languageInnerHTMLArr.push(new languageObj("save_warn_tip", "Cannot be changed or deleted after saving", "Nach dem Speichern nicht mehr änderbar oder löschbar", "Impossible de modifier ou supprimer après enregistrement", "保存后不能更改或删除"));
+			languageInnerHTMLArr.push(new languageObj("saveProduktEinzelButton", "Add Product", "Produkt hinzufügen", "Ajouter un produit", "新增产品"));
+			languageInnerHTMLArr.push(new languageObj("upload_title_main", "Main Image Upload", "Hauptbild hochladen", "Téléchargement image principale", "首图上传"));
+			languageInnerHTMLArr.push(new languageObj("upload_title_slider", "Slider Image Upload", "Slider-Bild hochladen", "Téléchargement image diaporama", "轮播图上传"));
+			languageInnerHTMLArr.push(new languageObj("upload_title_detail", "Detail Image Upload", "Detailbild hochladen", "Téléchargement image détail", "详情图上传"));
+			languageInnerHTMLArr.push(new languageObj("upload_drop_tip1", "Drag image here", "Bild hierher ziehen", "Glissez l'image ici", "图片拖拽到这里"));
+			languageInnerHTMLArr.push(new languageObj("upload_drop_tip2", "Drag image here", "Bild hierher ziehen", "Glissez l'image ici", "图片拖拽到这里"));
+			languageInnerHTMLArr.push(new languageObj("upload_drop_tip3", "Drag image here", "Bild hierher ziehen", "Glissez l'image ici", "图片拖拽到这里"));
+			languageInnerHTMLArr.push(new languageObj("button_export_product", "Product Import", "Produktimport", "Importation de produit", "产品导入"));
+			languageInnerHTMLArr.push(new languageObj("modal_title_product_import", "Product Import", "Produktimport", "Importation de produit", "产品导入"));
+			languageInnerHTMLArr.push(new languageObj("button_close_modal", "Close", "Schließen", "Fermer", "关闭"));
+			languageInnerHTMLArr.push(new languageObj("button_save_import", "Save", "Speichern", "Enregistrer", "保存"));
+			languageInnerHTMLArr.push(new languageObj("button_add_close", "Close", "Schließen", "Fermer", "关闭"));
+			languageInnerHTMLArr.push(new languageObj("button_add_save", "Save", "Speichern", "Enregistrer", "保存"));
+			languageInnerHTMLArr.push(new languageObj("button_modal_close", "Close", "Schließen", "Fermer", "关闭"));
+			languageInnerHTMLArr.push(new languageObj("button_modal_save", "Save", "Speichern", "Enregistrer", "保存"));
+			languageInnerHTMLArr.push(new languageObj("button_modal_variants", "Set variants", "Varianten festlegen", "Définir les variantes", "设置变体"));
+			languageInnerHTMLArr.push(new languageObj("upload_title_pdf", "PDF Upload", "PDF hochladen", "Téléversement PDF", "PDF上传"));
+			languagePlaceholderArr.push(new languageObj("filePDFName", "Display Name", "Anzeigename", "Nom affiché", "显示名称"));
+			languageInnerHTMLArr.push(new languageObj("dropZonePDF_text", "Drag PDF here", "PDF hierher ziehen", "Glissez le PDF ici", "PDF拖拽到这里"));
+			languageInnerHTMLArr.push(new languageObj("button_modal_copie", "Copy product", "Produkt kopieren", "Copier le produit", "复制产品"));
+
+
+			
+			languageInnerHTMLArr.push(new languageObj("table_header_index", "No.", "Nr.", "N°", "序号"));
+			languageInnerHTMLArr.push(new languageObj("table_header_cn", "Chinese Name", "Chinesischer Name", "Nom chinois", "中文名"));
+			languageInnerHTMLArr.push(new languageObj("table_header_de", "German Name", "Deutscher Name", "Nom allemand", "德语名"));
+			languageInnerHTMLArr.push(new languageObj("table_header_en", "English Name", "Englischer Name", "Nom anglais", "英语名"));
+			languageInnerHTMLArr.push(new languageObj("table_header_onb_price", "ONB Price €", "ONB-Preis €", "Prix ONB €", "ONB售价€"));
+			languageInnerHTMLArr.push(new languageObj("table_header_amazon_min_price", "Amazon Min Price €", "Amazon Mindestpreis €", "Prix Amazon min €", "亚马逊最低售价€"));
+			languageInnerHTMLArr.push(new languageObj("table_header_image_link", "Image Link", "Bildlink", "Lien image", "图片链接"));
+			languageInnerHTMLArr.push(new languageObj("table_header_amazon_link", "Amazon Link", "Amazon-Link", "Lien Amazon", "亚马逊链接"));
+
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeName1Input", "Attribute Name (German)", "Attributname (Deutsch)", "Nom de l'attribut (Allemand)", "产品属性名（德文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeName2Input", "Attribute Name (French)", "Attributname (Französisch)", "Nom de l'attribut (Français)", "产品属性名（法文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeName3Input", "Attribute Name (English)", "Attributname (Englisch)", "Nom de l'attribut (Anglais)", "产品属性名（英文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeName4Input", "Attribute Name (Chinese)", "Attributname (Chinesisch)", "Nom de l'attribut (Chinois)", "产品属性名（中文）"));
+
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue1_1Input", "Attribute Value (German)", "Attributwert (Deutsch)", "Valeur de l'attribut (Allemand)", "产品属性值（德文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue1_2Input", "Attribute Value (French)", "Attributwert (Französisch)", "Valeur de l'attribut (Français)", "产品属性值（法文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue1_3Input", "Attribute Value (English)", "Attributwert (Englisch)", "Valeur de l'attribut (Anglais)", "产品属性值（英文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue1_4Input", "Attribute Value (Chinese)", "Attributwert (Chinesisch)", "Valeur de l'attribut (Chinois)", "产品属性值（中文）"));
+
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue2_1Input", "Attribute Value (German)", "Attributwert (Deutsch)", "Valeur de l'attribut (Allemand)", "产品属性值（德文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue2_2Input", "Attribute Value (French)", "Attributwert (Französisch)", "Valeur de l'attribut (Français)", "产品属性值（法文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue2_3Input", "Attribute Value (English)", "Attributwert (Englisch)", "Valeur de l'attribut (Anglais)", "产品属性值（英文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue2_4Input", "Attribute Value (Chinese)", "Attributwert (Chinesisch)", "Valeur de l'attribut (Chinois)", "产品属性值（中文）"));
+			
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue3_1Input", "Attribute Value (German)", "Attributwert (Deutsch)", "Valeur de l'attribut (Allemand)", "产品属性值（德文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue3_2Input", "Attribute Value (French)", "Attributwert (Französisch)", "Valeur de l'attribut (Français)", "产品属性值（法文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue3_3Input", "Attribute Value (English)", "Attributwert (Englisch)", "Valeur de l'attribut (Anglais)", "产品属性值（英文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue3_4Input", "Attribute Value (Chinese)", "Attributwert (Chinesisch)", "Valeur de l'attribut (Chinois)", "产品属性值（中文）"));
+			
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue4_1Input", "Attribute Value (German)", "Attributwert (Deutsch)", "Valeur de l'attribut (Allemand)", "产品属性值（德文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue4_2Input", "Attribute Value (French)", "Attributwert (Französisch)", "Valeur de l'attribut (Français)", "产品属性值（法文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue4_3Input", "Attribute Value (English)", "Attributwert (Englisch)", "Valeur de l'attribut (Anglais)", "产品属性值（英文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue4_4Input", "Attribute Value (Chinese)", "Attributwert (Chinesisch)", "Valeur de l'attribut (Chinois)", "产品属性值（中文）"));
+			
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue5_1Input", "Attribute Value (German)", "Attributwert (Deutsch)", "Valeur de l'attribut (Allemand)", "产品属性值（德文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue5_2Input", "Attribute Value (French)", "Attributwert (Französisch)", "Valeur de l'attribut (Français)", "产品属性值（法文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue5_3Input", "Attribute Value (English)", "Attributwert (Englisch)", "Valeur de l'attribut (Anglais)", "产品属性值（英文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue5_4Input", "Attribute Value (Chinese)", "Attributwert (Chinesisch)", "Valeur de l'attribut (Chinois)", "产品属性值（中文）"));
+			
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue6_1Input", "Attribute Value (German)", "Attributwert (Deutsch)", "Valeur de l'attribut (Allemand)", "产品属性值（德文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue6_2Input", "Attribute Value (French)", "Attributwert (Französisch)", "Valeur de l'attribut (Français)", "产品属性值（法文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue6_3Input", "Attribute Value (English)", "Attributwert (Englisch)", "Valeur de l'attribut (Anglais)", "产品属性值（英文）"));
+			languagePlaceholderArr.push(new languageObj("ProduktAttributeValue6_4Input", "Attribute Value (Chinese)", "Attributwert (Chinesisch)", "Valeur de l'attribut (Chinois)", "产品属性值（中文）"));
+			
+			
+			languagePlaceholderArr.push(new languageObj("ProduktEinzelASINInput", "ASIN", "ASIN", "ASIN", "ASIN"));
+			languagePlaceholderArr.push(new languageObj("ProduktEinzelPreisInput", "Price", "Preis", "Prix", "售价"));
+			languagePlaceholderArr.push(new languageObj("ProduktEinzelAngebotInput", "Discount Price", "Angebotspreis", "Prix promotionnel", "特价"));
+
+
+		</script>	
+		<%- include('./footer.ejs') %>  	
+		
+		
+		<!--begin::Global Theme Bundle(used by all pages)-->
+		<script src="assets/plugins/global/plugins.bundle.js"></script>
+		<script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+		<script src="assets/js/scripts.bundle.js"></script>
+		<!--end::Global Theme Bundle-->
+		<!--begin::Page Vendors(used by this page)-->
+		<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+		<!--end::Page Vendors-->
+		<!--begin::Page Scripts(used by this page)-->
+		<script src="assets/js/pages/widgets.js"></script>
+		<!--end::Page Scripts-->
+		
+		<script src="javascript/ProduktVerwalten.js"></script>
+		<script> initGUI(); </script>
+	</body>
+	<!--end::Body-->
+</html>
