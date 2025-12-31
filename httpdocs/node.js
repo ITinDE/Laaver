@@ -1,4 +1,8 @@
+
+require('dotenv').config({ path: '.env.dev' });
+
 const express = require('express');
+const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const upload = require('express-fileupload');
 const request = require('request');
@@ -11,6 +15,7 @@ const path = require('path');
 const crypto = require('crypto');
 const qs = require('qs');
 const secretKey = crypto.randomBytes(16).toString('hex');
+const compression = require('compression');
 
 const app = express();
 app.set('views', __dirname);
@@ -22,10 +27,28 @@ app.use('/css', express.static(__dirname + 'css'));
 app.use('/js', express.static(__dirname + 'js'));
 app.use('/img', express.static(__dirname + 'img'));
 
-// create application/json parser
+app.use(compression());
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ limit: '100mb', extended: true }));
+app.use(session({
+    secret: secretKey,
+    resave: false,
+    saveUninitialized: false,  // 不保存未初始化的会话
+    cookie: { secure: process.env.NODE_ENV == 'production', httpOnly: true, path: '/' } // 设置安全标志，仅在HTTPS下使用
+}));
+
+const passport = require('passport');
+const OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
+require('dotenv').config({ path: '.env.dev' });
+const cors = require('cors');
+app.use(cors());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 const jsonParser = bodyParser.json();
-// create application/x-www-form-urlencoded parser
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 
 /**** Cookies Begin ****/
 app.use(cookieParser());
@@ -38,9 +61,9 @@ app.get('/setcookieLang', function(req, res){
 /**** mySQL Begin ****/
 const mysql = require('mysql');
 const con = mysql.createConnection({
-  host: "www.laaver.com",
-  user: "laaver",
-  password: "4&4#TqPq0vweMgyd",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
   multipleStatements: true
 });
 con.connect(function(err) {if (err) throw err;});
@@ -48,14 +71,14 @@ con.connect(function(err) {if (err) throw err;});
 
 /**** Mail Daten Begin ****/
 const nodemailer = require('nodemailer');
-const mailFrom = "laaver <info@laaver.com>";
+const mailFrom = process.env.MAIL_FROM;
 const smtpConfig = {
-  host: 'laaver.com',
-  port: 465,
-  secure: true,
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
+  secure: process.env.SMTP_SECURE,
   auth: {
-	user: 'info@laaver.com',
-	pass: '4&4#TqPq0vweMgyd'
+	user: process.env.SMTP_USER,
+	pass: process.env.SMTP_PASS
   }
 };
 /**** Mail Daten End ****/
@@ -3631,7 +3654,7 @@ app.post('/Bestellung_Erfolgreich_Email', urlencodedParser, function (req, res){
 	  .replace('{{Summe}}', FCommaEUR(parseFloat(OneBestellung.BestellungFloat5)));
  
     let mailOptions = {
-      from: '"laaver" <info@laaver.com>',
+      from: process.env.MAIL_FROM,
       to: email,
       subject: subject,
       html: htmlContent,
@@ -3699,7 +3722,7 @@ app.post('/sendRegisterEmail', urlencodedParser, function (req, res){
       .replace('{{Username}}', username);
  
     let mailOptions = {
-      from: '"laaver" <info@laaver.com>',
+      from: process.env.MAIL_FROM,
       to: email,
       subject: subject,
       html: htmlContent,
@@ -3788,7 +3811,7 @@ app.post('/frontend_contact_send', urlencodedParser, function (req, res){
 					  "Content: "+con_message+"<br/>";
  
     let mailOptions = {
-      from: '"laaver" <info@laaver.com>',
+      from: process.env.MAIL_FROM,
       to: '"laaver" <info@laaver.com>',
       subject: "New contact form message",
       html: htmlContent,
