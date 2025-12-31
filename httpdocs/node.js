@@ -14,7 +14,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const qs = require('qs');
-const secretKey = crypto.randomBytes(16).toString('hex');
+const secretKey = process.env.SESSION_SECRET || crypto.randomBytes(16).toString('hex');
 const compression = require('compression');
 
 const app = express();
@@ -48,6 +48,19 @@ app.use(passport.session());
 
 const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
+const SAFE_FILENAME_PATTERN = /[^a-zA-Z0-9._-]/g;
+
+function sanitizePathSegment(value) {
+    return String(value || '').replace(SAFE_FILENAME_PATTERN, '');
+}
+
+function resolveSafePath(baseDir, ...segments) {
+    const targetPath = path.resolve(baseDir, ...segments);
+    if (!targetPath.startsWith(`${baseDir}${path.sep}`) && targetPath !== baseDir) {
+        return null;
+    }
+    return targetPath;
+}
 
 
 /**** Cookies Begin ****/
@@ -118,9 +131,24 @@ app.post('/file-upload', function(req, res) {
     return res.status(400).send('No files were uploaded.');
   }
 
+  const folderName = sanitizePathSegment(req.body.ordnername);
+  const fileName = sanitizePathSegment(req.body.filename);
+  if (!folderName || !fileName) {
+    return res.status(400).send('Invalid upload path.');
+  }
+  const uploadsBaseDir = path.resolve(__dirname, 'public', 'file');
+  const targetDir = resolveSafePath(uploadsBaseDir, folderName);
+  if (!targetDir) {
+    return res.status(400).send('Invalid upload path.');
+  }
+  fs.mkdirSync(targetDir, { recursive: true });
+
   sampleFile = req.files.sampleFile;
-  uploadPath = __dirname + '/public/file/'+req.body.ordnername+'/'+req.body.filename;
-  var url = String("https://www.laaver.com/"+req.body.ordnername+"?prIDX="+req.body.prIDX);
+  uploadPath = resolveSafePath(targetDir, fileName);
+  if (!uploadPath) {
+    return res.status(400).send('Invalid upload path.');
+  }
+  var url = String("https://www.laaver.com/"+folderName+"?prIDX="+req.body.prIDX);
   
   sampleFile.mv(uploadPath, function(err) {
     if (err) return res.status(500).send(err);
@@ -136,7 +164,10 @@ const xl = require('excel4node');
 const mime = require('mime');
 
 app.post('/Excel_Export', urlencodedParser, function (req, res, next){
-	var filename = unescape(req.body.filename);
+	var filename = sanitizePathSegment(unescape(req.body.filename));
+	if (!filename) {
+		return res.status(400).send('Invalid filename.');
+	}
 	var ExcelFile = __dirname + "/excel/" + filename + ".xlsx";
 	var ExcelHeaderColumns = JSON.parse(req.body.ExcelHeaderColumns);
 	var ExcelData = JSON.parse(req.body.ExcelData);
@@ -173,7 +204,12 @@ app.post('/Excel_Export', urlencodedParser, function (req, res, next){
 	});	
 	ws.cell(1, 1, 1, parseInt(ExcelHeaderColumns.length)).style(myStyle);
 	ws.row(1).setHeight(20);	
-	wb.write(__dirname + "/public/excel/datei/" + filename + ".xlsx");
+	const excelOutputDir = path.resolve(__dirname, 'public', 'excel', 'datei');
+	const excelOutputPath = resolveSafePath(excelOutputDir, filename + ".xlsx");
+	if (!excelOutputPath) {
+		return res.status(400).send('Invalid filename.');
+	}
+	wb.write(excelOutputPath);
 	
 	res.end();
 });
@@ -3496,7 +3532,10 @@ app.post('/Rechnung_PDF', urlencodedParser, function (req, res, next){
 	const OneShippingAdresseAllgemein = JSON.parse(req.body.OneShippingAdresseAllgemein);
 	const OneArtikelAllgemein = JSON.parse(req.body.OneArtikelAllgemein);
 	const OneBetragAllgemein = JSON.parse(req.body.OneBetragAllgemein);
-	const filename = String(req.body.filename);
+	const filename = sanitizePathSegment(String(req.body.filename));
+	if (!filename) {
+		return res.status(400).send('Invalid filename.');
+	}
  
 	var CouponDivCode1 = "none";
 	//if(OneBestellung.BestellungFloat1>0 || OneBestellung.BestellungFloat2>0) CouponDivCode1 = "table-row";
@@ -3529,6 +3568,11 @@ app.post('/Rechnung_PDF', urlencodedParser, function (req, res, next){
  
 	var dest_file_path = String(__dirname + "/public/pdf_template/Rechnung.html");
 	var htmlFile = fs.readFileSync(dest_file_path, "utf8");
+	const pdfOutputDir = path.resolve(__dirname, 'public', 'pdf_datei');
+	const pdfOutputPath = resolveSafePath(pdfOutputDir, filename + ".pdf");
+	if (!pdfOutputPath) {
+		return res.status(400).send('Invalid filename.');
+	}
 	var document = {
 	  html: htmlFile,
 	  data: {
@@ -3551,7 +3595,7 @@ app.post('/Rechnung_PDF', urlencodedParser, function (req, res, next){
 				Summe: FCommaEUR(parseFloat(OneBestellung.BestellungFloat5)),
  
 			},
-	  path: "./public/pdf_datei/"+filename+".pdf",
+	  path: pdfOutputPath,
 	  type: "",
 	};
 	var options = {
